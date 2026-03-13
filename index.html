@@ -197,6 +197,10 @@ border-radius:28px;
 overflow:hidden;
 border:6px solid var(--yellow);
 box-shadow:var(--shadow);
+max-width:420px;
+width:100%;
+justify-self:center;
+align-self:center;
 }
 .hero-card img{
 width:100%;
@@ -269,6 +273,46 @@ width:100%;
 height:100%;
 object-fit:cover;
 min-height:100%;
+}
+.people-grid{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:24px;
+margin-top:24px;
+}
+.person-card{
+background:var(--white);
+border-radius:24px;
+padding:18px;
+box-shadow:var(--shadow);
+}
+.person-image{
+background:linear-gradient(135deg, #d9d9d9, #f2f2f2);
+border:3px dashed #bfbfbf;
+border-radius:22px;
+min-height:320px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+color:#555;
+font-weight:700;
+font-size:20px;
+margin-bottom:18px;
+}
+.person-info{
+background:var(--card);
+border-radius:18px;
+padding:18px;
+}
+.person-info h3{
+font-size:28px;
+margin-bottom:10px;
+}
+.person-info p{
+margin:6px 0;
+word-break:break-word;
 }
 .services-grid{
 display:grid;
@@ -520,7 +564,8 @@ word-break:break-word;
 .footer-inner,
 .faq-grid,
 .contact-grid,
-.split-grid{
+.split-grid,
+.people-grid{
 grid-template-columns:1fr;
 }
 .services-grid{
@@ -570,7 +615,8 @@ padding-top:40px;
 .highlight-list,
 .faq-grid,
 .contact-grid,
-.two-col{
+.two-col,
+.people-grid{
 grid-template-columns:1fr;
 }
 .compare{
@@ -581,7 +627,8 @@ aspect-ratio:4/3;
 .service-overlay h3,
 .faq-item h3,
 .contact-card h3,
-.footer-card h3{
+.footer-card h3,
+.person-info h3{
 font-size:22px;
 }
 .highlight{
@@ -614,11 +661,8 @@ font-size:15px;
 <p>
 Haluatko kotisi maalipinnat kerralla kuntoon. PintaPojilta näyttävät ja kestävät pinnat.
 </p>
-
-</div>
 </div>
 <div class="hero-card">
-
 <div class="hero-card-body">
 <h3>Tarjous ei maksa mitään</h3>
 <p>
@@ -626,10 +670,9 @@ Sovitaan käynti ja suunnitellaan juuri sinun talollesi sopiva toteutus.
 </p>
 <a class="btn btn-yellow" href="#arviointi">Pyydä tarjous</a>
 <p>
-  Katso mitä muut ovat kysyneet maalauksesta.
+Katso mitä muut ovat kysyneet maalauksesta.
 </p>
 <a class="btn btn-white" href="#faq">Usein kysyttyä</a>
-</div>
 </div>
 </div>
 </div>
@@ -637,17 +680,33 @@ Sovitaan käynti ja suunnitellaan juuri sinun talollesi sopiva toteutus.
 <section class="section" id="yleista">
 <h2 class="section-title">Yleistä</h2>
 <p class="section-lead">
-Tiedot meistä ja palveluistamme. PintaPojat koostuuu toiminimistä Ilmari Sippola ja Verso. Teemme
+Tiedot meistä ja palveluistamme. PintaPojat koostuu toiminimistä Ilmari Sippola ja Verso. Teemme
 julkisivu- ja huoltomaalauksia sekä pieniä pintaremontteja Joensuun seudulla ja lähistöllä. PintaPojat keskittyy siistiin, hyvään ja
-kestävään lopputulokseen. Talo ei maalaukesta saa pelkkää uutta ilmettä, vaan myös oikea pohjatyö ja huolellinen toteutus takaavat sille kestävän suojan. Haluamme tehdä kohteistamme sellaisia, että ero näkyy selvästi.
+kestävään lopputulokseen. Talo ei maalauksesta saa pelkkää uutta ilmettä, vaan myös oikea pohjatyö ja huolellinen toteutus takaavat sille kestävän suojan. Haluamme tehdä kohteistamme sellaisia, että ero näkyy selvästi.
 Lopputuloksen kuuluu näyttää hyvältä ja kestää myös käyttöä ja säätä.
 </p>
 <div class="box image-box">
 <img src="cream-house.jpg" alt="Vaalea maalattu talo" />
 </div>
+<div class="people-grid">
+<div class="person-card">
+<div class="person-image">Lisää tähän Vilhon kuva</div>
+<div class="person-info">
+<h3>Vilho Räisänen</h3>
+<p><strong>Puhelin:</strong> 044 980 5844</p>
+<p><strong>Sähköposti:</strong> pintapojat@gmail.com</p>
+<p><strong>Rooli:</strong> PintaPojat</p>
 </div>
-<div class="placeholder-image" style="min-height:220px; margin-top:24px;">
-Lisää tähän kuva teistä yhdessä
+</div>
+<div class="person-card">
+<div class="person-image">Lisää tähän Ilmarin kuva</div>
+<div class="person-info">
+<h3>Ilmari Sippola</h3>
+<p><strong>Puhelin:</strong> 045 7832 5502</p>
+<p><strong>Sähköposti:</strong> pintapojat@gmail.com</p>
+<p><strong>Rooli:</strong> PintaPojat</p>
+</div>
+</div>
 </div>
 </section>
 <section class="section" id="ulkomaalaus">
@@ -662,7 +721,7 @@ Oikein tehtynä lopputulos näyttää siistiltä ja kestää pitkään.
 <div class="service-overlay">
 <h3>Julkisivut</h3>
 <p>Maalaukset omakotitaloihin, mökkeihin ja muihin rakennuksiin.</p>
-<span class="tag" data-service="ulkomaalaus">Ulkomaalaus</span>
+<button class="tag" type="button" data-service="ulkomaalaus">Ulkomaalaus</button>
 </div>
 </div>
 <div class="service-card">
@@ -670,7 +729,7 @@ Oikein tehtynä lopputulos näyttää siistiltä ja kestää pitkään.
 <div class="service-overlay">
 <h3>Huoltomaalaus</h3>
 <p>Pintojen ehostus ja suojaus ennen kuin kuluminen etenee liian pitkälle.</p>
-<span class="tag" data-service="huoltomaalaus">Huoltomaalaus</span>
+<button class="tag" type="button" data-service="huoltomaalaus">Huoltomaalaus</button>
 </div>
 </div>
 <div class="service-card">
@@ -678,28 +737,13 @@ Oikein tehtynä lopputulos näyttää siistiltä ja kestää pitkään.
 <div class="service-overlay">
 <h3>Hirsipinnat</h3>
 <p>Kuullote- ja käsittelyratkaisut, joissa hirsiseinän ilme pääsee oikeuksiinsa.</p>
-<span class="tag" data-service="hirsipinnat">Hirsipinnat</span>
+<button class="tag" type="button" data-service="hirsipinnat">Hirsipinnat</button>
 </div>
 </div>
 </div>
-<section class="section">
-<div class="split-grid">
-<div class="compare-card">
-<div class="compare" data-start="0">
-<img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Ennen" />
-<img class="compare-after" src="tervapetsi.jälkeen.2025.jpeg" alt="Jälkeen" />
-<div class="compare-line"></div>
-<div class="compare-handle"></div>
-</div>
-</div>
-<div class="compare-card">
-<div class="compare" data-start="0">
-<img class="compare-before" src="red-before.jpg" alt="Ennen" />
-<img class="compare-after" src="red-after.jpg" alt="Jälkeen" />
-<div class="compare-line"></div>
-<div class="compare-handle"></div>
-</div>
-</div>
+<div class="service-info-box" id="serviceInfoBox" role="button" tabindex="0" aria-live="polite">
+<h3 id="serviceInfoTitle">Palvelun lisätiedot</h3>
+<p id="serviceInfoText">Klikkaa ulkomaalauskohdan nappia, niin tähän avautuu lisätietoa.</p>
 </div>
 </section>
 <section class="section" id="pohjatyot">
@@ -708,8 +752,13 @@ Oikein tehtynä lopputulos näyttää siistiltä ja kestää pitkään.
 Hyvä lopputulos alkaa pohjatöistä. Pesut, kaavinnat, suojaukset ja muut
 valmistelut vaikuttavat suoraan siihen, miltä maalaus näyttää ja kuinka kauan se kestää. Urakka alkaa yleisemmmin homepesulla, jossa talo pestään läpikotaisin homepesuaineen ja harjojen kanssa. Näin mustat homepilkut saadaan tehokkaasti poistettua. Samalla maalausta hidastava ja maalin tarttumista heikentävä pöly ja muu lika saadaan poistettua. Pohjatöihin kuuluu myös hilseilevän maalin poisto, puupinnalla olevien kohtien pohjamaalaus ja ympäristön suojaaminen maaliroiskeilta.
 </p>
-<div class="placeholder-image" style="margin-top:24px;">
-Lisää tähän myöhemmin kuva pohjatöistä
+<div class="compare-card" style="margin-top:24px;">
+<div class="compare" data-start="50">
+<img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Pohjatyöt ennen" />
+<img class="compare-after" src="tervapetsi.jälkeen.2025.jpeg" alt="Pohjatyöt jälkeen" />
+<div class="compare-line"></div>
+<div class="compare-handle"></div>
+</div>
 </div>
 </section>
 <section class="section" id="huoltotyot">
@@ -721,14 +770,19 @@ Esimerkiksi talon otsalaudat ja ikkunoiden vuorilaudat pääsevät monesti räns
 Pienet huoltotyöt oikeaan aikaan auttavat pitämään koko rakennuksen ilmeen parempana.
 Samalla ehkäistään suuret korjauskustannukset tulevaisuudessa.
 </p>
-<div class="placeholder-image" style="margin-top:24px;">
-Lisää tähän myöhemmin kuva huoltotöistä
+<div class="compare-card" style="margin-top:24px;">
+<div class="compare" data-start="50">
+<img class="compare-before" src="red-before.jpg" alt="Huoltotyöt ennen" />
+<img class="compare-after" src="red-after.jpg" alt="Huoltotyöt jälkeen" />
+<div class="compare-line"></div>
+<div class="compare-handle"></div>
+</div>
 </div>
 </section>
 <section class="section" id="faq">
 <h2 class="section-title">Usein kysyttyjä kysymyksiä ulkomaalauksesta</h2>
 <div class="faq-grid">
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Kuinka usein talo kannattaa maalata?</h3>
 <div class="faq-answer">
 <p>
@@ -737,7 +791,7 @@ maalista, säästä ja siitä, miten hyvin aiemmat käsittelyt on tehty.
 </p>
 </div>
 </div>
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Tarvitaanko pesu ennen maalausta?</h3>
 <div class="faq-answer">
 <p>
@@ -746,25 +800,25 @@ tarttuu kunnolla ja lopputulos kestää.
 </p>
 </div>
 </div>
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Voiko vanhan pinnan maalata suoraan?</h3>
 <div class="faq-answer">
 <p>
-Joskus voi, mutta joskus maalipinta voi olla paikon huonossa kunnossa, jolloin tarvitaan pohjatöitä. Siksi kohde
+Joskus voi, mutta joskus maalipinta voi olla paikoin huonossa kunnossa, jolloin tarvitaan pohjatöitä. Siksi kohde
 kannattaa arvioida ennen työn aloittamista.
 </p>
 </div>
 </div>
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Kuinka kauan ulkomaalaus yleensä kestää?</h3>
 <div class="faq-answer">
 <p>
 Kesto riippuu kohteen koosta, säästä ja pohjatöiden määrästä, mutta
-tavallinen omakotitalo valmistuu 3-5 päivässä.
+tavallinen omakotitalo valmistuu 3–5 päivässä.
 </p>
 </div>
 </div>
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Voiko sateella tai kostealla säällä maalata?</h3>
 <div class="faq-answer">
 <p>
@@ -773,16 +827,16 @@ oikea sääikkuna on tärkeä osa onnistunutta maalausta.
 </p>
 </div>
 </div>
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Paljonko ulkomaalaus maksaa?</h3>
 <div class="faq-answer">
 <p>
 Hinta riippuu kohteen koosta, kunnosta ja pohjatöiden määrästä.
-Tavallisen omakotitalon maalauksen hintalappu on yleensä 3000€-5000€ väliltä.
+Tavallisen omakotitalon maalauksen hintalappu on yleensä 3000 €–5000 € väliltä.
 </p>
 </div>
 </div>
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Voiko maalaus nostaa talon arvoa?</h3>
 <div class="faq-answer">
 <p>
@@ -873,7 +927,7 @@ Siisti julkisivu parantaa rakennuksen yleisilmettä ja voi lisätä kiinnostusta
 <h3>Yhteystiedot</h3>
 <p><strong>Sähköposti:</strong> pintapojat@gmail.com</p>
 <p><strong>Nimet:</strong> Vilho Räisänen, Ilmari Sippola</p>
-<p><strong>Puhelinnumerot:</strong> Vilho:044 980 5844 / Ilmari:045 7832 5502</p>
+<p><strong>Puhelinnumerot:</strong> Vilho: 044 980 5844 / Ilmari: 045 7832 5502</p>
 <p><strong>Y-tunnus:</strong> y3586169-5 ja y3453360-6</p>
 </div>
 </div>
@@ -888,8 +942,9 @@ after.style.clipPath = `inset(0 ${100 - safeValue}% 0 0)`;
 line.style.left = safeValue + "%";
 handle.style.left = safeValue + "%";
 }
+
 document.querySelectorAll(".compare").forEach(wrap => {
-const start = wrap.dataset.start || 0;
+const start = wrap.dataset.start || 50;
 setCompare(wrap, start);
 let dragging = false;
 function updateFromPointer(clientX){
@@ -921,6 +976,7 @@ window.addEventListener("touchend", () => {
 dragging = false;
 });
 });
+
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
 menuToggle.addEventListener("click", () => {
@@ -933,6 +989,7 @@ menu.classList.remove("open");
 }
 });
 });
+
 const serviceInfoBox = document.getElementById("serviceInfoBox");
 const serviceInfoTitle = document.getElementById("serviceInfoTitle");
 const serviceInfoText = document.getElementById("serviceInfoText");
@@ -950,22 +1007,44 @@ title: "Puu- ja hirsipinnat",
 text: "Puu- ja hirsipintojen käsittelyssä huomioidaan materiaalin luonnollinen ilme, suojaus ja sävy. Oikea käsittely tuo puun parhaat puolet esiin ja auttaa pintaa kestämään pidempään."
 }
 };
+
 document.querySelectorAll(".tag[data-service]").forEach(tag => {
 tag.addEventListener("click", () => {
 const key = tag.dataset.service;
+if (!serviceTexts[key]) return;
 serviceInfoTitle.textContent = serviceTexts[key].title;
 serviceInfoText.textContent = serviceTexts[key].text;
 serviceInfoBox.classList.add("open");
+serviceInfoBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 });
+
 serviceInfoBox.addEventListener("click", () => {
 serviceInfoBox.classList.remove("open");
 });
+serviceInfoBox.addEventListener("keydown", (e) => {
+if (e.key === "Enter" || e.key === " ") {
+e.preventDefault();
+serviceInfoBox.classList.remove("open");
+}
+});
+
+function toggleFaqItem(item){
+item.classList.toggle("open");
+item.setAttribute("aria-expanded", item.classList.contains("open") ? "true" : "false");
+}
+
 document.querySelectorAll(".faq-item").forEach(item => {
 item.addEventListener("click", () => {
-item.classList.toggle("open");
+toggleFaqItem(item);
+});
+item.addEventListener("keydown", (e) => {
+if (e.key === "Enter" || e.key === " ") {
+e.preventDefault();
+toggleFaqItem(item);
+}
 });
 });
 </script>
 </body>
-</html>     
+</html>
