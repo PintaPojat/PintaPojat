@@ -1,442 +1,1100 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PintaPojat | Maalaukset ja pintaremontit</title>
-
-<link rel="icon" type="image/png" href="favicon.32.2.2.png">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PintaPojat | Maalaukset ja pienet pintaremontit</title>
+<link rel="icon" type="image/png" href="favicon.32.2.2.png" />
 <style>
-
 :root{
 --yellow:#f0b400;
+--yellow-light:#ffd64a;
+--red:#c62828;
 --black:#101010;
 --white:#ffffff;
 --bg:#ececec;
+--card:#f8f8f8;
 --shadow:0 12px 30px rgba(0,0,0,0.16);
+--radius:24px;
 --max:1200px;
 }
-
-*{box-sizing:border-box;}
-
+*{
+box-sizing:border-box;
+}
+html{
+scroll-behavior:smooth;
+overflow-x:hidden;
+width:100%;
+max-width:100%;
+}
 body{
 margin:0;
 background:var(--bg);
-font-family:Arial, Helvetica, sans-serif;
 color:var(--black);
+font-family:Arial, Helvetica, sans-serif;
+line-height:1.6;
+overflow-x:hidden;
+width:100%;
+max-width:100%;
 }
-
-h1,h2,h3{
+h1,h2,h3,h4,.impact{
 font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-letter-spacing:1px;
+text-transform:uppercase;
+letter-spacing:0.5px;
 margin:0;
 }
-
 a{
 text-decoration:none;
 color:inherit;
 }
-
 img{
-max-width:100%;
 display:block;
+max-width:100%;
 }
-
-.section{
-max-width:var(--max);
-margin:auto;
-padding:40px 20px;
-}
-
-.section-title{
-font-size:42px;
-margin-bottom:20px;
-}
-
-.btn{
-display:flex;
-justify-content:center;
-align-items:center;
-padding:14px 20px;
-border-radius:999px;
-font-weight:bold;
-box-shadow:var(--shadow);
-}
-
-.btn-yellow{
-background:var(--yellow);
-}
-
-.btn-white{
-background:white;
-}
-
 .topbar{
-background:#101010;
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(16,16,16,0.96);
 border-bottom:4px solid var(--yellow);
+backdrop-filter:blur(8px);
+width:100%;
 }
-
 .topbar-inner{
 max-width:var(--max);
-margin:auto;
+margin:0 auto;
 padding:14px 20px;
 display:flex;
-justify-content:space-between;
 align-items:center;
-color:white;
+justify-content:space-between;
+gap:18px;
 }
-
+.logo{
+color:var(--white);
+font-size:34px;
+line-height:1;
+white-space:nowrap;
+}
+.menu-toggle{
+display:none;
+background:var(--yellow);
+color:var(--black);
+border:none;
+border-radius:12px;
+padding:10px 14px;
+font-weight:800;
+cursor:pointer;
+font-family:Arial, Helvetica, sans-serif;
+}
 .menu{
 display:flex;
+flex-wrap:wrap;
 gap:10px;
+justify-content:flex-end;
 }
-
 .menu a{
-padding:8px 14px;
+color:var(--white);
+padding:10px 14px;
 border-radius:999px;
-border:2px solid rgba(255,255,255,0.2);
+border:2px solid rgba(255,255,255,0.12);
+font-size:14px;
+transition:0.2s ease;
 }
-
+.menu a:hover{
+background:var(--yellow);
+color:var(--black);
+border-color:var(--yellow);
+transform:translateY(-1px);
+}
 .hero{
 background:
-linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3)),
-url("tervapetsi.jälkeen.2025.jpeg") center/cover;
-color:white;
+linear-gradient(135deg, rgba(0,0,0,0.68), rgba(0,0,0,0.34)),
+url("tervapetsi.jälkeen.2025.jpeg") center 72% / cover no-repeat;
+background-color:#3a3329;
+color:var(--white);
+min-height:76vh;
+display:flex;
+align-items:center;
+position:relative;
+overflow:hidden;
+width:100%;
 }
-
+.hero::after{
+content:"";
+position:absolute;
+inset:auto 0 0 0;
+height:110px;
+background:linear-gradient(to top, var(--bg), transparent);
+}
 .hero-inner{
 max-width:var(--max);
-margin:auto;
-padding:80px 20px;
+margin:0 auto;
+width:100%;
+padding:72px 20px 120px;
 display:grid;
-grid-template-columns:1fr 400px;
-gap:40px;
+grid-template-columns:1.1fr 0.9fr;
+gap:30px;
 align-items:center;
 }
-
-.hero h1{
-font-size:72px;
+.hero-copy h1{
+font-size:clamp(48px, 8vw, 100px);
+line-height:0.94;
+margin-bottom:18px;
+text-shadow:0 8px 22px rgba(0,0,0,0.22);
 }
-
-.hero-card{
-background:white;
-color:black;
-border-radius:24px;
-padding:20px;
+.hero-copy p{
+font-size:clamp(18px, 2vw, 24px);
+max-width:720px;
+margin:0 0 26px;
+}
+.eyebrow{
+display:inline-block;
+background:var(--yellow);
+color:var(--black);
+padding:10px 16px;
+border-radius:999px;
+margin-bottom:18px;
+font-size:18px;
 box-shadow:var(--shadow);
-border:6px solid var(--yellow);
+font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-
+.hero-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:14px;
+}
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-height:54px;
+padding:14px 22px;
+border-radius:999px;
+font-weight:700;
+box-shadow:var(--shadow);
+transition:0.2s ease;
+border:none;
+cursor:pointer;
+}
+.btn:hover{
+transform:translateY(-2px);
+}
+.btn-yellow{
+background:var(--yellow);
+color:var(--black);
+}
+.btn-white{
+background:var(--white);
+color:var(--black);
+}
+.btn-black{
+background:var(--black);
+color:var(--white);
+}
+.hero-card{
+background:rgba(255,255,255,0.96);
+color:var(--black);
+border-radius:28px;
+overflow:hidden;
+border:6px solid var(--yellow);
+box-shadow:var(--shadow);
+max-width:420px;
+width:100%;
+justify-self:center;
+align-self:center;
+}
+.hero-card img{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+object-position:center 70%;
+}
 .hero-card-body{
+padding:20px;
 display:flex;
 flex-direction:column;
 gap:16px;
 }
-
+.hero-card .btn{
+width:100%;
+text-align:center;
+}
+.hero-card h3{
+font-size:32px;
+margin-bottom:10px;
+}
+.hero-card p{
+margin:0 0 14px;
+font-size:16px;
+}
+.section{
+max-width:var(--max);
+margin:0 auto;
+padding:28px 20px 46px;
+width:100%;
+}
+.section-title{
+font-size:clamp(34px, 5vw, 60px);
+margin-bottom:10px;
+}
+.section-lead{
+font-size:18px;
+max-width:840px;
+margin:0 0 24px;
+}
+.general-grid{
+display:grid;
+grid-template-columns:1.05fr 0.95fr;
+gap:24px;
+align-items:stretch;
+}
+.box{
+background:var(--white);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+padding:26px;
+min-width:0;
+}
+.box h3{
+font-size:34px;
+margin-bottom:14px;
+}
+.highlight-list{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:14px;
+margin-top:18px;
+}
+.highlight{
+background:var(--card);
+border-left:8px solid var(--yellow);
+border-radius:18px;
+padding:16px;
+font-weight:700;
+}
+.image-box{
+overflow:hidden;
+padding:0;
+}
+.image-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+min-height:100%;
+}
+.people-grid{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:24px;
+margin-top:24px;
+}
+.person-card{
+background:var(--white);
+border-radius:24px;
+padding:18px;
+box-shadow:var(--shadow);
+}
+.person-image{
+background:linear-gradient(135deg, #d9d9d9, #f2f2f2);
+border:3px dashed #bfbfbf;
+border-radius:22px;
+min-height:320px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+color:#555;
+font-weight:700;
+font-size:20px;
+margin-bottom:18px;
+}
+.person-info{
+background:var(--card);
+border-radius:18px;
+padding:18px;
+}
+.person-info h3{
+font-size:28px;
+margin-bottom:10px;
+}
+.person-info p{
+margin:6px 0;
+word-break:break-word;
+}
 .services-grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
+grid-template-columns:repeat(4, 1fr);
+gap:22px;
 }
-
 .service-card{
-border-radius:20px;
+min-height:340px;
+border-radius:28px;
 overflow:hidden;
 position:relative;
 box-shadow:var(--shadow);
+background:#ccc;
 }
-
 .service-card img{
-height:260px;
 width:100%;
+height:100%;
 object-fit:cover;
+transition:transform 0.35s ease;
 }
-
+.service-card:hover img{
+transform:scale(1.06);
+}
 .service-overlay{
 position:absolute;
-bottom:0;
-left:0;
-right:0;
-padding:20px;
-color:white;
-background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.18) 60%, rgba(0,0,0,0.02));
+color:var(--white);
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:22px;
 }
-
+.service-overlay h3{
+font-size:34px;
+margin-bottom:8px;
+}
+.service-overlay p{
+margin:0 0 14px;
+}
 .tag{
 display:inline-block;
+align-self:flex-start;
 background:var(--yellow);
-padding:8px 14px;
+color:var(--black);
+padding:10px 16px;
 border-radius:999px;
+font-weight:800;
 cursor:pointer;
-margin-top:8px;
 }
-
 .service-info-box{
 display:none;
-margin-top:20px;
-background:white;
-padding:20px;
-border-radius:20px;
+margin-top:22px;
+background:var(--white);
+border-radius:24px;
+padding:24px;
 box-shadow:var(--shadow);
+cursor:pointer;
 }
-
 .service-info-box.open{
 display:block;
 }
-
-.faq-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
+.service-info-box h3{
+font-size:30px;
+margin-bottom:10px;
 }
-
-.faq-item{
-background:white;
-padding:20px;
-border-radius:20px;
+.compare-card{
+background:var(--white);
+border-radius:28px;
+padding:22px;
 box-shadow:var(--shadow);
+}
+.compare{
+position:relative;
+width:100%;
+aspect-ratio:16/10;
+border-radius:22px;
+overflow:hidden;
+background:#ddd;
+user-select:none;
+touch-action:none;
+}
+.compare img{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+pointer-events:none;
+}
+.compare-before{
+z-index:1;
+}
+.compare-after{
+z-index:2;
+clip-path:inset(0 100% 0 0);
+}
+.compare-line{
+position:absolute;
+top:0;
+bottom:0;
+left:0%;
+width:4px;
+background:var(--white);
+z-index:3;
+}
+.compare-handle{
+position:absolute;
+top:50%;
+left:0%;
+width:64px;
+height:64px;
+border-radius:50%;
+background:#ffffff;
+border:4px solid var(--yellow);
+transform:translate(-50%, -50%);
+z-index:4;
+display:grid;
+place-items:center;
+box-shadow:var(--shadow);
+opacity:1;
+}
+.compare-handle::before{
+content:"⟷";
+font-size:24px;
+font-weight:900;
+color:var(--black);
+}
+.split-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+align-items:start;
+}
+.faq-grid,
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:18px;
+}
+.faq-item,
+.contact-card{
+background:var(--white);
+border-radius:22px;
+padding:22px;
+box-shadow:var(--shadow);
+min-width:0;
+}
+.faq-item{
 cursor:pointer;
 }
-
+.faq-item h3,
+.contact-card h3{
+font-size:28px;
+margin-bottom:10px;
+}
 .faq-answer{
 display:none;
 }
-
 .faq-item.open .faq-answer{
 display:block;
 }
-
-.footer{
-background:#101010;
-color:white;
-padding:40px 20px;
-margin-top:40px;
+form{
+display:grid;
+gap:14px;
 }
-
-.footer-inner{
-max-width:var(--max);
-margin:auto;
+label{
+font-weight:700;
+margin-bottom:4px;
+display:block;
+}
+input, textarea{
+width:100%;
+padding:14px 16px;
+border-radius:16px;
+border:2px solid #ddd;
+font-size:16px;
+font-family:Arial, Helvetica, sans-serif;
+}
+textarea{
+min-height:140px;
+resize:vertical;
+}
+.two-col{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:40px;
+gap:14px;
 }
-
-@media(max-width:900px){
-
-.hero-inner{
+.form-box{
+background:var(--white);
+border-radius:24px;
+padding:24px;
+box-shadow:var(--shadow);
+max-width:900px;
+margin:0 auto;
+}
+.placeholder-image{
+background:
+linear-gradient(135deg, #d9d9d9, #f2f2f2);
+border:3px dashed #bfbfbf;
+border-radius:22px;
+min-height:280px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+color:#555;
+font-weight:700;
+font-size:20px;
+}
+.footer{
+margin-top:30px;
+background:var(--black);
+color:var(--white);
+border-top:6px solid var(--yellow);
+}
+.footer-inner{
+max-width:var(--max);
+margin:0 auto;
+padding:34px 20px 48px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+}
+.footer h2{
+font-size:48px;
+margin-bottom:10px;
+}
+.footer-card{
+background:#1b1b1b;
+border-radius:22px;
+padding:22px;
+border:1px solid rgba(255,255,255,0.08);
+min-width:0;
+}
+.footer-card h3{
+font-size:28px;
+margin-bottom:12px;
+color:var(--yellow);
+}
+.footer p{
+margin:8px 0;
+word-break:break-word;
+}
+@media (max-width: 1200px){
+.services-grid{
+grid-template-columns:repeat(2, 1fr);
+}
+}
+@media (max-width: 1050px){
+.hero-inner,
+.general-grid,
+.footer-inner,
+.faq-grid,
+.contact-grid,
+.split-grid,
+.people-grid{
 grid-template-columns:1fr;
 }
-
+}
+@media (max-width: 860px){
+.topbar-inner{
+align-items:center;
+padding:10px 14px;
+}
+.logo{
+font-size:28px;
+}
+.menu-toggle{
+display:inline-flex;
+padding:7px 10px;
+font-size:12px;
+}
+.menu{
+display:none;
+width:100%;
+flex-direction:column;
+padding-top:8px;
+}
+.menu.open{
+display:flex;
+}
+.menu a{
+width:100%;
+text-align:center;
+padding:7px 10px;
+font-size:12px;
+}
+.topbar-inner{
+flex-wrap:wrap;
+}
+}
+@media (max-width: 780px){
+.hero{
+min-height:auto;
+}
+.hero-inner{
+grid-template-columns:1fr;
+padding-top:40px;
+}
+.highlight-list,
+.faq-grid,
+.contact-grid,
+.two-col,
+.people-grid,
 .services-grid{
 grid-template-columns:1fr;
 }
-
-.faq-grid{
-grid-template-columns:1fr;
+.compare{
+aspect-ratio:4/3;
 }
-
+.box h3,
+.hero-card h3,
+.service-overlay h3,
+.faq-item h3,
+.contact-card h3,
+.footer-card h3,
+.person-info h3{
+font-size:22px;
 }
-
+.highlight{
+font-size:15px;
+}
+}
 </style>
 </head>
-
 <body>
-
 <header class="topbar">
 <div class="topbar-inner">
-
-<div class="logo">PintaPojat</div>
-
-<nav class="menu">
+<div class="logo impact">PintaPojat</div>
+<button class="menu-toggle" id="menuToggle" type="button">Valikko</button>
+<nav class="menu" id="menu">
 <a href="#yleista">Yleistä</a>
 <a href="#Maalaus">Maalaus</a>
 <a href="#pohjatyot">Pohjatyöt</a>
 <a href="#huoltotyot">Pintaremontit</a>
 <a href="#faq">Usein kysyttyä</a>
+<a href="#arviointi">Arviointikäynti</a>
+<a href="#palaute">Palaute</a>
 </nav>
-
 </div>
 </header>
 
-
 <section class="hero">
-
 <div class="hero-inner">
-
-<div>
-
+<div class="hero-copy">
+<div class="eyebrow">Joensuun PintaPojat</div>
 <h1>Meiltä talollesi uusi ilme</h1>
-
 <p>
 Huolellisesti tehty maalaus, jotta lopputulos näyttäisi hyvältä ja kestäisi aikaa.
 </p>
-
 </div>
-
 <div class="hero-card">
-
 <div class="hero-card-body">
-
-<a class="btn btn-yellow" href="#arviointi">
-Kysy ilmaista arviointikäyntiä
-</a>
-
-<a class="btn btn-white" href="#faq">
-Katso mitä muut ovat kysyneet maalauksiin liittyen
-</a>
-
+<a class="btn btn-yellow" href="#arviointi">Kysy ilmaista arviointikäyntiä</a>
+<a class="btn btn-white" href="#faq">Katso mitä muut ovat kysyneet maalauksiin liittyen</a>
 </div>
-
 </div>
-
 </div>
-
 </section>
 
-
+<section class="section" id="yleista">
+<h2 class="section-title">Yleistä</h2>
+<p class="section-lead">
+Tiedot meistä ja palveluistamme. PintaPojat koostuu toiminimistä Ilmari Sippola ja Verso. Teemme
+julkisivu- ja huoltomaalauksia sekä pieniä pintaremontteja Joensuun seudulla ja lähistöllä. PintaPojat keskittyy siistiin, hyvään ja
+kestävään lopputulokseen. Talo ei maalauksesta saa pelkkää uutta ilmettä, vaan myös oikea pohjatyö ja huolellinen toteutus takaavat sille kestävän suojan. Haluamme tehdä kohteistamme sellaisia, että ero näkyy selvästi.
+Lopputuloksen kuuluu näyttää hyvältä ja kestää myös käyttöä ja säätä.
+</p>
+<div class="box image-box">
+<img src="cream-house.jpg" alt="Vaalea maalattu talo" />
+</div>
+<div class="people-grid">
+<div class="person-card">
+<div class="person-image">Lisää tähän Vilhon kuva</div>
+<div class="person-info">
+<h3>Vilho Räisänen</h3>
+<p><strong>Puhelin:</strong> +358 44 980 5844</p>
+<p><strong>Sähköposti:</strong> pintapojat@gmail.com</p>
+<p><strong>Y-Tunnus:</strong> y3453360-6</p>
+</div>
+</div>
+<div class="person-card">
+<div class="person-image">Lisää tähän Ilmarin kuva</div>
+<div class="person-info">
+<h3>Ilmari Sippola</h3>
+<p><strong>Puhelin:</strong> +358 45 7832 5502</p>
+<p><strong>Sähköposti:</strong> pintapojat@gmail.com</p>
+<p><strong>Y-Tunnus:</strong> y3586169-5</p>
+</div>
+</div>
+</div>
+</section>
 
 <section class="section" id="Maalaus">
-
 <h2 class="section-title">Maalaus</h2>
-
+<p class="section-lead"></p>
 <div class="services-grid">
-
 <div class="service-card">
-<img src="red-house.jpg">
+<img src="red-house.jpg" alt="Punainen talo" />
 <div class="service-overlay">
 <h3>Julkisivut</h3>
-<p>Maalaukset omakotitaloihin ja mökkeihin.</p>
-<span class="tag" data-service="julkisivu">Julkisivumaalaus</span>
+<p>Maalaukset omakotitaloihin, mökkeihin ja muihin rakennuksiin.</p>
+<button class="tag" type="button" data-service="Julkisivumaalaus">Julkisivumaalaus</button>
 </div>
 </div>
 
 <div class="service-card">
-<img src="cream-house.jpg">
+<img src="cream-house.jpg" alt="Vaalea talo" />
 <div class="service-overlay">
 <h3>Huoltomaalaus</h3>
-<p>Pintojen ehostus ja suojaus.</p>
-<span class="tag" data-service="huolto">Huoltomaalaus</span>
+<p>Pintojen ehostus ja suojaus ennen kuin kuluminen etenee liian pitkälle.</p>
+<button class="tag" type="button" data-service="huoltomaalaus">Huoltomaalaus</button>
 </div>
 </div>
 
 <div class="service-card">
-<img src="tervapetsi.jälkeen.2025.jpeg">
+<img src="tervapetsi.jälkeen.2025.jpeg" alt="Hirsitalo jälkeen" />
 <div class="service-overlay">
 <h3>Hirsipinnat</h3>
-<p>Kuullotteet ja puunsuoja.</p>
-<span class="tag" data-service="hirsi">Hirsipinnat</span>
+<p>Kuullote- ja käsittelyratkaisut, joissa hirsiseinän ilme pääsee oikeuksiinsa.</p>
+<button class="tag" type="button" data-service="hirsipinnat">Hirsipinnat</button>
 </div>
 </div>
 
 <div class="service-card">
-<img src="sokkeli.jpg">
+<img src="sokkeli.jpg" alt="Sokkelin maalaus" />
 <div class="service-overlay">
 <h3>Sokkelit</h3>
-<p>Sokkelin maalaus ja kunnostus.</p>
-<span class="tag" data-service="sokkeli">Sokkelimaalaus</span>
+<p>Sokkelin maalaus ja kunnostus rakennuksen ilmeen viimeistelyyn.</p>
+<button class="tag" type="button" data-service="sokkelimaalaus">Sokkelimaalaus</button>
 </div>
 </div>
-
-</div>
-
-<div class="service-info-box" id="serviceInfoBox">
-<h3 id="serviceInfoTitle"></h3>
-<p id="serviceInfoText"></p>
 </div>
 
+<div class="service-info-box" id="serviceInfoBox" role="button" tabindex="0" aria-live="polite">
+<h3 id="serviceInfoTitle">Palvelun lisätiedot</h3>
+<p id="serviceInfoText">Klikkaa maalauskohdan nappia, niin tähän avautuu lisätietoa.</p>
+</div>
 </section>
 
+<section class="section" id="pohjatyot">
+<h2 class="section-title">Pohjatyöt</h2>
+<p class="section-lead">
+Hyvä lopputulos alkaa pohjatöistä. Pesut, kaavinnat, suojaukset ja muut
+valmistelut vaikuttavat suoraan siihen, miltä maalaus näyttää ja kuinka kauan se kestää. Urakka alkaa yleisemmmin homepesulla, jossa talo pestään läpikotaisin homepesuaineen ja harjojen kanssa. Näin mustat homepilkut saadaan tehokkaasti poistettua. Samalla maalausta hidastava ja maalin tarttumista heikentävä pöly ja muu lika saadaan poistettua. Pohjatöihin kuuluu myös hilseilevän maalin poisto, puupinnalla olevien kohtien pohjamaalaus ja ympäristön suojaaminen maaliroiskeilta.
+</p>
+<div class="compare-card" style="margin-top:24px;">
+<div class="compare" data-start="50">
+<img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Pohjatyöt ennen" />
+<img class="compare-after" src="tervapetsi.jälkeen.2025.jpeg" alt="Pohjatyöt jälkeen" />
+<div class="compare-line"></div>
+<div class="compare-handle"></div>
+</div>
+</div>
+</section>
 
+<section class="section" id="huoltotyot">
+<h2 class="section-title">Pienet pintaremontit</h2>
+<p class="section-lead">
+Kaikki kohteet eivät tarvitse vain maalia. Joskus tarvitaan myös yleistä
+siistimistä, pientä kunnostusta ja rakennuksen ylläpitoon liittyviä töitä.
+Esimerkiksi talon otsalaudat ja ikkunoiden vuorilaudat pääsevät monesti ränsistymään ja tarvitsevat vaihtoa.
+Pienet huoltotyöt oikeaan aikaan auttavat pitämään koko rakennuksen ilmeen parempana.
+Samalla ehkäistään suuret korjauskustannukset tulevaisuudessa.
+</p>
+<div class="compare-card" style="margin-top:24px;">
+<div class="compare" data-start="50">
+<img class="compare-before" src="red-before.jpg" alt="Huoltotyöt ennen" />
+<img class="compare-after" src="red-after.jpg" alt="Huoltotyöt jälkeen" />
+<div class="compare-line"></div>
+<div class="compare-handle"></div>
+</div>
+</div>
+</section>
 
 <section class="section" id="faq">
-
-<h2 class="section-title">Usein kysyttyä</h2>
-
+<h2 class="section-title">Usein kysyttyjä kysymyksiä ulkomaalauksesta</h2>
 <div class="faq-grid">
-
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Kuinka usein talo kannattaa maalata?</h3>
 <div class="faq-answer">
-Yleensä noin 10–15 vuoden välein.
+<p>
+Yleensä noin 10–15 vuoden välein, mutta huoltoväli riippuu pinnasta,
+maalista, säästä ja siitä, miten hyvin aiemmat käsittelyt on tehty.
+</p>
 </div>
 </div>
 
-<div class="faq-item">
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
 <h3>Tarvitaanko pesu ennen maalausta?</h3>
 <div class="faq-answer">
-Kyllä. Pinta pitää puhdistaa ennen maalausta.
+<p>
+Kyllä. Pinta pitää puhdistaa ennen maalausta, jotta uusi käsittely
+tarttuu kunnolla ja lopputulos kestää.
+</p>
 </div>
 </div>
 
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
+<h3>Voiko vanhan pinnan maalata suoraan?</h3>
+<div class="faq-answer">
+<p>
+Joskus voi, mutta joskus maalipinta voi olla paikoin huonossa kunnossa, jolloin tarvitaan pohjatöitä. Siksi kohde
+kannattaa arvioida ennen työn aloittamista.
+</p>
+</div>
 </div>
 
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
+<h3>Kuinka kauan maalaus yleensä kestää?</h3>
+<div class="faq-answer">
+<p>
+Kesto riippuu kohteen koosta, säästä ja pohjatöiden määrästä, mutta
+tavallinen omakotitalo valmistuu 3–5 päivässä.
+</p>
+</div>
+</div>
+
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
+<h3>Voiko sateella tai kostealla säällä maalata?</h3>
+<div class="faq-answer">
+<p>
+Ei yleensä kannata. Liiallinen kosteus heikentää lopputulosta, joten
+oikea sääikkuna on tärkeä osa onnistunutta maalausta.
+</p>
+</div>
+</div>
+
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
+<h3>Paljonko maalaus maksaa?</h3>
+<div class="faq-answer">
+<p>
+Hinta riippuu kohteen koosta, kunnosta ja pohjatöiden määrästä.
+Tavallisen omakotitalon maalauksen hintalappu on yleensä 3000 €–5000 € väliltä.
+</p>
+</div>
+</div>
+
+<div class="faq-item" tabindex="0" role="button" aria-expanded="false">
+<h3>Voiko maalaus nostaa talon arvoa?</h3>
+<div class="faq-answer">
+<p>
+Siisti julkisivu parantaa rakennuksen yleisilmettä ja voi lisätä kiinnostusta myyntitilanteessa.
+</p>
+</div>
+</div>
+</div>
 </section>
 
+<section class="section" id="arviointi">
+<h2 class="section-title">Arviointikäynnin varaus</h2>
+<p class="section-lead"></p>
+<div class="form-box">
+<form action="https://formspree.io/f/xeerkbjz" method="POST" enctype="multipart/form-data">
+<div class="two-col">
+<div>
+<label for="nimi">Nimi</label>
+<input id="nimi" name="Nimi" type="text" placeholder="Kirjoita nimesi" />
+</div>
+<div>
+<label for="puhelin">Puhelinnumero</label>
+<input id="puhelin" name="Puhelinnumero" type="text" placeholder="Esim. 040 123 4567" />
+</div>
+</div>
 
+<div class="two-col">
+<div>
+<label for="sahkoposti">Sähköposti</label>
+<input id="sahkoposti" name="Sähköposti" type="email" placeholder="Esim. nimi@sahkoposti.fi" />
+</div>
+<div>
+<label for="osoite">Kohteen osoite</label>
+<input id="osoite" name="Osoite" type="text" placeholder="Esim. Katu 1" />
+</div>
+</div>
+
+<div class="two-col">
+<div>
+<label for="postinumero">Postinumero</label>
+<input id="postinumero" name="Postinumero" type="text" placeholder="Esim. 80100" />
+</div>
+<div>
+<label for="paikkakunta">Paikkakunta</label>
+<input id="paikkakunta" name="Paikkakunta" type="text" placeholder="Esim. Joensuu" />
+</div>
+</div>
+
+<div>
+<label for="kuvaus">Mitä kohteessa pitäisi tehdä?</label>
+<textarea id="kuvaus" name="Työn kuvaus" placeholder="Kerro lyhyesti työstä"></textarea>
+</div>
+
+<div>
+<label for="liite">Lisää kuvia tai muita tiedostoja kohteesta</label>
+<input id="liite" name="Liite" type="file" multiple />
+</div>
+
+<div>
+<button class="btn btn-yellow" type="submit">Lähetä varauspyyntö</button>
+</div>
+</form>
+</div>
+<p>
+Lähettämällä palautetta autat meitä kehittämään toimintaamme!
+</p>
+</section>
+
+<section class="section" id="palaute">
+<h2 class="section-title">Palaute</h2>
+<p class="section-lead"></p>
+<div class="form-box">
+<form action="https://formspree.io/f/mgonyjen" method="POST" enctype="multipart/form-data">
+<div>
+<label for="palautenimi">Nimi</label>
+<input id="palautenimi" name="Nimi" type="text" placeholder="Kirjoita nimesi" />
+</div>
+<div>
+<label for="palauteteksti">Palaute</label>
+<textarea id="palauteteksti" name="Palaute" placeholder="Kirjoita palautteesi tähän"></textarea>
+</div>
+<div>
+<button class="btn btn-black" type="submit">Lähetä palaute</button>
+</div>
+</form>
+</div>
+</section>
 
 <footer class="footer">
-
 <div class="footer-inner">
-
-<div>
+<div class="footer-card">
 <h2>PintaPojat</h2>
 <p>Joensuu</p>
-<p>Maalaukset • Pintaremontit</p>
+<p>Maalaukset • Pienet pintaremontit</p>
 </div>
-
-<div>
+<div class="footer-card">
 <h3>Yhteystiedot</h3>
-<p>Email: pintapojat@gmail.com</p>
-<p>Vilho: 044 980 5844</p>
-<p>Ilmari: 045 7832 5502</p>
+<p><strong>Sähköposti:</strong> pintapojat@gmail.com</p>
+<p><strong>Nimet:</strong> Vilho Räisänen, Ilmari Sippola</p>
+<p><strong>Puhelinnumerot:</strong> Vilho: 044 980 5844 / Ilmari: 045 7832 5502</p>
+<p><strong>Y-tunnus:</strong> y3586169-5 ja y3453360-6</p>
 </div>
-
 </div>
-
 </footer>
 
-
 <script>
-
-const serviceTexts={
-julkisivu:{
-title:"Julkisivumaalaus",
-text:"Julkisivun maalaus suojaa taloa ja parantaa ulkonäköä."
-},
-huolto:{
-title:"Huoltomaalaus",
-text:"Huoltomaalauksella pidennetään maalipinnan käyttöikää."
-},
-hirsi:{
-title:"Hirsipinnat",
-text:"Hirsiseinien käsittely kuullotteilla ja puunsuojilla."
-},
-sokkeli:{
-title:"Sokkelimaalaus",
-text:"Sokkelin maalaus suojaa pintaa kosteudelta ja kulumiselta."
-}
+function setCompare(compareWrap, value){
+const after = compareWrap.querySelector(".compare-after");
+const line = compareWrap.querySelector(".compare-line");
+const handle = compareWrap.querySelector(".compare-handle");
+const safeValue = Math.max(0, Math.min(100, Number(value)));
+after.style.clipPath = `inset(0 ${100 - safeValue}% 0 0)`;
+line.style.left = safeValue + "%";
+handle.style.left = safeValue + "%";
 }
 
-const infoBox=document.getElementById("serviceInfoBox")
-const infoTitle=document.getElementById("serviceInfoTitle")
-const infoText=document.getElementById("serviceInfoText")
+document.querySelectorAll(".compare").forEach(wrap => {
+const start = wrap.dataset.start || 50;
+setCompare(wrap, start);
+let dragging = false;
 
-document.querySelectorAll(".tag").forEach(btn=>{
-btn.onclick=()=>{
-const key=btn.dataset.service
-infoTitle.textContent=serviceTexts[key].title
-infoText.textContent=serviceTexts[key].text
-infoBox.classList.add("open")
+function updateFromPointer(clientX){
+const rect = wrap.getBoundingClientRect();
+const x = clientX - rect.left;
+const percent = (x / rect.width) * 100;
+setCompare(wrap, percent);
 }
-})
 
-document.querySelectorAll(".faq-item").forEach(item=>{
-item.onclick=()=>item.classList.toggle("open")
-})
+wrap.addEventListener("mousedown", (e) => {
+dragging = true;
+updateFromPointer(e.clientX);
+});
 
+window.addEventListener("mousemove", (e) => {
+if(!dragging) return;
+updateFromPointer(e.clientX);
+});
+
+window.addEventListener("mouseup", () => {
+dragging = false;
+});
+
+wrap.addEventListener("touchstart", (e) => {
+dragging = true;
+updateFromPointer(e.touches[0].clientX);
+}, { passive:true });
+
+window.addEventListener("touchmove", (e) => {
+if(!dragging) return;
+updateFromPointer(e.touches[0].clientX);
+}, { passive:true });
+
+window.addEventListener("touchend", () => {
+dragging = false;
+});
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+menu.classList.toggle("open");
+});
+
+menu.querySelectorAll("a").forEach(link => {
+link.addEventListener("click", () => {
+if (window.innerWidth <= 860) {
+menu.classList.remove("open");
+}
+});
+});
+
+const serviceInfoBox = document.getElementById("serviceInfoBox");
+const serviceInfoTitle = document.getElementById("serviceInfoTitle");
+const serviceInfoText = document.getElementById("serviceInfoText");
+
+const serviceTexts = {
+Julkisivumaalaus: {
+title: "Julkisivumaalaus",
+text: "Julkisivun maalaus parantaa rakennuksen ulkonäköä ja suojaa pintoja säältä. Toteutus suunnitellaan kohteen pinnan, kunnon ja toivotun lopputuloksen mukaan."
+},
+huoltomaalaus: {
+title: "Huoltomaalaus",
+text: "Huoltomaalauksella pidennetään pintojen käyttöikää ja estetään kulumisen eteneminen. Työ sopii hyvin kohteisiin, joissa pinta kaipaa siistimistä mutta ei vielä raskasta kunnostusta."
+},
+hirsipinnat: {
+title: "Puu- ja hirsipinnat",
+text: "Puu- ja hirsipintojen käsittelyssä huomioidaan materiaalin luonnollinen ilme, suojaus ja sävy. Oikea käsittely tuo puun parhaat puolet esiin ja auttaa pintaa kestämään pidempään."
+},
+sokkelimaalaus: {
+title: "Sokkelimaalaus",
+text: "Sokkelin maalaus viimeistelee rakennuksen ilmeen ja suojaa pintaa kulumiselta sekä säävaihteluilta. Työ tehdään sokkelin kunnon ja materiaalin mukaan."
+}
+};
+
+document.querySelectorAll(".tag[data-service]").forEach(tag => {
+tag.addEventListener("click", () => {
+const key = tag.dataset.service;
+if (!serviceTexts[key]) return;
+serviceInfoTitle.textContent = serviceTexts[key].title;
+serviceInfoText.textContent = serviceTexts[key].text;
+serviceInfoBox.classList.add("open");
+serviceInfoBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+});
+});
+
+serviceInfoBox.addEventListener("click", () => {
+serviceInfoBox.classList.remove("open");
+});
+
+serviceInfoBox.addEventListener("keydown", (e) => {
+if (e.key === "Enter" || e.key === " ") {
+e.preventDefault();
+serviceInfoBox.classList.remove("open");
+}
+});
+
+function toggleFaqItem(item){
+item.classList.toggle("open");
+item.setAttribute("aria-expanded", item.classList.contains("open") ? "true" : "false");
+}
+
+document.querySelectorAll(".faq-item").forEach(item => {
+item.addEventListener("click", () => {
+toggleFaqItem(item);
+});
+item.addEventListener("keydown", (e) => {
+if (e.key === "Enter" || e.key === " ") {
+e.preventDefault();
+toggleFaqItem(item);
+}
+});
+});
 </script>
-
 </body>
 </html>
