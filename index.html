@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pintapojat | Maalauspalvelut Joensuu</title>
+<title>Pintapojat</title>
 
 <style>
 
 body{
-font-family:Arial, sans-serif;
+font-family:Arial;
 margin:0;
-background:#f3f4f6;
-color:#333;
-scroll-behavior:smooth;
+background:#f4f4f4;
 }
 
 header{
-background:linear-gradient(135deg,#1e293b,#334155);
+background:#1f2937;
 color:white;
+padding:80px 20px;
 text-align:center;
-padding:100px 20px;
-}
-
-header h1{
-font-size:48px;
-margin:0;
 }
 
 nav{
 background:#111827;
 text-align:center;
 padding:15px;
-position:sticky;
-top:0;
 }
 
 nav a{
@@ -45,14 +34,9 @@ font-weight:bold;
 }
 
 section{
-max-width:1100px;
+max-width:1000px;
 margin:auto;
-padding:60px 20px;
-}
-
-h2{
-text-align:center;
-margin-bottom:30px;
+padding:40px;
 }
 
 .cards{
@@ -63,76 +47,16 @@ gap:20px;
 
 .card{
 background:white;
-padding:25px;
+padding:30px;
 border-radius:10px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+text-decoration:none;
+color:#333;
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:10px;
-}
-
-.gallery img{
-width:100%;
-cursor:pointer;
-border-radius:8px;
-transition:0.3s;
-}
-
-.gallery img:hover{
-transform:scale(1.03);
-}
-
-.lightbox{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
-align-items:center;
-justify-content:center;
-}
-
-.lightbox img{
-max-width:90%;
-max-height:90%;
-}
-
-.slider{
-position:relative;
-max-width:800px;
-margin:auto;
-}
-
-.slider img{
-width:100%;
-display:block;
-}
-
-.after{
-position:absolute;
-top:0;
-left:0;
-overflow:hidden;
-width:50%;
-}
-
-.slider input{
-width:100%;
-}
-
-.contact{
-text-align:center;
-font-size:18px;
+transform:translateY(-6px);
 }
 
 footer{
@@ -140,22 +64,9 @@ background:#111827;
 color:white;
 text-align:center;
 padding:30px;
-margin-top:50px;
-}
-
-.fade{
-opacity:0;
-transform:translateY(30px);
-transition:1s;
-}
-
-.fade.visible{
-opacity:1;
-transform:translateY(0);
 }
 
 </style>
-
 </head>
 
 <body>
@@ -171,98 +82,54 @@ transform:translateY(0);
 
 <a href="#meista">Meistä</a>
 <a href="#palvelut">Palvelut</a>
-<a href="#portfolio">Kohteet</a>
 <a href="#yhteys">Yhteystiedot</a>
 
 </nav>
 
-<section id="meista" class="fade">
+<section id="meista">
 
 <h2>Tietoa meistä</h2>
 
-<p style="text-align:center; max-width:700px; margin:auto;">
-Pintapojat on Joensuussa toimiva maalausyritys. Teemme sisä- ja ulkomaalauksia,
-tasoitustöitä sekä pintaremontteja ammattitaidolla ja huolellisesti.
+<p>
+Pintapojat on Joensuussa toimiva maalaus- ja pintatyöyritys.
+Teemme sisä- ja ulkomaalauksia sekä rakennusten huoltotöitä
+ammattitaidolla.
 </p>
 
 </section>
 
-<section id="palvelut" class="fade">
+<section id="palvelut">
 
 <h2>Palvelumme</h2>
 
 <div class="cards">
 
-<div class="card">
-<h3>Sisämaalaukset</h3>
-<p>Seinien ja kattojen maalaukset koteihin ja asuntoihin.</p>
-</div>
-
-<div class="card">
+<a href="Ulkomaalaukset.html" class="card">
 <h3>Ulkomaalaukset</h3>
-<p>Talojen julkisivujen maalaukset ja huoltomaalaukset.</p>
-</div>
+<p>Talojen julkisivujen maalaukset.</p>
+</a>
 
-<div class="card">
-<h3>Tasoitetyöt</h3>
-<p>Seinien tasoitus ennen maalausta.</p>
-</div>
+<a href="pohjatyöt.html" class="card">
+<h3>Pohjatyöt</h3>
+<p>Pesut, hionnat ja muut valmistelutyöt.</p>
+</a>
 
-<div class="card">
-<h3>Pintaremontit</h3>
-<p>Nopeat pintaremontit koteihin ja huoneistoihin.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="portfolio" class="fade">
-
-<h2>Ennen / jälkeen</h2>
-
-<div class="slider">
-
-<img src="before.jpg">
-
-<div class="after" id="after">
-
-<img src="after.jpg">
-
-</div>
-
-<input type="range" min="0" max="100" value="50" id="slider">
-
-</div>
-
-<h2 style="margin-top:60px;">Valmiita kohteita</h2>
-
-<div class="gallery">
-
-<img src="kohde1.jpg">
-<img src="kohde2.jpg">
-<img src="kohde3.jpg">
-<img src="kohde4.jpg">
+<a href="muut rakennuksen huoltotyöt.html" class="card">
+<h3>Muut rakennuksen huoltotyöt</h3>
+<p>Rakennusten huolto ja pintatyöt.</p>
+</a>
 
 </div>
 
 </section>
 
-<section id="yhteys" class="fade">
+<section id="yhteys">
 
 <h2>Yhteystiedot</h2>
 
-<div class="contact">
-
-<p><b>Pintapojat</b></p>
-
 <p>📞 040 123 4567</p>
-
 <p>✉ info@pintapojat.fi</p>
-
 <p>📍 Joensuu</p>
-
-</div>
 
 </section>
 
@@ -271,49 +138,6 @@ tasoitustöitä sekä pintaremontteja ammattitaidolla ja huolellisesti.
 <p>© Pintapojat 2026</p>
 
 </footer>
-
-
-<div class="lightbox" id="lightbox">
-<img id="lightbox-img">
-</div>
-
-<script>
-
-const images=document.querySelectorAll(".gallery img");
-const lightbox=document.getElementById("lightbox");
-const lightboxImg=document.getElementById("lightbox-img");
-
-images.forEach(img=>{
-img.onclick=()=>{
-lightbox.style.display="flex";
-lightboxImg.src=img.src;
-}
-});
-
-lightbox.onclick=()=>{
-lightbox.style.display="none";
-}
-
-const slider=document.getElementById("slider");
-const after=document.getElementById("after");
-
-slider.oninput=()=>{
-after.style.width=slider.value+"%";
-}
-
-const faders=document.querySelectorAll(".fade");
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
-});
-});
-
-faders.forEach(el=>observer.observe(el));
-
-</script>
 
 </body>
 </html>
