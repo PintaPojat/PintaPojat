@@ -1,1014 +1,495 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PintaPojat | Ulkomaalaukset, pohjatyöt ja huoltotyöt</title>
-
-  <style>
-    :root{
-      --yellow:#f0b400;
-      --yellow-light:#ffd64a;
-      --red:#c62828;
-      --black:#101010;
-      --white:#ffffff;
-      --bg:#ececec;
-      --card:#f8f8f8;
-      --shadow:0 12px 30px rgba(0,0,0,0.16);
-      --radius:24px;
-      --max:1200px;
-    }
-
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--black);
-      font-family:Arial, Helvetica, sans-serif;
-      line-height:1.6;
-    }
-
-    h1,h2,h3,h4,.impact{
-      font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      text-transform:uppercase;
-      letter-spacing:0.5px;
-      margin:0;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    img{
-      display:block;
-      max-width:100%;
-    }
-
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(16,16,16,0.95);
-      border-bottom:4px solid var(--yellow);
-      backdrop-filter:blur(8px);
-    }
-
-    .topbar-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:14px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
-
-    .logo{
-      color:var(--white);
-      font-size:34px;
-      line-height:1;
-      white-space:nowrap;
-    }
-
-    .menu{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:flex-end;
-    }
-
-    .menu a{
-      color:var(--white);
-      padding:10px 14px;
-      border-radius:999px;
-      border:2px solid rgba(255,255,255,0.12);
-      font-size:14px;
-      transition:0.2s ease;
-    }
-
-    .menu a:hover{
-      background:var(--yellow);
-      color:var(--black);
-      border-color:var(--yellow);
-      transform:translateY(-1px);
-    }
-
-    .hero{
-      background:
-        linear-gradient(135deg, rgba(0,0,0,0.72), rgba(0,0,0,0.38)),
-        url("tervapetsi.jälkeen.2025.jpeg") center/cover no-repeat;
-      color:var(--white);
-      min-height:78vh;
-      display:flex;
-      align-items:center;
-      position:relative;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:auto 0 0 0;
-      height:110px;
-      background:linear-gradient(to top, var(--bg), transparent);
-    }
-
-    .hero-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      width:100%;
-      padding:70px 20px 120px;
-      display:grid;
-      grid-template-columns:1.15fr 0.85fr;
-      gap:30px;
-      align-items:center;
-    }
-
-    .hero-copy h1{
-      font-size:clamp(50px, 8vw, 102px);
-      line-height:0.94;
-      margin-bottom:18px;
-    }
-
-    .hero-copy p{
-      font-size:clamp(18px, 2vw, 24px);
-      max-width:720px;
-      margin:0 0 26px;
-    }
-
-    .eyebrow{
-      display:inline-block;
-      background:var(--yellow);
-      color:var(--black);
-      padding:10px 16px;
-      border-radius:999px;
-      margin-bottom:18px;
-      font-size:18px;
-      box-shadow:var(--shadow);
-      font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    }
-
-    .hero-buttons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:14px 22px;
-      border-radius:999px;
-      font-weight:700;
-      box-shadow:var(--shadow);
-      transition:0.2s ease;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-    }
-
-    .btn-yellow{
-      background:var(--yellow);
-      color:var(--black);
-    }
-
-    .btn-white{
-      background:var(--white);
-      color:var(--black);
-    }
-
-    .btn-black{
-      background:var(--black);
-      color:var(--white);
-    }
-
-    .hero-card{
-      background:rgba(255,255,255,0.96);
-      color:var(--black);
-      border-radius:28px;
-      overflow:hidden;
-      border:6px solid var(--yellow);
-      box-shadow:var(--shadow);
-    }
-
-    .hero-card img{
-      width:100%;
-      aspect-ratio:4/5;
-      object-fit:cover;
-    }
-
-    .hero-card-body{
-      padding:20px;
-    }
-
-    .hero-card h3{
-      font-size:32px;
-      margin-bottom:10px;
-    }
-
-    .hero-card p{
-      margin:0 0 14px;
-      font-size:16px;
-    }
-
-    .section{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:28px 20px 46px;
-    }
-
-    .section-title{
-      font-size:clamp(34px, 5vw, 60px);
-      margin-bottom:10px;
-    }
-
-    .section-lead{
-      font-size:18px;
-      max-width:840px;
-      margin:0 0 24px;
-    }
-
-    .general-grid{
-      display:grid;
-      grid-template-columns:1.05fr 0.95fr;
-      gap:24px;
-      align-items:stretch;
-    }
-
-    .box{
-      background:var(--white);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:26px;
-    }
-
-    .box h3{
-      font-size:34px;
-      margin-bottom:14px;
-    }
-
-    .highlight-list{
-      display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .highlight{
-      background:var(--card);
-      border-left:8px solid var(--yellow);
-      border-radius:18px;
-      padding:16px;
-      font-weight:700;
-    }
-
-    .image-box{
-      overflow:hidden;
-      padding:0;
-    }
-
-    .image-box img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      min-height:100%;
-    }
-
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:22px;
-    }
-
-    .service-card{
-      min-height:340px;
-      border-radius:28px;
-      overflow:hidden;
-      position:relative;
-      box-shadow:var(--shadow);
-      background:#ccc;
-    }
-
-    .service-card img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform 0.35s ease;
-    }
-
-    .service-card:hover img{
-      transform:scale(1.06);
-    }
-
-    .service-overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.18) 60%, rgba(0,0,0,0.02));
-      color:var(--white);
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:22px;
-    }
-
-    .service-overlay h3{
-      font-size:34px;
-      margin-bottom:8px;
-    }
-
-    .service-overlay p{
-      margin:0 0 14px;
-    }
-
-    .tag{
-      display:inline-block;
-      align-self:flex-start;
-      background:var(--yellow);
-      color:var(--black);
-      padding:10px 16px;
-      border-radius:999px;
-      font-weight:800;
-    }
-
-    .compare-stack{
-      display:grid;
-      gap:30px;
-    }
-
-    .compare-card{
-      background:var(--white);
-      border-radius:28px;
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .compare-top{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:end;
-      margin-bottom:14px;
-    }
-
-    .compare-top h3{
-      font-size:34px;
-    }
-
-    .labels{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .pill{
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:14px;
-      font-weight:800;
-    }
-
-    .before-pill{
-      background:#e8e8e8;
-      color:#222;
-    }
-
-    .after-pill{
-      background:var(--yellow);
-      color:var(--black);
-    }
-
-    .compare{
-      position:relative;
-      width:100%;
-      aspect-ratio:16/10;
-      border-radius:22px;
-      overflow:hidden;
-      background:#ddd;
-      user-select:none;
-      touch-action:none;
-    }
-
-    .compare img{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      pointer-events:none;
-    }
-
-    .compare-after{
-      width:50%;
-      overflow:hidden;
-      z-index:2;
-    }
-
-    .compare-line{
-      position:absolute;
-      top:0;
-      bottom:0;
-      left:50%;
-      width:4px;
-      background:var(--white);
-      z-index:3;
-    }
-
-    .compare-handle{
-      position:absolute;
-      top:50%;
-      left:50%;
-      width:64px;
-      height:64px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.96);
-      border:4px solid var(--yellow);
-      transform:translate(-50%, -50%);
-      z-index:4;
-      display:grid;
-      place-items:center;
-      box-shadow:var(--shadow);
-    }
-
-    .compare-handle::before{
-      content:"⟷";
-      font-size:24px;
-      font-weight:900;
-      color:var(--black);
-    }
-
-    .compare-range{
-      width:100%;
-      margin-top:16px;
-      accent-color:var(--red);
-      cursor:pointer;
-    }
-
-    .faq-grid,
-    .contact-grid{
-      display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:18px;
-    }
-
-    .faq-item,
-    .contact-card{
-      background:var(--white);
-      border-radius:22px;
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .faq-item h3,
-    .contact-card h3{
-      font-size:28px;
-      margin-bottom:10px;
-    }
-
-    form{
-      display:grid;
-      gap:14px;
-    }
-
-    label{
-      font-weight:700;
-      margin-bottom:4px;
-      display:block;
-    }
-
-    input, textarea{
-      width:100%;
-      padding:14px 16px;
-      border-radius:16px;
-      border:2px solid #ddd;
-      font-size:16px;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    textarea{
-      min-height:140px;
-      resize:vertical;
-    }
-
-    .form-box{
-      background:var(--white);
-      border-radius:24px;
-      padding:24px;
-      box-shadow:var(--shadow);
-      max-width:820px;
-    }
-
-    .footer{
-      margin-top:30px;
-      background:var(--black);
-      color:var(--white);
-      border-top:6px solid var(--yellow);
-    }
-
-    .footer-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:34px 20px 48px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-    }
-
-    .footer h2{
-      font-size:48px;
-      margin-bottom:10px;
-    }
-
-    .footer-card{
-      background:#1b1b1b;
-      border-radius:22px;
-      padding:22px;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .footer-card h3{
-      font-size:28px;
-      margin-bottom:12px;
-      color:var(--yellow);
-    }
-
-    .footer p{
-      margin:8px 0;
-    }
-
-    @media (max-width: 1050px){
-      .hero-inner,
-      .general-grid,
-      .footer-inner,
-      .faq-grid,
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-
-      .services-grid{
-        grid-template-columns:1fr;
-      }
-    }
-
-    @media (max-width: 780px){
-      .topbar-inner{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .menu{
-        justify-content:flex-start;
-      }
-
-      .hero{
-        min-height:auto;
-      }
-
-      .hero-inner{
-        grid-template-columns:1fr;
-        padding-top:40px;
-      }
-
-      .highlight-list{
-        grid-template-columns:1fr;
-      }
-
-      .compare{
-        aspect-ratio:4/3;
-      }
-
-      .faq-grid,
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-    }
-  </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PintaPojat</title>
+
+<style>
+
+html,body{
+margin:0;
+padding:0;
+overflow-x:hidden;
+font-family:Arial;
+background:#ececec;
+}
+
+h1,h2,h3{
+font-family:Impact;
+letter-spacing:1px;
+}
+
+header{
+background:#111;
+color:white;
+padding:15px 20px;
+position:sticky;
+top:0;
+z-index:1000;
+border-bottom:4px solid #f0b400;
+}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1200px;
+margin:auto;
+}
+
+.menu{
+display:flex;
+gap:12px;
+}
+
+.menu a{
+color:white;
+padding:8px 14px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.2);
+text-decoration:none;
+}
+
+.menu a:hover{
+background:#f0b400;
+color:black;
+}
+
+.hamburger{
+display:none;
+background:#f0b400;
+border:none;
+padding:8px 12px;
+font-weight:bold;
+}
+
+@media(max-width:850px){
+
+.menu{
+display:none;
+flex-direction:column;
+width:100%;
+margin-top:10px;
+}
+
+.menu.open{
+display:flex;
+}
+
+.hamburger{
+display:block;
+}
+
+}
+
+.hero{
+background:url("pintapojat.mainos.jpg") center 70%/cover no-repeat;
+min-height:70vh;
+display:flex;
+align-items:center;
+color:white;
+}
+
+.hero .content{
+background:rgba(0,0,0,.55);
+padding:40px;
+max-width:600px;
+margin-left:40px;
+}
+
+section{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+@media(max-width:800px){
+.grid{grid-template-columns:1fr;}
+}
+
+.compare{
+position:relative;
+overflow:hidden;
+border-radius:18px;
+}
+
+.compare img{
+width:100%;
+display:block;
+}
+
+.after{
+position:absolute;
+top:0;
+left:0;
+width:50%;
+overflow:hidden;
+height:100%;
+}
+
+.line{
+position:absolute;
+left:50%;
+top:0;
+height:100%;
+width:4px;
+background:white;
+}
+
+.handle{
+position:absolute;
+top:50%;
+left:50%;
+width:60px;
+height:60px;
+background:white;
+border-radius:50%;
+border:4px solid #f0b400;
+transform:translate(-50%,-50%);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+}
+
+.faq{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+@media(max-width:800px){
+.faq{grid-template-columns:1fr;}
+}
+
+form{
+display:grid;
+gap:12px;
+}
+
+input,textarea{
+padding:12px;
+border-radius:10px;
+border:1px solid #ccc;
+width:100%;
+}
+
+button{
+padding:12px;
+background:#f0b400;
+border:none;
+font-weight:bold;
+cursor:pointer;
+border-radius:20px;
+}
+
+footer{
+background:#111;
+color:white;
+padding:40px 20px;
+margin-top:40px;
+border-top:4px solid #f0b400;
+}
+
+.footer-inner{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+@media(max-width:800px){
+.footer-inner{grid-template-columns:1fr;}
+}
+
+.placeholder{
+height:250px;
+border:3px dashed #bbb;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:20px;
+font-weight:bold;
+background:#f8f8f8;
+}
+
+</style>
+
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="logo impact">PintaPojat</div>
+<header>
 
-      <nav class="menu">
-        <a href="#yleista">Yleistä</a>
-        <a href="#ulkomaalaus">Ulkomaalaus</a>
-        <a href="#pohjatyot">Pohjatyöt</a>
-        <a href="#huoltotyot">Muut huoltotyöt</a>
-        <a href="#faq">Usein kysyttyä</a>
-        <a href="#arviointi">Arviointikäynti</a>
-        <a href="#palaute">Palaute</a>
-      </nav>
-    </div>
-  </header>
+<div class="nav">
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="eyebrow">Joensuun PintaPojat</div>
-        <h1>Huolellinen maalaus näkyy heti</h1>
-        <p>
-          Ulkomaalaukset, pohjatyöt ja muut rakennuksen huoltotyöt
-          näkyvällä jäljellä. Kun haluat pintojen näyttävän hyvältä
-          ja kestävän pitkään, tehdään työ kunnolla.
-        </p>
+<h2>PintaPojat</h2>
 
-        <div class="hero-buttons">
-          <a class="btn btn-yellow" href="#arviointi">Varaa arviointikäynti</a>
-          <a class="btn btn-white" href="#ennenjalkeen">Katso ennen / jälkeen</a>
-          <a class="btn btn-black" href="#faq">Usein kysyttyä</a>
-        </div>
-      </div>
+<button class="hamburger" onclick="toggleMenu()">VALIKKO</button>
 
-      <div class="hero-card">
-        <img src="pintapojat.mainos.jpg" alt="PintaPojat mainos" />
-        <div class="hero-card-body">
-          <h3>Tarjous ei maksa mitään</h3>
-          <p>
-            Sovitaan maalaus, katsotaan kohde ja suunnitellaan sopiva toteutus.
-          </p>
-          <a class="btn btn-yellow" href="#arviointi">Pyydä arvio</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="menu" id="menu">
+<a href="#yleista">Yleistä</a>
+<a href="#ulkomaalaus">Ulkomaalaus</a>
+<a href="#pohjatyot">Pohjatyöt</a>
+<a href="#huolto">Huoltotyöt</a>
+<a href="#faq">Usein kysyttyä</a>
+<a href="#arviointi">Arviointikäynti</a>
+<a href="#palaute">Palaute</a>
+</div>
 
-  <section class="section" id="yleista">
-    <h2 class="section-title">Yleistä</h2>
-    <p class="section-lead">
-      Tiedot yrityksestämme, palveluistamme ja työn tavasta. PintaPojat tekee
-      ulkomaalauksia, pohjatöitä ja rakennuksen huoltotöitä Joensuun seudulla.
-    </p>
+</div>
 
-    <div class="general-grid">
-      <div class="box">
-        <h3>Tiedot yrityksestämme</h3>
-        <p>
-          PintaPojat keskittyy siistiin työnjälkeen, hyvään ulkonäköön ja
-          kestävään lopputulokseen. Maalaus ei ole vain uusi väri, vaan myös
-          oikea pohjatyö, oikeat tuotteet ja huolellinen toteutus.
-        </p>
-        <p>
-          Haluamme tehdä kohteista sellaisia, että ero näkyy selvästi.
-          Lopputuloksen kuuluu näyttää hyvältä heti ja kestää myös käyttöä
-          ja säätä.
-        </p>
+</header>
 
-        <div class="highlight-list">
-          <div class="highlight">Huolellinen työnjälki</div>
-          <div class="highlight">Selkeä ja näyttävä lopputulos</div>
-          <div class="highlight">Pohjatyöt kunnolla</div>
-          <div class="highlight">Arviointi helposti</div>
-        </div>
-      </div>
+<div class="hero">
 
-      <div class="box image-box">
-        <img src="cream-house.jpg" alt="Vaalea maalattu talo" />
-      </div>
-    </div>
-  </section>
+<div class="content">
+<h1>Huolellinen maalaus näkyy heti</h1>
+<p>Ulkomaalaukset, pohjatyöt ja rakennuksen huoltotyöt Joensuussa.</p>
+</div>
 
-  <section class="section" id="ennenjalkeen">
-    <h2 class="section-title">Ennen / jälkeen</h2>
-    <p class="section-lead">
-      Liikuta slideria. Jälkeen-kuva paljastuu vähitellen koko kuvan yli
-      vasemmalta oikealle.
-    </p>
+</div>
 
-    <div class="compare-stack">
+<section id="yleista">
 
-      <div class="compare-card">
-        <div class="compare-top">
-          <h3>Hirsikohde</h3>
-          <div class="labels">
-            <span class="pill before-pill">Ennen</span>
-            <span class="pill after-pill">Jälkeen</span>
-          </div>
-        </div>
+<div class="grid">
 
-        <div class="compare" data-start="50">
-          <img src="tervapetsi.ennen.2025.jpeg" alt="Hirsitalo ennen" />
-          <div class="compare-after">
-            <img src="tervapetsi.jälkeen.2025.jpeg" alt="Hirsitalo jälkeen" />
-          </div>
-          <div class="compare-line"></div>
-          <div class="compare-handle"></div>
-        </div>
+<div class="card">
+<h2>Tiedot yrityksestämme</h2>
+<p>PintaPojat tekee ulkomaalauksia ja huoltotöitä Joensuun alueella.</p>
+<p>Huolellinen työnjälki ja hyvä lopputulos ovat tärkeimpiä tavoitteitamme.</p>
+</div>
 
-        <input class="compare-range" type="range" min="0" max="100" value="50" />
-      </div>
+<div class="compare">
 
-      <div class="compare-card">
-        <div class="compare-top">
-          <h3>Punainen kohde</h3>
-          <div class="labels">
-            <span class="pill before-pill">Ennen</span>
-            <span class="pill after-pill">Jälkeen</span>
-          </div>
-        </div>
+<img src="tervapetsi.ennen.2025.jpeg">
 
-        <div class="compare" data-start="48">
-          <img src="red-before.jpg" alt="Punainen talo ennen" />
-          <div class="compare-after">
-            <img src="red-after.jpg" alt="Punainen talo jälkeen" />
-          </div>
-          <div class="compare-line"></div>
-          <div class="compare-handle"></div>
-        </div>
+<div class="after">
+<img src="tervapetsi.jälkeen.2025.jpeg">
+</div>
 
-        <input class="compare-range" type="range" min="0" max="100" value="48" />
-      </div>
+<div class="line"></div>
+<div class="handle">⇆</div>
 
-      <div class="compare-card">
-        <div class="compare-top">
-          <h3>Keltainen kohde</h3>
-          <div class="labels">
-            <span class="pill before-pill">Ennen</span>
-            <span class="pill after-pill">Jälkeen</span>
-          </div>
-        </div>
+</div>
 
-        <div class="compare" data-start="52">
-          <img src="yellow-before.jpg" alt="Keltainen talo ennen" />
-          <div class="compare-after">
-            <img src="yellow-after.jpg" alt="Keltainen talo jälkeen" />
-          </div>
-          <div class="compare-line"></div>
-          <div class="compare-handle"></div>
-        </div>
+</div>
 
-        <input class="compare-range" type="range" min="0" max="100" value="52" />
-      </div>
+</section>
 
-    </div>
-  </section>
+<section id="ulkomaalaus">
 
-  <section class="section" id="ulkomaalaus">
-    <h2 class="section-title">Ulkomaalaus</h2>
-    <p class="section-lead">
-      Talon ulkomaalaus tuo ilmeen kuntoon ja suojaa pintoja säältä.
-      Oikein tehtynä lopputulos näyttää siistiltä ja kestää pitkään.
-    </p>
+<h2>Ulkomaalaus</h2>
 
-    <div class="services-grid">
-      <div class="service-card">
-        <img src="red-house.jpg" alt="Punainen talo" />
-        <div class="service-overlay">
-          <h3>Julkisivut</h3>
-          <p>Maalaukset omakotitaloihin, mökkeihin ja muihin rakennuksiin.</p>
-          <span class="tag">Ulkomaalaus</span>
-        </div>
-      </div>
+<div class="grid">
 
-      <div class="service-card">
-        <img src="cream-house.jpg" alt="Vaalea talo" />
-        <div class="service-overlay">
-          <h3>Huoltomaalaus</h3>
-          <p>Pintojen ehostus ja suojaus ennen kuin kuluminen etenee liian pitkälle.</p>
-          <span class="tag">Huoltomaalaus</span>
-        </div>
-      </div>
+<div class="card">
+<h3>Julkisivut</h3>
+<p>Maalaamme omakotitalot ja mökit huolellisesti.</p>
+</div>
 
-      <div class="service-card">
-        <img src="tervapetsi.jälkeen.2025.jpeg" alt="Hirsitalo jälkeen" />
-        <div class="service-overlay">
-          <h3>Hirsipinnat</h3>
-          <p>Petsi- ja käsittelyratkaisut, joissa puun ilme pääsee oikeuksiinsa.</p>
-          <span class="tag">Puu- ja hirsipinnat</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="compare">
 
-  <section class="section" id="pohjatyot">
-    <h2 class="section-title">Pohjatyöt</h2>
-    <p class="section-lead">
-      Hyvä lopputulos alkaa pohjatöistä. Pesut, kaavinnat, suojaukset ja muut
-      valmistelut vaikuttavat suoraan siihen, miltä maalaus näyttää ja kuinka kauan se kestää.
-    </p>
+<img src="red-before.jpg">
 
-    <div class="box">
-      <h3>Mitä pohjatöihin voi kuulua?</h3>
-      <div class="highlight-list">
-        <div class="highlight">Pintojen pesu</div>
-        <div class="highlight">Irtoavan maalin poisto</div>
-        <div class="highlight">Suojaus ennen maalausta</div>
-        <div class="highlight">Pinnan valmistelu uutta käsittelyä varten</div>
-      </div>
-    </div>
-  </section>
+<div class="after">
+<img src="red-after.jpg">
+</div>
 
-  <section class="section" id="huoltotyot">
-    <h2 class="section-title">Muut huoltotyöt</h2>
-    <p class="section-lead">
-      Kaikki kohteet eivät tarvitse vain maalia. Joskus tarvitaan myös yleistä
-      siistimistä, pientä kunnostusta ja rakennuksen ylläpitoon liittyviä töitä.
-    </p>
+<div class="line"></div>
+<div class="handle">⇆</div>
 
-    <div class="box">
-      <h3>Rakennuksen yleinen ylläpito</h3>
-      <p>
-        Pienet huoltotyöt oikeaan aikaan auttavat pitämään koko rakennuksen
-        ilmeen parempana. Samalla vältetään tilanteita, joissa korjaustarve
-        kasvaa turhaan suureksi.
-      </p>
-    </div>
-  </section>
+</div>
 
-  <section class="section" id="faq">
-    <h2 class="section-title">Usein kysyttyjä kysymyksiä ulkomaalauksesta</h2>
+</div>
 
-    <div class="faq-grid">
-      <div class="faq-item">
-        <h3>Kuinka usein talo kannattaa maalata?</h3>
-        <p>
-          Yleensä noin 10–15 vuoden välein, mutta huoltoväli riippuu pinnasta,
-          maalista, säästä ja siitä, miten hyvin aiemmat käsittelyt on tehty.
-        </p>
-      </div>
+</section>
 
-      <div class="faq-item">
-        <h3>Tarvitaanko pesu ennen maalausta?</h3>
-        <p>
-          Kyllä. Pinta pitää puhdistaa ennen maalausta, jotta uusi käsittely
-          tarttuu kunnolla ja lopputulos kestää.
-        </p>
-      </div>
+<section id="pohjatyot">
 
-      <div class="faq-item">
-        <h3>Voiko vanhan pinnan maalata suoraan?</h3>
-        <p>
-          Joskus voi, mutta usein tarvitaan ensin valmistelua. Siksi kohde
-          kannattaa arvioida ennen työn aloittamista.
-        </p>
-      </div>
+<h2>Pohjatyöt</h2>
 
-      <div class="faq-item">
-        <h3>Milloin maalaus kannattaa tehdä?</h3>
-        <p>
-          Paras ajankohta riippuu säästä ja pinnasta, mutta yleensä kevät,
-          kesä ja alkusyksy ovat sopivinta aikaa ulkotöille.
-        </p>
-      </div>
-    </div>
-  </section>
+<div class="grid">
 
-  <section class="section" id="arviointi">
-    <h2 class="section-title">Arviointikäynnin varaus</h2>
-    <p class="section-lead">
-      Täytä tiedot, niin arviointikäynti on helppo sopia. GitHub Pagesissa tämä lomake ei lähetä tietoja automaattisesti ilman erillistä lomakepalvelua, mutta rakenne on valmiina.
-    </p>
+<div class="card">
+<p>Pintojen pesu</p>
+<p>Irtoavan maalin poisto</p>
+<p>Suojaus ennen maalausta</p>
+</div>
 
-    <div class="form-box">
-      <form>
-        <div>
-          <label for="nimi">Nimi</label>
-          <input id="nimi" type="text" placeholder="Kirjoita nimesi" />
-        </div>
+<div class="placeholder">
+Lisää kuva pohjatöistä tähän
+</div>
 
-        <div>
-          <label for="puhelin">Puhelinnumero</label>
-          <input id="puhelin" type="text" placeholder="Esim. 040 123 4567" />
-        </div>
+</div>
 
-        <div>
-          <label for="sahkoposti">Sähköposti</label>
-          <input id="sahkoposti" type="email" placeholder="Esim. nimi@sahkoposti.fi" />
-        </div>
+</section>
 
-        <div>
-          <label for="osoite">Kohteen osoite</label>
-          <input id="osoite" type="text" placeholder="Esim. Katu 1, Joensuu" />
-        </div>
+<section id="huolto">
 
-        <div>
-          <label for="kuvaus">Mitä kohteessa pitäisi tehdä?</label>
-          <textarea id="kuvaus" placeholder="Kerro lyhyesti työstä"></textarea>
-        </div>
+<h2>Muut huoltotyöt</h2>
 
-        <div>
-          <button class="btn btn-yellow" type="button">Lähetä varauspyyntö</button>
-        </div>
-      </form>
-    </div>
-  </section>
+<div class="grid">
 
-  <section class="section" id="palaute">
-    <h2 class="section-title">Palaute</h2>
-    <p class="section-lead">
-      Tähän kohtaan vierailija voi jättää palautetta. Myös tämä lomake tarvitsee
-      erillisen lomakepalvelun, jos haluat että viestit tulevat oikeasti perille.
-    </p>
+<div class="card">
+<p>Rakennuksen ylläpito ja kunnostus.</p>
+</div>
 
-    <div class="form-box">
-      <form>
-        <div>
-          <label for="palautenimi">Nimi</label>
-          <input id="palautenimi" type="text" placeholder="Kirjoita nimesi" />
-        </div>
+<div class="placeholder">
+Lisää kuva huoltotöistä tähän
+</div>
 
-        <div>
-          <label for="palauteteksti">Palaute</label>
-          <textarea id="palauteteksti" placeholder="Kirjoita palautteesi tähän"></textarea>
-        </div>
+</div>
 
-        <div>
-          <button class="btn btn-black" type="button">Lähetä palaute</button>
-        </div>
-      </form>
-    </div>
-  </section>
+</section>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-card">
-        <h2>PintaPojat</h2>
-        <p>Joensuu</p>
-        <p>Ulkomaalaukset • Pohjatyöt • Muut huoltotyöt</p>
-      </div>
+<section id="faq">
 
-      <div class="footer-card">
-        <h3>Yhteystiedot</h3>
-        <p><strong>Sähköposti:</strong> info@pintapojat.fi</p>
-        <p><strong>Nimet:</strong> Matti Meikäläinen, Teppo Testinen</p>
-        <p><strong>Puhelinnumerot:</strong> 040 123 4567 / 040 765 4321</p>
-        <p><strong>Y-tunnus:</strong> 1234567-8</p>
-      </div>
-    </div>
-  </footer>
+<h2>Usein kysyttyä</h2>
 
-  <script>
-    function setCompare(compareWrap, value){
-      const after = compareWrap.querySelector(".compare-after");
-      const line = compareWrap.querySelector(".compare-line");
-      const handle = compareWrap.querySelector(".compare-handle");
-      const safeValue = Math.max(0, Math.min(100, Number(value)));
+<div class="faq">
 
-      after.style.width = safeValue + "%";
-      line.style.left = safeValue + "%";
-      handle.style.left = safeValue + "%";
-    }
+<div class="card">
+<h3>Kuinka usein talo maalataan?</h3>
+<p>Yleensä 10–15 vuoden välein.</p>
+</div>
 
-    document.querySelectorAll(".compare-card").forEach(card => {
-      const wrap = card.querySelector(".compare");
-      const range = card.querySelector(".compare-range");
-      const start = wrap.dataset.start || 50;
+<div class="card">
+<h3>Tarvitaanko pesu ennen maalausta?</h3>
+<p>Kyllä, se parantaa maalin tarttumista.</p>
+</div>
 
-      setCompare(wrap, start);
-      range.value = start;
+<div class="card">
+<h3>Kuinka kauan maalaus kestää?</h3>
+<p>Usein muutama päivä kohteesta riippuen.</p>
+</div>
 
-      range.addEventListener("input", () => {
-        setCompare(wrap, range.value);
-      });
+<div class="card">
+<h3>Voiko sateella maalata?</h3>
+<p>Ei yleensä, kuiva sää on paras.</p>
+</div>
 
-      let dragging = false;
+</div>
 
-      function updateFromPointer(clientX){
-        const rect = wrap.getBoundingClientRect();
-        const x = clientX - rect.left;
-        const percent = (x / rect.width) * 100;
-        setCompare(wrap, percent);
-        range.value = Math.max(0, Math.min(100, percent));
-      }
+</section>
 
-      wrap.addEventListener("mousedown", (e) => {
-        dragging = true;
-        updateFromPointer(e.clientX);
-      });
+<section id="arviointi">
 
-      window.addEventListener("mousemove", (e) => {
-        if(!dragging) return;
-        updateFromPointer(e.clientX);
-      });
+<h2>Varaa arviointikäynti</h2>
 
-      window.addEventListener("mouseup", () => {
-        dragging = false;
-      });
+<div class="card">
 
-      wrap.addEventListener("touchstart", (e) => {
-        dragging = true;
-        updateFromPointer(e.touches[0].clientX);
-      }, { passive:true });
+<form action="https://formspree.io/f/xeerkbjz" method="POST" enctype="multipart/form-data">
 
-      window.addEventListener("touchmove", (e) => {
-        if(!dragging) return;
-        updateFromPointer(e.touches[0].clientX);
-      }, { passive:true });
+<input type="text" name="nimi" placeholder="Nimi" required>
+<input type="text" name="puhelin" placeholder="Puhelinnumero" required>
+<input type="email" name="email" placeholder="Sähköposti">
 
-      window.addEventListener("touchend", () => {
-        dragging = false;
-      });
-    });
-  </script>
+<input type="text" name="osoite" placeholder="Osoite">
+
+<input type="text" name="postinumero" placeholder="Postinumero">
+
+<input type="text" name="paikkakunta" placeholder="Paikkakunta">
+
+<textarea name="kuvaus" placeholder="Kuvaus työstä"></textarea>
+
+<input type="file" name="liite" multiple>
+
+<button type="submit">Lähetä</button>
+
+</form>
+
+</div>
+
+</section>
+
+<section id="palaute">
+
+<h2>Palaute</h2>
+
+<div class="card">
+
+<form action="https://formspree.io/f/mgonyjen" method="POST">
+
+<input type="text" name="nimi" placeholder="Nimi">
+
+<textarea name="palaute" placeholder="Kirjoita palaute"></textarea>
+
+<button type="submit">Lähetä palaute</button>
+
+</form>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+<h2>PintaPojat</h2>
+<p>Joensuu</p>
+</div>
+
+<div>
+<p>Sähköposti: pintapojat@gmail.com</p>
+<p>Puhelin: 040 123 4567</p>
+<p>Y-tunnus: 1234567-8</p>
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("open");
+}
+
+document.querySelectorAll(".compare").forEach(compare=>{
+
+const after=compare.querySelector(".after")
+const line=compare.querySelector(".line")
+const handle=compare.querySelector(".handle")
+
+let active=false
+
+compare.addEventListener("mousedown",()=>active=true)
+window.addEventListener("mouseup",()=>active=false)
+
+window.addEventListener("mousemove",e=>{
+if(!active)return
+
+let rect=compare.getBoundingClientRect()
+let x=e.clientX-rect.left
+let percent=(x/rect.width)*100
+
+after.style.width=percent+"%"
+line.style.left=percent+"%"
+handle.style.left=percent+"%"
+})
+
+})
+
+</script>
+
 </body>
 </html>
