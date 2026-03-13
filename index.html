@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Pintapojat</title>
 
 <style>
@@ -16,8 +18,8 @@ background:#f4f4f4;
 header{
 background:#1f2937;
 color:white;
-padding:80px 20px;
 text-align:center;
+padding:80px 20px;
 }
 
 nav{
@@ -28,7 +30,7 @@ padding:15px;
 
 nav a{
 color:white;
-margin:20px;
+margin:15px;
 text-decoration:none;
 font-weight:bold;
 }
@@ -59,6 +61,35 @@ transition:0.3s;
 transform:translateY(-6px);
 }
 
+.compare{
+position:relative;
+max-width:800px;
+margin:auto;
+overflow:hidden;
+}
+
+.compare img{
+width:100%;
+display:block;
+}
+
+.after{
+position:absolute;
+top:0;
+left:0;
+width:50%;
+overflow:hidden;
+}
+
+.line{
+position:absolute;
+left:50%;
+top:0;
+height:100%;
+width:3px;
+background:white;
+}
+
 footer{
 background:#111827;
 color:white;
@@ -67,6 +98,7 @@ padding:30px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -80,25 +112,34 @@ padding:30px;
 
 <nav>
 
-<a href="#meista">Meistä</a>
-<a href="#palvelut">Palvelut</a>
-<a href="#yhteys">Yhteystiedot</a>
+<a href="index.html">Etusivu</a>
+<a href="faq.html">Ulkomaalauksen kysymyksiä</a>
+<a href="arviointikaynti.html">Pyydä arvio</a>
+<a href="palaute.html">Anna palautetta</a>
 
 </nav>
 
-<section id="meista">
+<section>
 
-<h2>Tietoa meistä</h2>
+<h2>Ennen / jälkeen</h2>
 
-<p>
-Pintapojat on Joensuussa toimiva maalaus- ja pintatyöyritys.
-Teemme sisä- ja ulkomaalauksia sekä rakennusten huoltotöitä
-ammattitaidolla.
-</p>
+<div class="compare">
+
+<img src="before.jpg">
+
+<div class="after">
+
+<img src="after.jpg">
+
+</div>
+
+<div class="line"></div>
+
+</div>
 
 </section>
 
-<section id="palvelut">
+<section>
 
 <h2>Palvelumme</h2>
 
@@ -106,38 +147,44 @@ ammattitaidolla.
 
 <a href="Ulkomaalaukset.html" class="card">
 <h3>Ulkomaalaukset</h3>
-<p>Talojen julkisivujen maalaukset.</p>
 </a>
 
 <a href="pohjatyöt.html" class="card">
 <h3>Pohjatyöt</h3>
-<p>Pesut, hionnat ja muut valmistelutyöt.</p>
 </a>
 
 <a href="muut rakennuksen huoltotyöt.html" class="card">
-<h3>Muut rakennuksen huoltotyöt</h3>
-<p>Rakennusten huolto ja pintatyöt.</p>
+<h3>Muut huoltotyöt</h3>
 </a>
 
 </div>
 
 </section>
 
-<section id="yhteys">
-
-<h2>Yhteystiedot</h2>
-
-<p>📞 040 123 4567</p>
-<p>✉ info@pintapojat.fi</p>
-<p>📍 Joensuu</p>
-
-</section>
-
 <footer>
 
-<p>© Pintapojat 2026</p>
+<p>© Pintapojat</p>
 
 </footer>
+
+<script>
+
+const compare=document.querySelector(".compare");
+const after=document.querySelector(".after");
+const line=document.querySelector(".line");
+
+compare.addEventListener("mousemove",e=>{
+
+let rect=compare.getBoundingClientRect();
+let x=e.clientX-rect.left;
+let percent=(x/rect.width)*100;
+
+after.style.width=percent+"%";
+line.style.left=percent+"%";
+
+});
+
+</script>
 
 </body>
 </html>
