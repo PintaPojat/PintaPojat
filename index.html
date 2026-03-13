@@ -1,417 +1,478 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PintaPojat</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PintaPojat | Ulkomaalaukset, pohjatyöt ja huoltotyöt</title>
 
 <style>
+:root{
+--yellow:#f0b400;
+--yellow-light:#ffd64a;
+--red:#c62828;
+--black:#101010;
+--white:#ffffff;
+--bg:#ececec;
+--card:#f8f8f8;
+--shadow:0 12px 30px rgba(0,0,0,0.16);
+--radius:24px;
+--max:1200px;
+}
 
-html,body{
-margin:0;
-padding:0;
+*{box-sizing:border-box;}
+
+html{
+scroll-behavior:smooth;
 overflow-x:hidden;
-font-family:Arial;
-background:#ececec;
 }
 
-h1,h2,h3{
-font-family:Impact;
-letter-spacing:1px;
+body{
+margin:0;
+background:var(--bg);
+color:var(--black);
+font-family:Arial, Helvetica, sans-serif;
+line-height:1.6;
+overflow-x:hidden;
 }
 
-header{
-background:#111;
-color:white;
-padding:15px 20px;
+h1,h2,h3,h4,.impact{
+font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+text-transform:uppercase;
+letter-spacing:0.5px;
+margin:0;
+}
+
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+
+.topbar{
 position:sticky;
 top:0;
 z-index:1000;
-border-bottom:4px solid #f0b400;
+background:rgba(16,16,16,0.96);
+border-bottom:4px solid var(--yellow);
+backdrop-filter:blur(8px);
 }
 
-.nav{
+.topbar-inner{
+max-width:var(--max);
+margin:0 auto;
+padding:14px 20px;
 display:flex;
-justify-content:space-between;
 align-items:center;
-max-width:1200px;
-margin:auto;
+justify-content:space-between;
+gap:18px;
+}
+
+.logo{
+color:var(--white);
+font-size:34px;
+line-height:1;
+white-space:nowrap;
+}
+
+.menu-toggle{
+display:none;
+background:var(--yellow);
+color:var(--black);
+border:none;
+border-radius:12px;
+padding:10px 14px;
+font-weight:800;
+cursor:pointer;
 }
 
 .menu{
 display:flex;
-gap:12px;
+flex-wrap:wrap;
+gap:10px;
+justify-content:flex-end;
 }
 
 .menu a{
-color:white;
-padding:8px 14px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,.2);
-text-decoration:none;
+color:var(--white);
+padding:10px 14px;
+border-radius:999px;
+border:2px solid rgba(255,255,255,0.12);
+font-size:14px;
 }
 
 .menu a:hover{
-background:#f0b400;
-color:black;
-}
-
-.hamburger{
-display:none;
-background:#f0b400;
-border:none;
-padding:8px 12px;
-font-weight:bold;
-}
-
-@media(max-width:850px){
-
-.menu{
-display:none;
-flex-direction:column;
-width:100%;
-margin-top:10px;
-}
-
-.menu.open{
-display:flex;
-}
-
-.hamburger{
-display:block;
-}
-
+background:var(--yellow);
+color:var(--black);
 }
 
 .hero{
-background:url("pintapojat.mainos.jpg") center 70%/cover no-repeat;
-min-height:70vh;
+background:
+linear-gradient(135deg, rgba(0,0,0,0.68), rgba(0,0,0,0.34)),
+url("pintapojat.mainos.jpg") center 72% / cover no-repeat;
+color:var(--white);
+min-height:76vh;
 display:flex;
 align-items:center;
-color:white;
 }
 
-.hero .content{
-background:rgba(0,0,0,.55);
-padding:40px;
-max-width:600px;
-margin-left:40px;
-}
-
-section{
-max-width:1100px;
+.hero-inner{
+max-width:var(--max);
 margin:auto;
-padding:40px 20px;
-}
-
-.card{
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-.grid{
+padding:72px 20px;
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:25px;
+grid-template-columns:1.1fr 0.9fr;
+gap:30px;
 }
 
-@media(max-width:800px){
-.grid{grid-template-columns:1fr;}
+.hero-copy h1{
+font-size:clamp(48px,8vw,100px);
+margin-bottom:18px;
+}
+
+.hero-copy p{
+font-size:clamp(18px,2vw,24px);
+max-width:720px;
+margin-bottom:26px;
+}
+
+.eyebrow{
+display:inline-block;
+background:var(--yellow);
+color:var(--black);
+padding:10px 16px;
+border-radius:999px;
+margin-bottom:18px;
+font-size:18px;
+}
+
+.hero-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:14px;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-height:54px;
+padding:14px 22px;
+border-radius:999px;
+font-weight:700;
+border:none;
+cursor:pointer;
+}
+
+.btn-yellow{background:var(--yellow);}
+.btn-white{background:var(--white);}
+.btn-black{background:var(--black);color:white;}
+
+.hero-card{
+background:white;
+color:black;
+border-radius:28px;
+overflow:hidden;
+border:6px solid var(--yellow);
+}
+
+.hero-card img{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+}
+
+.hero-card-body{padding:20px;}
+
+.section{
+max-width:var(--max);
+margin:auto;
+padding:28px 20px 46px;
+}
+
+.section-title{
+font-size:clamp(34px,5vw,60px);
+margin-bottom:10px;
+}
+
+.section-lead{
+font-size:18px;
+max-width:840px;
+margin-bottom:24px;
+}
+
+.general-grid{
+display:grid;
+grid-template-columns:1.05fr 0.95fr;
+gap:24px;
+}
+
+.box{
+background:white;
+border-radius:24px;
+padding:26px;
+}
+
+.highlight-list{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+margin-top:18px;
+}
+
+.highlight{
+background:#f8f8f8;
+border-left:8px solid var(--yellow);
+border-radius:18px;
+padding:16px;
+font-weight:700;
+}
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
+}
+
+.service-card{
+min-height:340px;
+border-radius:28px;
+overflow:hidden;
+position:relative;
+}
+
+.service-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.service-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,0.82), transparent);
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:22px;
+}
+
+.tag{
+background:var(--yellow);
+color:black;
+padding:10px 16px;
+border-radius:999px;
+font-weight:800;
 }
 
 .compare{
 position:relative;
+width:100%;
+aspect-ratio:16/10;
+border-radius:22px;
 overflow:hidden;
-border-radius:18px;
 }
 
 .compare img{
+position:absolute;
 width:100%;
-display:block;
+height:100%;
+object-fit:cover;
 }
 
-.after{
-position:absolute;
-top:0;
-left:0;
+.compare-after{
 width:50%;
 overflow:hidden;
-height:100%;
 }
 
-.line{
+.compare-line{
 position:absolute;
-left:50%;
 top:0;
-height:100%;
+bottom:0;
+left:50%;
 width:4px;
 background:white;
 }
 
-.handle{
+.compare-handle{
 position:absolute;
 top:50%;
 left:50%;
-width:60px;
-height:60px;
-background:white;
+width:64px;
+height:64px;
 border-radius:50%;
-border:4px solid #f0b400;
+background:white;
+border:4px solid var(--yellow);
 transform:translate(-50%,-50%);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:20px;
 }
 
-.faq{
+.split-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:20px;
+gap:24px;
 }
 
-@media(max-width:800px){
-.faq{grid-template-columns:1fr;}
+.faq-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+}
+
+.faq-item{
+background:white;
+border-radius:22px;
+padding:22px;
 }
 
 form{
 display:grid;
-gap:12px;
+gap:14px;
 }
 
 input,textarea{
-padding:12px;
-border-radius:10px;
-border:1px solid #ccc;
 width:100%;
+padding:14px 16px;
+border-radius:16px;
+border:2px solid #ddd;
 }
 
-button{
-padding:12px;
-background:#f0b400;
-border:none;
-font-weight:bold;
-cursor:pointer;
-border-radius:20px;
-}
-
-footer{
-background:#111;
-color:white;
-padding:40px 20px;
-margin-top:40px;
-border-top:4px solid #f0b400;
-}
-
-.footer-inner{
-max-width:1100px;
-margin:auto;
+.two-col{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:20px;
+gap:14px;
 }
 
-@media(max-width:800px){
-.footer-inner{grid-template-columns:1fr;}
+.form-box{
+background:white;
+border-radius:24px;
+padding:24px;
+max-width:900px;
 }
 
-.placeholder{
-height:250px;
+.placeholder-image{
 border:3px dashed #bbb;
+border-radius:22px;
+min-height:280px;
 display:flex;
 align-items:center;
 justify-content:center;
-border-radius:20px;
-font-weight:bold;
-background:#f8f8f8;
+font-weight:700;
 }
 
-</style>
+.footer{
+background:var(--black);
+color:white;
+border-top:6px solid var(--yellow);
+}
 
+.footer-inner{
+max-width:var(--max);
+margin:auto;
+padding:34px 20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+}
+
+.footer-card{
+background:#1b1b1b;
+border-radius:22px;
+padding:22px;
+}
+
+@media(max-width:860px){
+.menu-toggle{display:inline-flex;}
+.menu{display:none;width:100%;flex-direction:column;}
+.menu.open{display:flex;}
+}
+
+@media(max-width:780px){
+.hero-inner,
+.general-grid,
+.footer-inner,
+.faq-grid,
+.split-grid,
+.two-col{
+grid-template-columns:1fr;
+}
+}
+</style>
 </head>
+
 <body>
 
-<header>
+<header class="topbar">
+<div class="topbar-inner">
 
-<div class="nav">
+<div class="logo impact">PintaPojat</div>
 
-<h2>PintaPojat</h2>
+<button class="menu-toggle" id="menuToggle">Valikko</button>
 
-<button class="hamburger" onclick="toggleMenu()">VALIKKO</button>
-
-<div class="menu" id="menu">
+<nav class="menu" id="menu">
 <a href="#yleista">Yleistä</a>
 <a href="#ulkomaalaus">Ulkomaalaus</a>
 <a href="#pohjatyot">Pohjatyöt</a>
-<a href="#huolto">Huoltotyöt</a>
+<a href="#huoltotyot">Muut huoltotyöt</a>
 <a href="#faq">Usein kysyttyä</a>
 <a href="#arviointi">Arviointikäynti</a>
 <a href="#palaute">Palaute</a>
-</div>
+</nav>
 
 </div>
-
 </header>
 
-<div class="hero">
+<section class="hero">
+<div class="hero-inner">
 
-<div class="content">
+<div class="hero-copy">
+<div class="eyebrow">Joensuun PintaPojat</div>
 <h1>Huolellinen maalaus näkyy heti</h1>
-<p>Ulkomaalaukset, pohjatyöt ja rakennuksen huoltotyöt Joensuussa.</p>
+<p>Ulkomaalaukset, pohjatyöt ja muut rakennuksen huoltotyöt Joensuussa.</p>
+
+<div class="hero-buttons">
+<a class="btn btn-yellow" href="#arviointi">Varaa arviointikäynti</a>
+<a class="btn btn-white" href="#faq">Usein kysyttyä</a>
+<a class="btn btn-black" href="#ulkomaalaus">Katso palvelut</a>
+</div>
+</div>
+
+<div class="hero-card">
+<img src="pintapojat.mainos.jpg">
+<div class="hero-card-body">
+<h3>Tarjous ei maksa mitään</h3>
+<p>Sovitaan maalaus ja katsotaan kohde.</p>
+<a class="btn btn-yellow" href="#arviointi">Pyydä arvio</a>
+</div>
 </div>
 
 </div>
-
-<section id="yleista">
-
-<div class="grid">
-
-<div class="card">
-<h2>Tiedot yrityksestämme</h2>
-<p>PintaPojat tekee ulkomaalauksia ja huoltotöitä Joensuun alueella.</p>
-<p>Huolellinen työnjälki ja hyvä lopputulos ovat tärkeimpiä tavoitteitamme.</p>
-</div>
-
-<div class="compare">
-
-<img src="tervapetsi.ennen.2025.jpeg">
-
-<div class="after">
-<img src="tervapetsi.jälkeen.2025.jpeg">
-</div>
-
-<div class="line"></div>
-<div class="handle">⇆</div>
-
-</div>
-
-</div>
-
 </section>
 
-<section id="ulkomaalaus">
+<section class="section" id="arviointi">
 
-<h2>Ulkomaalaus</h2>
+<h2 class="section-title">Arviointikäynnin varaus</h2>
 
-<div class="grid">
-
-<div class="card">
-<h3>Julkisivut</h3>
-<p>Maalaamme omakotitalot ja mökit huolellisesti.</p>
-</div>
-
-<div class="compare">
-
-<img src="red-before.jpg">
-
-<div class="after">
-<img src="red-after.jpg">
-</div>
-
-<div class="line"></div>
-<div class="handle">⇆</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="pohjatyot">
-
-<h2>Pohjatyöt</h2>
-
-<div class="grid">
-
-<div class="card">
-<p>Pintojen pesu</p>
-<p>Irtoavan maalin poisto</p>
-<p>Suojaus ennen maalausta</p>
-</div>
-
-<div class="placeholder">
-Lisää kuva pohjatöistä tähän
-</div>
-
-</div>
-
-</section>
-
-<section id="huolto">
-
-<h2>Muut huoltotyöt</h2>
-
-<div class="grid">
-
-<div class="card">
-<p>Rakennuksen ylläpito ja kunnostus.</p>
-</div>
-
-<div class="placeholder">
-Lisää kuva huoltotöistä tähän
-</div>
-
-</div>
-
-</section>
-
-<section id="faq">
-
-<h2>Usein kysyttyä</h2>
-
-<div class="faq">
-
-<div class="card">
-<h3>Kuinka usein talo maalataan?</h3>
-<p>Yleensä 10–15 vuoden välein.</p>
-</div>
-
-<div class="card">
-<h3>Tarvitaanko pesu ennen maalausta?</h3>
-<p>Kyllä, se parantaa maalin tarttumista.</p>
-</div>
-
-<div class="card">
-<h3>Kuinka kauan maalaus kestää?</h3>
-<p>Usein muutama päivä kohteesta riippuen.</p>
-</div>
-
-<div class="card">
-<h3>Voiko sateella maalata?</h3>
-<p>Ei yleensä, kuiva sää on paras.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="arviointi">
-
-<h2>Varaa arviointikäynti</h2>
-
-<div class="card">
+<div class="form-box">
 
 <form action="https://formspree.io/f/xeerkbjz" method="POST" enctype="multipart/form-data">
 
-<input type="text" name="nimi" placeholder="Nimi" required>
-<input type="text" name="puhelin" placeholder="Puhelinnumero" required>
-<input type="email" name="email" placeholder="Sähköposti">
+<div class="two-col">
+<input name="Nimi" placeholder="Nimi">
+<input name="Puhelin" placeholder="Puhelinnumero">
+</div>
 
-<input type="text" name="osoite" placeholder="Osoite">
+<div class="two-col">
+<input name="Sähköposti" type="email" placeholder="Sähköposti">
+<input name="Osoite" placeholder="Osoite">
+</div>
 
-<input type="text" name="postinumero" placeholder="Postinumero">
+<div class="two-col">
+<input name="Postinumero" placeholder="Postinumero">
+<input name="Paikkakunta" placeholder="Paikkakunta">
+</div>
 
-<input type="text" name="paikkakunta" placeholder="Paikkakunta">
+<textarea name="Työn kuvaus" placeholder="Kuvaus työstä"></textarea>
 
-<textarea name="kuvaus" placeholder="Kuvaus työstä"></textarea>
+<input type="file" name="Liite" multiple>
 
-<input type="file" name="liite" multiple>
-
-<button type="submit">Lähetä</button>
+<button class="btn btn-yellow" type="submit">Lähetä varauspyyntö</button>
 
 </form>
 
@@ -419,19 +480,19 @@ Lisää kuva huoltotöistä tähän
 
 </section>
 
-<section id="palaute">
+<section class="section" id="palaute">
 
-<h2>Palaute</h2>
+<h2 class="section-title">Palaute</h2>
 
-<div class="card">
+<div class="form-box">
 
 <form action="https://formspree.io/f/mgonyjen" method="POST">
 
-<input type="text" name="nimi" placeholder="Nimi">
+<input name="Nimi" placeholder="Nimi">
 
-<textarea name="palaute" placeholder="Kirjoita palaute"></textarea>
+<textarea name="Palaute" placeholder="Kirjoita palaute"></textarea>
 
-<button type="submit">Lähetä palaute</button>
+<button class="btn btn-black" type="submit">Lähetä palaute</button>
 
 </form>
 
@@ -439,16 +500,17 @@ Lisää kuva huoltotöistä tähän
 
 </section>
 
-<footer>
+<footer class="footer">
 
 <div class="footer-inner">
 
-<div>
+<div class="footer-card">
 <h2>PintaPojat</h2>
 <p>Joensuu</p>
 </div>
 
-<div>
+<div class="footer-card">
+<h3>Yhteystiedot</h3>
 <p>Sähköposti: pintapojat@gmail.com</p>
 <p>Puhelin: 040 123 4567</p>
 <p>Y-tunnus: 1234567-8</p>
@@ -460,34 +522,38 @@ Lisää kuva huoltotöistä tähän
 
 <script>
 
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("open");
+const menuToggle=document.getElementById("menuToggle");
+const menu=document.getElementById("menu");
+
+menuToggle.addEventListener("click",()=>{
+menu.classList.toggle("open");
+});
+
+document.querySelectorAll(".compare").forEach(wrap=>{
+
+let dragging=false;
+
+function move(x){
+let rect=wrap.getBoundingClientRect();
+let percent=(x-rect.left)/rect.width*100;
+
+wrap.querySelector(".compare-after").style.width=percent+"%";
+wrap.querySelector(".compare-line").style.left=percent+"%";
+wrap.querySelector(".compare-handle").style.left=percent+"%";
 }
 
-document.querySelectorAll(".compare").forEach(compare=>{
-
-const after=compare.querySelector(".after")
-const line=compare.querySelector(".line")
-const handle=compare.querySelector(".handle")
-
-let active=false
-
-compare.addEventListener("mousedown",()=>active=true)
-window.addEventListener("mouseup",()=>active=false)
+wrap.addEventListener("mousedown",e=>{
+dragging=true;
+move(e.clientX);
+});
 
 window.addEventListener("mousemove",e=>{
-if(!active)return
+if(dragging)move(e.clientX);
+});
 
-let rect=compare.getBoundingClientRect()
-let x=e.clientX-rect.left
-let percent=(x/rect.width)*100
+window.addEventListener("mouseup",()=>dragging=false);
 
-after.style.width=percent+"%"
-line.style.left=percent+"%"
-handle.style.left=percent+"%"
-})
-
-})
+});
 
 </script>
 
