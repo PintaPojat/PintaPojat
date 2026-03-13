@@ -1,561 +1,1103 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PintaPojat | Ulkomaalaukset, pohjatyöt ja huoltotyöt</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PintaPojat | Ulkomaalaukset, pohjatyöt ja huoltotyöt</title>
 
-<style>
-:root{
---yellow:#f0b400;
---yellow-light:#ffd64a;
---red:#c62828;
---black:#101010;
---white:#ffffff;
---bg:#ececec;
---card:#f8f8f8;
---shadow:0 12px 30px rgba(0,0,0,0.16);
---radius:24px;
---max:1200px;
-}
+  <style>
+    :root{
+      --yellow:#f0b400;
+      --yellow-light:#ffd64a;
+      --red:#c62828;
+      --black:#101010;
+      --white:#ffffff;
+      --bg:#ececec;
+      --card:#f8f8f8;
+      --shadow:0 12px 30px rgba(0,0,0,0.16);
+      --radius:24px;
+      --max:1200px;
+    }
 
-*{box-sizing:border-box;}
+    *{
+      box-sizing:border-box;
+    }
 
-html{
-scroll-behavior:smooth;
-overflow-x:hidden;
-}
+    html{
+      scroll-behavior:smooth;
+      overflow-x:hidden;
+      width:100%;
+      max-width:100%;
+    }
 
-body{
-margin:0;
-background:var(--bg);
-color:var(--black);
-font-family:Arial, Helvetica, sans-serif;
-line-height:1.6;
-overflow-x:hidden;
-}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--black);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+      width:100%;
+      max-width:100%;
+    }
 
-h1,h2,h3,h4,.impact{
-font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-text-transform:uppercase;
-letter-spacing:0.5px;
-margin:0;
-}
+    h1,h2,h3,h4,.impact{
+      font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+      margin:0;
+    }
 
-a{text-decoration:none;color:inherit;}
-img{display:block;max-width:100%;}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-.topbar{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(16,16,16,0.96);
-border-bottom:4px solid var(--yellow);
-backdrop-filter:blur(8px);
-}
+    img{
+      display:block;
+      max-width:100%;
+    }
 
-.topbar-inner{
-max-width:var(--max);
-margin:0 auto;
-padding:14px 20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:18px;
-}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(16,16,16,0.96);
+      border-bottom:4px solid var(--yellow);
+      backdrop-filter:blur(8px);
+      width:100%;
+    }
 
-.logo{
-color:var(--white);
-font-size:34px;
-line-height:1;
-white-space:nowrap;
-}
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
 
-.menu-toggle{
-display:none;
-background:var(--yellow);
-color:var(--black);
-border:none;
-border-radius:12px;
-padding:10px 14px;
-font-weight:800;
-cursor:pointer;
-}
+    .logo{
+      color:var(--white);
+      font-size:34px;
+      line-height:1;
+      white-space:nowrap;
+    }
 
-.menu{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-justify-content:flex-end;
-}
+    .menu-toggle{
+      display:none;
+      background:var(--yellow);
+      color:var(--black);
+      border:none;
+      border-radius:12px;
+      padding:10px 14px;
+      font-weight:800;
+      cursor:pointer;
+      font-family:Arial, Helvetica, sans-serif;
+    }
 
-.menu a{
-color:var(--white);
-padding:10px 14px;
-border-radius:999px;
-border:2px solid rgba(255,255,255,0.12);
-font-size:14px;
-}
+    .menu{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-end;
+    }
 
-.menu a:hover{
-background:var(--yellow);
-color:var(--black);
-}
+    .menu a{
+      color:var(--white);
+      padding:10px 14px;
+      border-radius:999px;
+      border:2px solid rgba(255,255,255,0.12);
+      font-size:14px;
+      transition:0.2s ease;
+    }
 
-.hero{
-background:
-linear-gradient(135deg, rgba(0,0,0,0.68), rgba(0,0,0,0.34)),
-url("pintapojat.mainos.jpg") center 72% / cover no-repeat;
-color:var(--white);
-min-height:76vh;
-display:flex;
-align-items:center;
-}
+    .menu a:hover{
+      background:var(--yellow);
+      color:var(--black);
+      border-color:var(--yellow);
+      transform:translateY(-1px);
+    }
 
-.hero-inner{
-max-width:var(--max);
-margin:auto;
-padding:72px 20px;
-display:grid;
-grid-template-columns:1.1fr 0.9fr;
-gap:30px;
-}
+    .hero{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,0.68), rgba(0,0,0,0.34)),
+        url("pintapojat.mainos.jpg") center 72% / cover no-repeat;
+      color:var(--white);
+      min-height:76vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      width:100%;
+    }
 
-.hero-copy h1{
-font-size:clamp(48px,8vw,100px);
-margin-bottom:18px;
-}
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:110px;
+      background:linear-gradient(to top, var(--bg), transparent);
+    }
 
-.hero-copy p{
-font-size:clamp(18px,2vw,24px);
-max-width:720px;
-margin-bottom:26px;
-}
+    .hero-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      width:100%;
+      padding:72px 20px 120px;
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:30px;
+      align-items:center;
+    }
 
-.eyebrow{
-display:inline-block;
-background:var(--yellow);
-color:var(--black);
-padding:10px 16px;
-border-radius:999px;
-margin-bottom:18px;
-font-size:18px;
-}
+    .hero-copy h1{
+      font-size:clamp(48px, 8vw, 100px);
+      line-height:0.94;
+      margin-bottom:18px;
+      text-shadow:0 8px 22px rgba(0,0,0,0.22);
+    }
 
-.hero-buttons{
-display:flex;
-flex-wrap:wrap;
-gap:14px;
-}
+    .hero-copy p{
+      font-size:clamp(18px, 2vw, 24px);
+      max-width:720px;
+      margin:0 0 26px;
+    }
 
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-min-height:54px;
-padding:14px 22px;
-border-radius:999px;
-font-weight:700;
-border:none;
-cursor:pointer;
-}
+    .eyebrow{
+      display:inline-block;
+      background:var(--yellow);
+      color:var(--black);
+      padding:10px 16px;
+      border-radius:999px;
+      margin-bottom:18px;
+      font-size:18px;
+      box-shadow:var(--shadow);
+      font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    }
 
-.btn-yellow{background:var(--yellow);}
-.btn-white{background:var(--white);}
-.btn-black{background:var(--black);color:white;}
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
 
-.hero-card{
-background:white;
-color:black;
-border-radius:28px;
-overflow:hidden;
-border:6px solid var(--yellow);
-}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:700;
+      box-shadow:var(--shadow);
+      transition:0.2s ease;
+      border:none;
+      cursor:pointer;
+    }
 
-.hero-card img{
-width:100%;
-aspect-ratio:4/5;
-object-fit:cover;
-}
+    .btn:hover{
+      transform:translateY(-2px);
+    }
 
-.hero-card-body{padding:20px;}
+    .btn-yellow{
+      background:var(--yellow);
+      color:var(--black);
+    }
 
-.section{
-max-width:var(--max);
-margin:auto;
-padding:28px 20px 46px;
-}
+    .btn-white{
+      background:var(--white);
+      color:var(--black);
+    }
 
-.section-title{
-font-size:clamp(34px,5vw,60px);
-margin-bottom:10px;
-}
+    .btn-black{
+      background:var(--black);
+      color:var(--white);
+    }
 
-.section-lead{
-font-size:18px;
-max-width:840px;
-margin-bottom:24px;
-}
+    .hero-card{
+      background:rgba(255,255,255,0.96);
+      color:var(--black);
+      border-radius:28px;
+      overflow:hidden;
+      border:6px solid var(--yellow);
+      box-shadow:var(--shadow);
+    }
 
-.general-grid{
-display:grid;
-grid-template-columns:1.05fr 0.95fr;
-gap:24px;
-}
+    .hero-card img{
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      object-position:center 70%;
+    }
 
-.box{
-background:white;
-border-radius:24px;
-padding:26px;
-}
+    .hero-card-body{
+      padding:20px;
+    }
 
-.highlight-list{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-margin-top:18px;
-}
+    .hero-card h3{
+      font-size:32px;
+      margin-bottom:10px;
+    }
 
-.highlight{
-background:#f8f8f8;
-border-left:8px solid var(--yellow);
-border-radius:18px;
-padding:16px;
-font-weight:700;
-}
+    .hero-card p{
+      margin:0 0 14px;
+      font-size:16px;
+    }
 
-.services-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:22px;
-}
+    .section{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:28px 20px 46px;
+      width:100%;
+    }
 
-.service-card{
-min-height:340px;
-border-radius:28px;
-overflow:hidden;
-position:relative;
-}
+    .section-title{
+      font-size:clamp(34px, 5vw, 60px);
+      margin-bottom:10px;
+    }
 
-.service-card img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
+    .section-lead{
+      font-size:18px;
+      max-width:840px;
+      margin:0 0 24px;
+    }
 
-.service-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(to top, rgba(0,0,0,0.82), transparent);
-color:white;
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
-padding:22px;
-}
+    .general-grid{
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:24px;
+      align-items:stretch;
+    }
 
-.tag{
-background:var(--yellow);
-color:black;
-padding:10px 16px;
-border-radius:999px;
-font-weight:800;
-}
+    .box{
+      background:var(--white);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px;
+      min-width:0;
+    }
 
-.compare{
-position:relative;
-width:100%;
-aspect-ratio:16/10;
-border-radius:22px;
-overflow:hidden;
-}
+    .box h3{
+      font-size:34px;
+      margin-bottom:14px;
+    }
 
-.compare img{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-}
+    .highlight-list{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+      margin-top:18px;
+    }
 
-.compare-after{
-width:50%;
-overflow:hidden;
-}
+    .highlight{
+      background:var(--card);
+      border-left:8px solid var(--yellow);
+      border-radius:18px;
+      padding:16px;
+      font-weight:700;
+    }
 
-.compare-line{
-position:absolute;
-top:0;
-bottom:0;
-left:50%;
-width:4px;
-background:white;
-}
+    .image-box{
+      overflow:hidden;
+      padding:0;
+    }
 
-.compare-handle{
-position:absolute;
-top:50%;
-left:50%;
-width:64px;
-height:64px;
-border-radius:50%;
-background:white;
-border:4px solid var(--yellow);
-transform:translate(-50%,-50%);
-}
+    .image-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      min-height:100%;
+    }
 
-.split-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:24px;
-}
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
 
-.faq-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px;
-}
+    .service-card{
+      min-height:340px;
+      border-radius:28px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:var(--shadow);
+      background:#ccc;
+    }
 
-.faq-item{
-background:white;
-border-radius:22px;
-padding:22px;
-}
+    .service-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform 0.35s ease;
+    }
 
-form{
-display:grid;
-gap:14px;
-}
+    .service-card:hover img{
+      transform:scale(1.06);
+    }
 
-input,textarea{
-width:100%;
-padding:14px 16px;
-border-radius:16px;
-border:2px solid #ddd;
-}
+    .service-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.18) 60%, rgba(0,0,0,0.02));
+      color:var(--white);
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:22px;
+    }
 
-.two-col{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-}
+    .service-overlay h3{
+      font-size:34px;
+      margin-bottom:8px;
+    }
 
-.form-box{
-background:white;
-border-radius:24px;
-padding:24px;
-max-width:900px;
-}
+    .service-overlay p{
+      margin:0 0 14px;
+    }
 
-.placeholder-image{
-border:3px dashed #bbb;
-border-radius:22px;
-min-height:280px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:700;
-}
+    .tag{
+      display:inline-block;
+      align-self:flex-start;
+      background:var(--yellow);
+      color:var(--black);
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:800;
+    }
 
-.footer{
-background:var(--black);
-color:white;
-border-top:6px solid var(--yellow);
-}
+    .compare-card{
+      background:var(--white);
+      border-radius:28px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
 
-.footer-inner{
-max-width:var(--max);
-margin:auto;
-padding:34px 20px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:24px;
-}
+    .compare{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/10;
+      border-radius:22px;
+      overflow:hidden;
+      background:#ddd;
+      user-select:none;
+      touch-action:none;
+    }
 
-.footer-card{
-background:#1b1b1b;
-border-radius:22px;
-padding:22px;
-}
+    .compare img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      pointer-events:none;
+    }
 
-@media(max-width:860px){
-.menu-toggle{display:inline-flex;}
-.menu{display:none;width:100%;flex-direction:column;}
-.menu.open{display:flex;}
-}
+    .compare-before{
+      z-index:1;
+    }
 
-@media(max-width:780px){
-.hero-inner,
-.general-grid,
-.footer-inner,
-.faq-grid,
-.split-grid,
-.two-col{
-grid-template-columns:1fr;
-}
-}
-</style>
+    .compare-after{
+      z-index:2;
+      clip-path:inset(0 50% 0 0);
+    }
+
+    .compare-line{
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:50%;
+      width:4px;
+      background:var(--white);
+      z-index:3;
+    }
+
+    .compare-handle{
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      background:#ffffff;
+      border:4px solid var(--yellow);
+      transform:translate(-50%, -50%);
+      z-index:4;
+      display:grid;
+      place-items:center;
+      box-shadow:var(--shadow);
+      opacity:1;
+    }
+
+    .compare-handle::before{
+      content:"⟷";
+      font-size:24px;
+      font-weight:900;
+      color:var(--black);
+    }
+
+    .split-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .faq-grid,
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:18px;
+    }
+
+    .faq-item,
+    .contact-card{
+      background:var(--white);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      min-width:0;
+    }
+
+    .faq-item h3,
+    .contact-card h3{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    form{
+      display:grid;
+      gap:14px;
+    }
+
+    label{
+      font-weight:700;
+      margin-bottom:4px;
+      display:block;
+    }
+
+    input, textarea{
+      width:100%;
+      padding:14px 16px;
+      border-radius:16px;
+      border:2px solid #ddd;
+      font-size:16px;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .form-box{
+      background:var(--white);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      max-width:900px;
+    }
+
+    .placeholder-image{
+      background:
+        linear-gradient(135deg, #d9d9d9, #f2f2f2);
+      border:3px dashed #bfbfbf;
+      border-radius:22px;
+      min-height:280px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      color:#555;
+      font-weight:700;
+      font-size:20px;
+    }
+
+    .footer{
+      margin-top:30px;
+      background:var(--black);
+      color:var(--white);
+      border-top:6px solid var(--yellow);
+    }
+
+    .footer-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:34px 20px 48px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .footer h2{
+      font-size:48px;
+      margin-bottom:10px;
+    }
+
+    .footer-card{
+      background:#1b1b1b;
+      border-radius:22px;
+      padding:22px;
+      border:1px solid rgba(255,255,255,0.08);
+      min-width:0;
+    }
+
+    .footer-card h3{
+      font-size:28px;
+      margin-bottom:12px;
+      color:var(--yellow);
+    }
+
+    .footer p{
+      margin:8px 0;
+      word-break:break-word;
+    }
+
+    @media (max-width: 1050px){
+      .hero-inner,
+      .general-grid,
+      .footer-inner,
+      .faq-grid,
+      .contact-grid,
+      .split-grid{
+        grid-template-columns:1fr;
+      }
+
+      .services-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 860px){
+      .topbar-inner{
+        align-items:center;
+        padding:10px 14px;
+      }
+
+      .logo{
+        font-size:28px;
+      }
+
+      .menu-toggle{
+        display:inline-flex;
+        padding:7px 10px;
+        font-size:12px;
+      }
+
+      .menu{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        padding-top:8px;
+      }
+
+      .menu.open{
+        display:flex;
+      }
+
+      .menu a{
+        width:100%;
+        text-align:center;
+        padding:7px 10px;
+        font-size:12px;
+      }
+
+      .topbar-inner{
+        flex-wrap:wrap;
+      }
+    }
+
+    @media (max-width: 780px){
+      .hero{
+        min-height:auto;
+      }
+
+      .hero-inner{
+        grid-template-columns:1fr;
+        padding-top:40px;
+      }
+
+      .highlight-list,
+      .faq-grid,
+      .contact-grid,
+      .two-col{
+        grid-template-columns:1fr;
+      }
+
+      .compare{
+        aspect-ratio:4/3;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header class="topbar">
-<div class="topbar-inner">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="logo impact">PintaPojat</div>
 
-<div class="logo impact">PintaPojat</div>
+      <button class="menu-toggle" id="menuToggle" type="button">Valikko</button>
 
-<button class="menu-toggle" id="menuToggle">Valikko</button>
+      <nav class="menu" id="menu">
+        <a href="#yleista">Yleistä</a>
+        <a href="#ulkomaalaus">Ulkomaalaus</a>
+        <a href="#pohjatyot">Pohjatyöt</a>
+        <a href="#huoltotyot">Muut huoltotyöt</a>
+        <a href="#faq">Usein kysyttyä</a>
+        <a href="#arviointi">Arviointikäynti</a>
+        <a href="#palaute">Palaute</a>
+      </nav>
+    </div>
+  </header>
 
-<nav class="menu" id="menu">
-<a href="#yleista">Yleistä</a>
-<a href="#ulkomaalaus">Ulkomaalaus</a>
-<a href="#pohjatyot">Pohjatyöt</a>
-<a href="#huoltotyot">Muut huoltotyöt</a>
-<a href="#faq">Usein kysyttyä</a>
-<a href="#arviointi">Arviointikäynti</a>
-<a href="#palaute">Palaute</a>
-</nav>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Joensuun PintaPojat</div>
+        <h1>Huolellinen maalaus näkyy heti</h1>
+        <p>
+          Ulkomaalaukset, pohjatyöt ja muut rakennuksen huoltotyöt
+          näkyvällä jäljellä. Kun haluat pintojen näyttävän hyvältä
+          ja kestävän pitkään, tehdään työ kunnolla.
+        </p>
 
-</div>
-</header>
+        <div class="hero-buttons">
+          <a class="btn btn-yellow" href="#arviointi">Varaa arviointikäynti</a>
+          <a class="btn btn-white" href="#faq">Usein kysyttyä</a>
+          <a class="btn btn-black" href="#ulkomaalaus">Katso palvelut</a>
+        </div>
+      </div>
 
-<section class="hero">
-<div class="hero-inner">
+      <div class="hero-card">
+        <img src="pintapojat.mainos.jpg" alt="PintaPojat mainos" />
+        <div class="hero-card-body">
+          <h3>Tarjous ei maksa mitään</h3>
+          <p>
+            Sovitaan maalaus, katsotaan kohde ja suunnitellaan sopiva toteutus.
+          </p>
+          <a class="btn btn-yellow" href="#arviointi">Pyydä arvio</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="hero-copy">
-<div class="eyebrow">Joensuun PintaPojat</div>
-<h1>Huolellinen maalaus näkyy heti</h1>
-<p>Ulkomaalaukset, pohjatyöt ja muut rakennuksen huoltotyöt Joensuussa.</p>
+  <section class="section" id="yleista">
+    <h2 class="section-title">Yleistä</h2>
+    <p class="section-lead">
+      Tiedot yrityksestämme, palveluistamme ja työn tavasta. PintaPojat tekee
+      ulkomaalauksia, pohjatöitä ja rakennuksen huoltotöitä Joensuun seudulla.
+    </p>
 
-<div class="hero-buttons">
-<a class="btn btn-yellow" href="#arviointi">Varaa arviointikäynti</a>
-<a class="btn btn-white" href="#faq">Usein kysyttyä</a>
-<a class="btn btn-black" href="#ulkomaalaus">Katso palvelut</a>
-</div>
-</div>
+    <div class="general-grid">
+      <div class="box">
+        <h3>Tiedot yrityksestämme</h3>
+        <p>
+          PintaPojat keskittyy siistiin työnjälkeen, hyvään ulkonäköön ja
+          kestävään lopputulokseen. Maalaus ei ole vain uusi väri, vaan myös
+          oikea pohjatyö, oikeat tuotteet ja huolellinen toteutus.
+        </p>
+        <p>
+          Haluamme tehdä kohteista sellaisia, että ero näkyy selvästi.
+          Lopputuloksen kuuluu näyttää hyvältä heti ja kestää myös käyttöä
+          ja säätä.
+        </p>
 
-<div class="hero-card">
-<img src="pintapojat.mainos.jpg">
-<div class="hero-card-body">
-<h3>Tarjous ei maksa mitään</h3>
-<p>Sovitaan maalaus ja katsotaan kohde.</p>
-<a class="btn btn-yellow" href="#arviointi">Pyydä arvio</a>
-</div>
-</div>
+        <div class="placeholder-image" style="min-height:220px; margin-top:18px;">
+          Lisää tähän kuva teistä yhdessä
+        </div>
 
-</div>
-</section>
+        <div class="highlight-list">
+          <div class="highlight">Huolellinen työnjälki</div>
+          <div class="highlight">Selkeä ja näyttävä lopputulos</div>
+          <div class="highlight">Pohjatyöt kunnolla</div>
+          <div class="highlight">Arviointi helposti</div>
+        </div>
+      </div>
 
-<section class="section" id="arviointi">
+      <div class="box image-box">
+        <img src="cream-house.jpg" alt="Vaalea maalattu talo" />
+      </div>
+    </div>
+  </section>
 
-<h2 class="section-title">Arviointikäynnin varaus</h2>
+  <section class="section">
+    <div class="split-grid">
+      <div class="compare-card">
+        <div class="compare" data-start="50">
+          <img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Ennen" />
+          <img class="compare-after" src="tervapetsi.jälkeen.2025.jpeg" alt="Jälkeen" />
+          <div class="compare-line"></div>
+          <div class="compare-handle"></div>
+        </div>
+      </div>
 
-<div class="form-box">
+      <div class="box">
+        <h3>Ulkopinnat näyttävästi kuntoon</h3>
+        <p>
+          Hyvin tehty maalaus antaa rakennukselle ryhtiä ja viimeistellyn ilmeen.
+          Huolellinen työ näkyy sekä läheltä että pihatieltä katsottuna.
+        </p>
+        <p>
+          Samalla ulkopinnat pysyvät paremmassa kunnossa ja rakennuksen yleisilme
+          paranee selvästi.
+        </p>
+        <a class="btn btn-yellow" href="#ulkomaalaus">Tutustu ulkomaalaukseen</a>
+      </div>
+    </div>
+  </section>
 
-<form action="https://formspree.io/f/xeerkbjz" method="POST" enctype="multipart/form-data">
+  <section class="section" id="ulkomaalaus">
+    <h2 class="section-title">Ulkomaalaus</h2>
+    <p class="section-lead">
+      Talon ulkomaalaus tuo ilmeen kuntoon ja suojaa pintoja säältä.
+      Oikein tehtynä lopputulos näyttää siistiltä ja kestää pitkään.
+    </p>
 
-<div class="two-col">
-<input name="Nimi" placeholder="Nimi">
-<input name="Puhelin" placeholder="Puhelinnumero">
-</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="red-house.jpg" alt="Punainen talo" />
+        <div class="service-overlay">
+          <h3>Julkisivut</h3>
+          <p>Maalaukset omakotitaloihin, mökkeihin ja muihin rakennuksiin.</p>
+          <span class="tag">Ulkomaalaus</span>
+        </div>
+      </div>
 
-<div class="two-col">
-<input name="Sähköposti" type="email" placeholder="Sähköposti">
-<input name="Osoite" placeholder="Osoite">
-</div>
+      <div class="service-card">
+        <img src="cream-house.jpg" alt="Vaalea talo" />
+        <div class="service-overlay">
+          <h3>Huoltomaalaus</h3>
+          <p>Pintojen ehostus ja suojaus ennen kuin kuluminen etenee liian pitkälle.</p>
+          <span class="tag">Huoltomaalaus</span>
+        </div>
+      </div>
 
-<div class="two-col">
-<input name="Postinumero" placeholder="Postinumero">
-<input name="Paikkakunta" placeholder="Paikkakunta">
-</div>
+      <div class="service-card">
+        <img src="tervapetsi.jälkeen.2025.jpeg" alt="Hirsitalo jälkeen" />
+        <div class="service-overlay">
+          <h3>Hirsipinnat</h3>
+          <p>Petsi- ja käsittelyratkaisut, joissa puun ilme pääsee oikeuksiinsa.</p>
+          <span class="tag">Puu- ja hirsipinnat</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<textarea name="Työn kuvaus" placeholder="Kuvaus työstä"></textarea>
+  <section class="section">
+    <div class="split-grid">
+      <div class="box">
+        <h3>Selvä ero näkyy lopputuloksessa</h3>
+        <p>
+          Ennen/jälkeen-vertailu näyttää, miten paljon oikea käsittely vaikuttaa
+          pinnan sävyyn, siisteyteen ja yleisilmeeseen.
+        </p>
+      </div>
 
-<input type="file" name="Liite" multiple>
+      <div class="compare-card">
+        <div class="compare" data-start="48">
+          <img class="compare-before" src="red-before.jpg" alt="Ennen" />
+          <img class="compare-after" src="red-after.jpg" alt="Jälkeen" />
+          <div class="compare-line"></div>
+          <div class="compare-handle"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<button class="btn btn-yellow" type="submit">Lähetä varauspyyntö</button>
+  <section class="section" id="pohjatyot">
+    <h2 class="section-title">Pohjatyöt</h2>
+    <p class="section-lead">
+      Hyvä lopputulos alkaa pohjatöistä. Pesut, kaavinnat, suojaukset ja muut
+      valmistelut vaikuttavat suoraan siihen, miltä maalaus näyttää ja kuinka kauan se kestää.
+    </p>
 
-</form>
+    <div class="split-grid">
+      <div class="box">
+        <h3>Mitä pohjatöihin voi kuulua?</h3>
+        <div class="highlight-list">
+          <div class="highlight">Pintojen pesu</div>
+          <div class="highlight">Irtoavan maalin poisto</div>
+          <div class="highlight">Suojaus ennen maalausta</div>
+        </div>
+      </div>
 
-</div>
+      <div class="placeholder-image">
+        Lisää tähän myöhemmin kuva pohjatöistä
+      </div>
+    </div>
+  </section>
 
-</section>
+  <section class="section" id="huoltotyot">
+    <h2 class="section-title">Muut huoltotyöt</h2>
+    <p class="section-lead">
+      Kaikki kohteet eivät tarvitse vain maalia. Joskus tarvitaan myös yleistä
+      siistimistä, pientä kunnostusta ja rakennuksen ylläpitoon liittyviä töitä.
+    </p>
 
-<section class="section" id="palaute">
+    <div class="split-grid">
+      <div class="box">
+        <h3>Rakennuksen yleinen ylläpito</h3>
+        <p>
+          Pienet huoltotyöt oikeaan aikaan auttavat pitämään koko rakennuksen
+          ilmeen parempana. Samalla vältetään tilanteita, joissa korjaustarve
+          kasvaa turhaan suureksi.
+        </p>
+      </div>
 
-<h2 class="section-title">Palaute</h2>
+      <div class="placeholder-image">
+        Lisää tähän myöhemmin kuva huoltotöistä
+      </div>
+    </div>
+  </section>
 
-<div class="form-box">
+  <section class="section" id="faq">
+    <h2 class="section-title">Usein kysyttyjä kysymyksiä ulkomaalauksesta</h2>
 
-<form action="https://formspree.io/f/mgonyjen" method="POST">
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Kuinka usein talo kannattaa maalata?</h3>
+        <p>
+          Yleensä noin 10–15 vuoden välein, mutta huoltoväli riippuu pinnasta,
+          maalista, säästä ja siitä, miten hyvin aiemmat käsittelyt on tehty.
+        </p>
+      </div>
 
-<input name="Nimi" placeholder="Nimi">
+      <div class="faq-item">
+        <h3>Tarvitaanko pesu ennen maalausta?</h3>
+        <p>
+          Kyllä. Pinta pitää puhdistaa ennen maalausta, jotta uusi käsittely
+          tarttuu kunnolla ja lopputulos kestää.
+        </p>
+      </div>
 
-<textarea name="Palaute" placeholder="Kirjoita palaute"></textarea>
+      <div class="faq-item">
+        <h3>Voiko vanhan pinnan maalata suoraan?</h3>
+        <p>
+          Joskus voi, mutta usein tarvitaan ensin valmistelua. Siksi kohde
+          kannattaa arvioida ennen työn aloittamista.
+        </p>
+      </div>
 
-<button class="btn btn-black" type="submit">Lähetä palaute</button>
+      <div class="faq-item">
+        <h3>Milloin maalaus kannattaa tehdä?</h3>
+        <p>
+          Paras ajankohta riippuu säästä ja pinnasta, mutta yleensä kevät,
+          kesä ja alkusyksy ovat sopivinta aikaa ulkotöille.
+        </p>
+      </div>
 
-</form>
+      <div class="faq-item">
+        <h3>Kuinka kauan ulkomaalaus yleensä kestää?</h3>
+        <p>
+          Kesto riippuu kohteen koosta, säästä ja pohjatöiden määrästä, mutta
+          tavallinen omakotitalo voi valmistua muutamassa päivässä.
+        </p>
+      </div>
 
-</div>
+      <div class="faq-item">
+        <h3>Voiko sateella tai kostealla säällä maalata?</h3>
+        <p>
+          Ei yleensä kannata. Liiallinen kosteus heikentää lopputulosta, joten
+          oikea sääikkuna on tärkeä osa onnistunutta maalausta.
+        </p>
+      </div>
 
-</section>
+      <div class="faq-item">
+        <h3>Paljonko ulkomaalaus maksaa?</h3>
+        <p>
+          Hinta riippuu kohteen koosta, kunnosta ja pohjatöiden määrästä.
+        </p>
+      </div>
 
-<footer class="footer">
+      <div class="faq-item">
+        <h3>Voiko maalaus nostaa talon arvoa?</h3>
+        <p>
+          Siisti julkisivu parantaa rakennuksen yleisilmettä ja voi lisätä kiinnostusta myyntitilanteessa.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<div class="footer-inner">
+  <section class="section" id="arviointi">
+    <h2 class="section-title">Arviointikäynnin varaus</h2>
+    <p class="section-lead">
+      Tämä lomake avaa sähköpostin osoitteeseen pintapojat@gmail.com. Liitetiedoston voi valita, mutta kaikki selaimet eivät lähetä tiedostoa mailto-lomakkeella luotettavasti. Varmempi tapa liitteille on lähettää ne suoraan sähköpostilla.
+    </p>
 
-<div class="footer-card">
-<h2>PintaPojat</h2>
-<p>Joensuu</p>
-</div>
+    <div class="form-box">
+      <form action="mailto:pintapojat@gmail.com" method="post" enctype="text/plain">
+        <div class="two-col">
+          <div>
+            <label for="nimi">Nimi</label>
+            <input id="nimi" name="Nimi" type="text" placeholder="Kirjoita nimesi" />
+          </div>
 
-<div class="footer-card">
-<h3>Yhteystiedot</h3>
-<p>Sähköposti: pintapojat@gmail.com</p>
-<p>Puhelin: 040 123 4567</p>
-<p>Y-tunnus: 1234567-8</p>
-</div>
+          <div>
+            <label for="puhelin">Puhelinnumero</label>
+            <input id="puhelin" name="Puhelinnumero" type="text" placeholder="Esim. 040 123 4567" />
+          </div>
+        </div>
 
-</div>
+        <div class="two-col">
+          <div>
+            <label for="sahkoposti">Sähköposti</label>
+            <input id="sahkoposti" name="Sähköposti" type="email" placeholder="Esim. nimi@sahkoposti.fi" />
+          </div>
 
-</footer>
+          <div>
+            <label for="osoite">Kohteen osoite</label>
+            <input id="osoite" name="Osoite" type="text" placeholder="Esim. Katu 1" />
+          </div>
+        </div>
 
-<script>
+        <div class="two-col">
+          <div>
+            <label for="postinumero">Postinumero</label>
+            <input id="postinumero" name="Postinumero" type="text" placeholder="Esim. 80100" />
+          </div>
 
-const menuToggle=document.getElementById("menuToggle");
-const menu=document.getElementById("menu");
+          <div>
+            <label for="paikkakunta">Paikkakunta</label>
+            <input id="paikkakunta" name="Paikkakunta" type="text" placeholder="Esim. Joensuu" />
+          </div>
+        </div>
 
-menuToggle.addEventListener("click",()=>{
-menu.classList.toggle("open");
-});
+        <div>
+          <label for="kuvaus">Mitä kohteessa pitäisi tehdä?</label>
+          <textarea id="kuvaus" name="Työn kuvaus" placeholder="Kerro lyhyesti työstä"></textarea>
+        </div>
 
-document.querySelectorAll(".compare").forEach(wrap=>{
+        <div>
+          <label for="liite">Lisää kuvia tai muita tiedostoja kohteesta</label>
+          <input id="liite" name="Liite" type="file" multiple />
+        </div>
 
-let dragging=false;
+        <div>
+          <button class="btn btn-yellow" type="submit">Lähetä varauspyyntö</button>
+        </div>
+      </form>
+    </div>
+  </section>
 
-function move(x){
-let rect=wrap.getBoundingClientRect();
-let percent=(x-rect.left)/rect.width*100;
+  <section class="section" id="palaute">
+    <h2 class="section-title">Palaute</h2>
+    <p class="section-lead">
+      Tämä lomake avaa sähköpostin osoitteeseen pintapojat@gmail.com.
+    </p>
 
-wrap.querySelector(".compare-after").style.width=percent+"%";
-wrap.querySelector(".compare-line").style.left=percent+"%";
-wrap.querySelector(".compare-handle").style.left=percent+"%";
-}
+    <div class="form-box">
+      <form action="mailto:pintapojat@gmail.com" method="post" enctype="text/plain">
+        <div>
+          <label for="palautenimi">Nimi</label>
+          <input id="palautenimi" name="Nimi" type="text" placeholder="Kirjoita nimesi" />
+        </div>
 
-wrap.addEventListener("mousedown",e=>{
-dragging=true;
-move(e.clientX);
-});
+        <div>
+          <label for="palauteteksti">Palaute</label>
+          <textarea id="palauteteksti" name="Palaute" placeholder="Kirjoita palautteesi tähän"></textarea>
+        </div>
 
-window.addEventListener("mousemove",e=>{
-if(dragging)move(e.clientX);
-});
+        <div>
+          <button class="btn btn-black" type="submit">Lähetä palaute</button>
+        </div>
+      </form>
+    </div>
+  </section>
 
-window.addEventListener("mouseup",()=>dragging=false);
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-card">
+        <h2>PintaPojat</h2>
+        <p>Joensuu</p>
+        <p>Ulkomaalaukset • Pohjatyöt • Muut huoltotyöt</p>
+      </div>
 
-});
+      <div class="footer-card">
+        <h3>Yhteystiedot</h3>
+        <p><strong>Sähköposti:</strong> pintapojat@gmail.com</p>
+        <p><strong>Nimet:</strong> Matti Meikäläinen, Teppo Testinen</p>
+        <p><strong>Puhelinnumerot:</strong> 040 123 4567 / 040 765 4321</p>
+        <p><strong>Y-tunnus:</strong> 1234567-8</p>
+      </div>
+    </div>
+  </footer>
 
-</script>
+  <script>
+    function setCompare(compareWrap, value){
+      const after = compareWrap.querySelector(".compare-after");
+      const line = compareWrap.querySelector(".compare-line");
+      const handle = compareWrap.querySelector(".compare-handle");
+      const safeValue = Math.max(0, Math.min(100, Number(value)));
 
+      after.style.clipPath = `inset(0 ${100 - safeValue}% 0 0)`;
+      line.style.left = safeValue + "%";
+      handle.style.left = safeValue + "%";
+    }
+
+    document.querySelectorAll(".compare").forEach(wrap => {
+      const start = wrap.dataset.start || 50;
+      setCompare(wrap, start);
+
+      let dragging = false;
+
+      function updateFromPointer(clientX){
+        const rect = wrap.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const percent = (x / rect.width) * 100;
+        setCompare(wrap, percent);
+      }
+
+      wrap.addEventListener("mousedown", (e) => {
+        dragging = true;
+        updateFromPointer(e.clientX);
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if(!dragging) return;
+        updateFromPointer(e.clientX);
+      });
+
+      window.addEventListener("mouseup", () => {
+        dragging = false;
+      });
+
+      wrap.addEventListener("touchstart", (e) => {
+        dragging = true;
+        updateFromPointer(e.touches[0].clientX);
+      }, { passive:true });
+
+      window.addEventListener("touchmove", (e) => {
+        if(!dragging) return;
+        updateFromPointer(e.touches[0].clientX);
+      }, { passive:true });
+
+      window.addEventListener("touchend", () => {
+        dragging = false;
+      });
+    });
+
+    const menuToggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
+
+    menu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 860) {
+          menu.classList.remove("open");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
