@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<title>Pohjatyöt | Pintapojat</title>
 
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f4f4;
+}
+
+header{
+background:#1f2937;
+color:white;
+text-align:center;
+padding:60px;
+}
+
+section{
+max-width:900px;
+margin:auto;
+padding:40px;
+background:white;
+margin-top:20px;
+}
+
+.gallery{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+}
+
+.gallery img{
+width:600px;
+border-radius:10px;
+}
+
+button{
+font-size:30px;
+background:none;
+border:none;
+cursor:pointer;
+}
+
+.back{
+display:inline-block;
+margin-top:30px;
+background:#111827;
+color:white;
+padding:10px 20px;
+text-decoration:none;
+border-radius:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Pohjatyöt</h1>
+
+</header>
+
+<section>
+
+<p>
+Teemme kaikki tarvittavat pohjatyöt ennen maalausta:
+pesut, hionnat ja tasoitukset.
+</p>
+
+<div class="gallery">
+
+<button id="prev">◀</button>
+
+<img id="img" src="pohja1.jpg">
+
+<button id="next">▶</button>
+
+</div>
+
+<a href="index.html" class="back">← Takaisin etusivulle</a>
+
+</section>
+
+<script>
+
+const images=["pohja1.jpg","pohja2.jpg","pohja3.jpg"];
+let index=0;
+const img=document.getElementById("img");
+
+document.getElementById("next").onclick=()=>{
+index=(index+1)%images.length;
+img.src=images[index];
+};
+
+document.getElementById("prev").onclick=()=>{
+index=(index-1+images.length)%images.length;
+img.src=images[index];
+};
+
+</script>
+
+</body>
+</html>
