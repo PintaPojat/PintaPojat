@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PintaPojat | Ulkomaalaukset, pohjatyöt ja huoltotyöt</title>
+<title>PintaPojat | Maalaukset ja pienet pintaremontit</title>
 <link rel="icon" type="image/png" href="favicon.32.2.2.png" />
 <style>
 :root{
@@ -645,7 +645,7 @@ font-size:15px;
 <button class="menu-toggle" id="menuToggle" type="button">Valikko</button>
 <nav class="menu" id="menu">
 <a href="#yleista">Yleistä</a>
-<a href="#ulkomaalaus">Ulkomaalaus</a>
+<a href="#Julkisivumaalaus">Julkisivumaalaus</a>
 <a href="#pohjatyot">Pohjatyöt</a>
 <a href="#huoltotyot">Muut huoltotyöt</a>
 <a href="#faq">Usein kysyttyä</a>
@@ -669,6 +669,7 @@ font-size:15px;
 <a class="btn btn-yellow" href="#arviointi">Kysy ilmaista arviointikäyntiä</a>
 </div>
 <a class="btn btn-white" href="#faq">Katso mitä muut ovat kysyneet maalauksiin liittyen</a>
+</div>
 </div>
 </div>
 </div>
@@ -705,10 +706,10 @@ Lopputuloksen kuuluu näyttää hyvältä ja kestää myös käyttöä ja säät
 </div>
 </div>
 </section>
-<section class="section" id="ulkomaalaus">
-<h2 class="section-title">Ulkomaalaus</h2>
+<section class="section" id="Julkisivumaalaus">
+<h2 class="section-title">Julkisivumaalaus</h2>
 <p class="section-lead">
-Talon ulkomaalaus tuo ilmeen kuntoon ja suojaa pintoja säältä.
+Talon Julkisivumaalaus tuo ilmeen kuntoon ja suojaa pintoja säältä.
 Oikein tehtynä lopputulos näyttää siistiltä ja kestää pitkään.
 </p>
 <div class="services-grid">
@@ -717,7 +718,7 @@ Oikein tehtynä lopputulos näyttää siistiltä ja kestää pitkään.
 <div class="service-overlay">
 <h3>Julkisivut</h3>
 <p>Maalaukset omakotitaloihin, mökkeihin ja muihin rakennuksiin.</p>
-<button class="tag" type="button" data-service="ulkomaalaus">Ulkomaalaus</button>
+<button class="tag" type="button" data-service="Julkisivumaalaus">Julkisivumaalaus</button>
 </div>
 </div>
 <div class="service-card">
@@ -806,7 +807,7 @@ kannattaa arvioida ennen työn aloittamista.
 </div>
 </div>
 <div class="faq-item" tabindex="0" role="button" aria-expanded="false">
-<h3>Kuinka kauan ulkomaalaus yleensä kestää?</h3>
+<h3>Kuinka kauan maalaus yleensä kestää?</h3>
 <div class="faq-answer">
 <p>
 Kesto riippuu kohteen koosta, säästä ja pohjatöiden määrästä, mutta
@@ -824,7 +825,7 @@ oikea sääikkuna on tärkeä osa onnistunutta maalausta.
 </div>
 </div>
 <div class="faq-item" tabindex="0" role="button" aria-expanded="false">
-<h3>Paljonko ulkomaalaus maksaa?</h3>
+<h3>Paljonko maalaus maksaa?</h3>
 <div class="faq-answer">
 <p>
 Hinta riippuu kohteen koosta, kunnosta ja pohjatöiden määrästä.
@@ -920,7 +921,7 @@ Siisti julkisivu parantaa rakennuksen yleisilmettä ja voi lisätä kiinnostusta
 <div class="footer-card">
 <h2>PintaPojat</h2>
 <p>Joensuu</p>
-<p>Ulkomaalaukset • Pohjatyöt • Muut huoltotyöt</p>
+<p>Maalaukset • Pienet pintaremontit</p>
 </div>
 <div class="footer-card">
 <h3>Yhteystiedot</h3>
@@ -993,9 +994,9 @@ const serviceInfoBox = document.getElementById("serviceInfoBox");
 const serviceInfoTitle = document.getElementById("serviceInfoTitle");
 const serviceInfoText = document.getElementById("serviceInfoText");
 const serviceTexts = {
-ulkomaalaus: {
-title: "Ulkomaalaus",
-text: "Ulkomaalaus parantaa rakennuksen ulkonäköä ja suojaa pintoja säältä. Toteutus suunnitellaan kohteen pinnan, kunnon ja toivotun lopputuloksen mukaan."
+Julkisivumaalaus: {
+title: "Julkisivumaalaus",
+text: "Julkisivun maalaus parantaa rakennuksen ulkonäköä ja suojaa pintoja säältä. Toteutus suunnitellaan kohteen pinnan, kunnon ja toivotun lopputuloksen mukaan."
 },
 huoltomaalaus: {
 title: "Huoltomaalaus",
