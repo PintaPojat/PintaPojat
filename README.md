@@ -1,16 +1,46 @@
-## Hi there 👋
+# PintaPojat – Julkisivumaalaus Joensuussa
 
-<!--
-**PintaPojat/PintaPojat** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+PintaPojat tekee julkisivumaalauksia, huoltomaalauksia ja pieniä pintaremontteja Joensuussa sekä Joensuun seudulla.
 
-Here are some ideas to get you started:
+Sivusto:  
+https://pintapojat.fi
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Palvelut
+- Maalaus
+- Talonmaalaus
+- Julkisivumaalaus
+- Huoltomaalaus
+- Hirsipintojen käsittely
+- Sokkelimaalaus
+- Pienet pintaremontit
+
+## Toiminta-alue
+
+- Joensuu
+- Pohjois-Karjala
+- lähialueet
+
+## Arviointikäynti
+
+Voit pyytää ilmaisen arviointikäynnin sivun lomakkeella:
+
+https://pintapojat.fi/#arviointi
+
+## Yhteystiedot
+
+**Vilho Räisänen**  
+Puhelin: 044 980 5844  
+
+**Ilmari Sippola**  
+Puhelin: 045 7832 5502  
+
+Sähköposti:  
+pintapojat@gmail.com
+
+## Sivuston teknologia
+
+- HTML
+- CSS
+- JavaScript
+
+Sivusto on rakennettu kevyeksi ja toimii ilman erillisiä kirjastoja tai frameworkeja.
