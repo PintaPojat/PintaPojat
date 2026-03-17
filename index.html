@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
+<link rel="alternate" hreflang="fi" href="https://pintapojat.fi/" />
+<link rel="alternate" hreflang="en" href="https://pintapojat.fi/en.html" />
+<link rel="alternate" hreflang="sv" href="https://pintapojat.fi/sv.html" />
+<link rel="alternate" hreflang="x-default" href="https://pintapojat.fi/" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#101010" />
@@ -184,6 +188,52 @@
 </script>
 
 <style>
+.lang-switcher{
+display:flex;
+align-items:center;
+gap:8px;
+margin-left:auto;
+}
+
+.lang-switcher a{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:42px;
+height:38px;
+padding:0 12px;
+border-radius:999px;
+background:rgba(255,255,255,0.08);
+border:2px solid rgba(255,255,255,0.12);
+color:var(--white);
+font-size:13px;
+font-weight:800;
+letter-spacing:0.5px;
+transition:0.2s ease;
+}
+
+.lang-switcher a:hover,
+.lang-switcher a:focus-visible{
+background:var(--yellow);
+color:var(--black);
+border-color:var(--yellow);
+outline:none;
+}
+
+.lang-switcher a.active{
+background:var(--yellow);
+color:var(--black);
+border-color:var(--yellow);
+}
+
+@media (max-width: 860px){
+.lang-switcher{
+width:100%;
+justify-content:flex-end;
+margin-top:6px;
+}
+}
+
 :root{
 --yellow:#f0b400;
 --yellow-light:#ffd64a;
