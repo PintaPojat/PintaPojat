@@ -1457,222 +1457,252 @@
   </footer>
 
   <script>
-    function setCompare(compareWrap, value){
-      const after = compareWrap.querySelector(".compare-after");
-      const line = compareWrap.querySelector(".compare-line");
-      const handle = compareWrap.querySelector(".compare-handle");
-      const safeValue = Math.max(0, Math.min(100, Number(value)));
-      after.style.clipPath = `inset(0 ${100 - safeValue}% 0 0)`;
-      line.style.left = safeValue + "%";
-      handle.style.left = safeValue + "%";
+  function setCompare(compareWrap, value){
+    const after = compareWrap.querySelector(".compare-after");
+    const line = compareWrap.querySelector(".compare-line");
+    const handle = compareWrap.querySelector(".compare-handle");
+    const safeValue = Math.max(0, Math.min(100, Number(value)));
+    after.style.clipPath = `inset(0 ${100 - safeValue}% 0 0)`;
+    line.style.left = safeValue + "%";
+    handle.style.left = safeValue + "%";
+  }
+
+  document.querySelectorAll(".compare").forEach(wrap => {
+    const start = wrap.dataset.start || 50;
+    setCompare(wrap, start);
+    let dragging = false;
+
+    function updateFromPointer(clientX){
+      const rect = wrap.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const percent = (x / rect.width) * 100;
+      setCompare(wrap, percent);
     }
 
-    document.querySelectorAll(".compare").forEach(wrap => {
-      const start = wrap.dataset.start || 50;
-      setCompare(wrap, start);
-      let dragging = false;
+    wrap.addEventListener("mousedown", (e) => {
+      dragging = true;
+      updateFromPointer(e.clientX);
+    });
 
-      function updateFromPointer(clientX){
-        const rect = wrap.getBoundingClientRect();
-        const x = clientX - rect.left;
-        const percent = (x / rect.width) * 100;
-        setCompare(wrap, percent);
+    window.addEventListener("mousemove", (e) => {
+      if(!dragging) return;
+      updateFromPointer(e.clientX);
+    });
+
+    window.addEventListener("mouseup", () => {
+      dragging = false;
+    });
+
+    wrap.addEventListener("touchstart", (e) => {
+      dragging = true;
+      updateFromPointer(e.touches[0].clientX);
+    }, { passive:true });
+
+    window.addEventListener("touchmove", (e) => {
+      if(!dragging) return;
+      updateFromPointer(e.touches[0].clientX);
+    }, { passive:true });
+
+    window.addEventListener("touchend", () => {
+      dragging = false;
+    });
+  });
+
+  const menuToggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("menu");
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = menu.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  menu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 860) {
+        menu.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
       }
-
-      wrap.addEventListener("mousedown", (e) => {
-        dragging = true;
-        updateFromPointer(e.clientX);
-      });
-
-      window.addEventListener("mousemove", (e) => {
-        if(!dragging) return;
-        updateFromPointer(e.clientX);
-      });
-
-      window.addEventListener("mouseup", () => {
-        dragging = false;
-      });
-
-      wrap.addEventListener("touchstart", (e) => {
-        dragging = true;
-        updateFromPointer(e.touches[0].clientX);
-      }, { passive:true });
-
-      window.addEventListener("touchmove", (e) => {
-        if(!dragging) return;
-        updateFromPointer(e.touches[0].clientX);
-      }, { passive:true });
-
-      window.addEventListener("touchend", () => {
-        dragging = false;
-      });
     });
+  });
 
-    const menuToggle = document.getElementById("menuToggle");
-    const menu = document.getElementById("menu");
+  const serviceInfoBox = document.getElementById("serviceInfoBox");
+  const serviceInfoTitle = document.getElementById("serviceInfoTitle");
+  const serviceInfoText = document.getElementById("serviceInfoText");
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = menu.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  const serviceTexts = {
+    Julkisivumaalaus: {
+      title: "Julkisivumaalaus",
+      text: "Julkisivumaalaus suojaa rakennuksen ulkopintoja säältä, kosteudelta ja kulumiselta sekä pitää talon ilmeen siistinä. Ennen maalausta pinnat pestään ja irtoava maali poistetaan, jotta uusi maali tarttuu kunnolla ja kestää mahdollisimman pitkään. Huolellisesti tehty julkisivumaalaus parantaa rakennuksen ulkonäköä ja auttaa pitämään pinnat sekä rakenteet hyvässä kunnossa pitkään."
+    },
+    huoltomaalaus: {
+      title: "Huoltomaalaus",
+      text: "Huoltomaalaus tehdään silloin, kun maalipinta on alkanut kulua, mutta ei vielä vaadi laajempaa kunnostusta. Sen tarkoituksena on suojata pintaa ja hidastaa kulumisen etenemistä. Huoltomaalaus voi sisältää esimerkiksi pesun, kevyitä pohjatöitä ja uuden maalikerroksen lisäämisen. Oikeaan aikaan tehtynä se auttaa pidentämään maalipinnan käyttöikää ja säilyttämään rakennuksen siistin ulkonäön."
+    },
+    hirsipinnat: {
+      title: "Hirsipinnat",
+      text: "Hirsipintojen käsittelyssä käytetään yleensä kuullotetta tai muuta puunsuojaa, joka suojaa puuta säältä, kosteudelta ja auringon vaikutuksilta mutta jättää puun luonnollisen rakenteen näkyviin. Ennen käsittelyä pinnat puhdistetaan ja tarvittaessa huolletaan, jotta aine imeytyy kunnolla puuhun. Oikein tehty käsittely auttaa pitämään hirsipinnat hyvässä kunnossa ja pidentää niiden käyttöikää."
+    },
+    sokkelimaalaus: {
+      title: "Sokkelimaalaus",
+      text: "Sokkelin maalaus suojaa rakennuksen perustusta kosteudelta, lialta ja kulumiselta sekä viimeistelee talon ulkonäön. Ennen maalausta sokkelin pinta puhdistetaan huolellisesti ja irtoava maali tai lika poistetaan, jotta uusi maali tarttuu kunnolla. Tarvittaessa sokkelia voidaan myös korjata ennen maalausta, jos siinä on esimerkiksi halkeamia, lohkeamia tai muita vaurioita. Oikein tehty sokkelin maalaus auttaa pitämään sokkelin siistinä ja suojaa pintaa säävaihteluilta."
+    }
+  };
+
+  document.querySelectorAll(".tag[data-service]").forEach(tag => {
+    tag.addEventListener("click", () => {
+      const key = tag.dataset.service;
+      if (!serviceTexts[key]) return;
+      serviceInfoTitle.textContent = serviceTexts[key].title;
+      serviceInfoText.textContent = serviceTexts[key].text;
+      serviceInfoBox.classList.add("open");
+      serviceInfoBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
+  });
 
-    menu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth <= 860) {
-          menu.classList.remove("open");
-          menuToggle.setAttribute("aria-expanded", "false");
-        }
-      });
-    });
+  serviceInfoBox.addEventListener("click", () => {
+    serviceInfoBox.classList.remove("open");
+  });
 
-    const serviceInfoBox = document.getElementById("serviceInfoBox");
-    const serviceInfoTitle = document.getElementById("serviceInfoTitle");
-    const serviceInfoText = document.getElementById("serviceInfoText");
-
-    const serviceTexts = {
-      Julkisivumaalaus: {
-        title: "Julkisivumaalaus",
-        text: "Julkisivumaalaus suojaa rakennuksen ulkopintoja säältä, kosteudelta ja kulumiselta sekä pitää talon ilmeen siistinä. Ennen maalausta pinnat pestään ja irtoava maali poistetaan, jotta uusi maali tarttuu kunnolla ja kestää mahdollisimman pitkään. Huolellisesti tehty julkisivumaalaus parantaa rakennuksen ulkonäköä ja auttaa pitämään pinnat sekä rakenteet hyvässä kunnossa pitkään."
-      },
-      huoltomaalaus: {
-        title: "Huoltomaalaus",
-        text: "Huoltomaalaus tehdään silloin, kun maalipinta on alkanut kulua, mutta ei vielä vaadi laajempaa kunnostusta. Sen tarkoituksena on suojata pintaa ja hidastaa kulumisen etenemistä. Huoltomaalaus voi sisältää esimerkiksi pesun, kevyitä pohjatöitä ja uuden maalikerroksen lisäämisen. Oikeaan aikaan tehtynä se auttaa pidentämään maalipinnan käyttöikää ja säilyttämään rakennuksen siistin ulkonäön."
-      },
-      hirsipinnat: {
-        title: "Hirsipinnat",
-        text: "Hirsipintojen käsittelyssä käytetään yleensä kuullotetta tai muuta puunsuojaa, joka suojaa puuta säältä, kosteudelta ja auringon vaikutuksilta mutta jättää puun luonnollisen rakenteen näkyviin. Ennen käsittelyä pinnat puhdistetaan ja tarvittaessa huolletaan, jotta aine imeytyy kunnolla puuhun. Oikein tehty käsittely auttaa pitämään hirsipinnat hyvässä kunnossa ja pidentää niiden käyttöikää."
-      },
-      sokkelimaalaus: {
-        title: "Sokkelimaalaus",
-        text: "Sokkelin maalaus suojaa rakennuksen perustusta kosteudelta, lialta ja kulumiselta sekä viimeistelee talon ulkonäön. Ennen maalausta sokkelin pinta puhdistetaan huolellisesti ja irtoava maali tai lika poistetaan, jotta uusi maali tarttuu kunnolla. Tarvittaessa sokkelia voidaan myös korjata ennen maalausta, jos siinä on esimerkiksi halkeamia, lohkeamia tai muita vaurioita. Oikein tehty sokkelin maalaus auttaa pitämään sokkelin siistinä ja suojaa pintaa säävaihteluilta."
-      }
-    };
-
-    document.querySelectorAll(".tag[data-service]").forEach(tag => {
-      tag.addEventListener("click", () => {
-        const key = tag.dataset.service;
-        if (!serviceTexts[key]) return;
-        serviceInfoTitle.textContent = serviceTexts[key].title;
-        serviceInfoText.textContent = serviceTexts[key].text;
-        serviceInfoBox.classList.add("open");
-        serviceInfoBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      });
-    });
-
-    serviceInfoBox.addEventListener("click", () => {
+  serviceInfoBox.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       serviceInfoBox.classList.remove("open");
-    });
+    }
+  });
 
-    serviceInfoBox.addEventListener("keydown", (e) => {
+  function toggleFaqItem(item){
+    item.classList.toggle("open");
+    item.setAttribute("aria-expanded", item.classList.contains("open") ? "true" : "false");
+  }
+
+  document.querySelectorAll(".faq-item").forEach(item => {
+    item.addEventListener("click", () => {
+      toggleFaqItem(item);
+    });
+    item.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        serviceInfoBox.classList.remove("open");
-      }
-    });
-
-    function toggleFaqItem(item){
-      item.classList.toggle("open");
-      item.setAttribute("aria-expanded", item.classList.contains("open") ? "true" : "false");
-    }
-
-    document.querySelectorAll(".faq-item").forEach(item => {
-      item.addEventListener("click", () => {
         toggleFaqItem(item);
-      });
-      item.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggleFaqItem(item);
-        }
-      });
-    });
-
-    const arviointiForm = document.getElementById("arviointiForm");
-    const liiteInput = document.getElementById("liite");
-    const cloudinaryUrlsInput = document.getElementById("cloudinaryUrls");
-    const uploadStatus = document.getElementById("uploadStatus");
-    const uploadedFilesBox = document.getElementById("uploadedFiles");
-    const arviointiSubmitBtn = document.getElementById("arviointiSubmitBtn");
-
-    const CLOUD_NAME = "dk6vndv1o";
-    const UPLOAD_PRESET = "PintaPojat";
-
-    async function uploadFileToCloudinary(file){
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", UPLOAD_PRESET);
-
-      const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`, {
-        method: "POST",
-        body: formData
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.secure_url) {
-        throw new Error(data?.error?.message || "Upload epäonnistui");
       }
+    });
+  });
 
-      return data;
+  const arviointiForm = document.getElementById("arviointiForm");
+  const liiteInput = document.getElementById("liite");
+  const cloudinaryUrlsInput = document.getElementById("cloudinaryUrls");
+  const uploadStatus = document.getElementById("uploadStatus");
+  const uploadedFilesBox = document.getElementById("uploadedFiles");
+  const arviointiSubmitBtn = document.getElementById("arviointiSubmitBtn");
+
+  const CLOUD_NAME = "dk6vndv1o";
+  const UPLOAD_PRESET = "PintaPojat";
+
+  let selectedFiles = [];
+
+  function renderSelectedFiles() {
+    uploadedFilesBox.innerHTML = "";
+
+    if (selectedFiles.length === 0) {
+      return;
     }
 
-    arviointiForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const files = Array.from(liiteInput.files || []);
-      const originalButtonText = "Lähetä arviointipyyntö";
-
-      arviointiSubmitBtn.disabled = true;
-      arviointiSubmitBtn.textContent = "Lähetetään...";
-      uploadStatus.textContent = "";
-      uploadedFilesBox.innerHTML = "";
-
-      try {
-        const uploadedUrls = [];
-
-        if (files.length > 0) {
-          uploadStatus.textContent = "Ladataan tiedostoja...";
-
-          for (const file of files) {
-            const uploaded = await uploadFileToCloudinary(file);
-            uploadedUrls.push(uploaded.secure_url);
-
-            const item = document.createElement("div");
-            item.className = "uploaded-file";
-            item.innerHTML = `Ladattu: <a href="${uploaded.secure_url}" target="_blank" rel="noopener">${file.name}</a>`;
-            uploadedFilesBox.appendChild(item);
-          }
-        }
-
-        cloudinaryUrlsInput.value = uploadedUrls.join("\n");
-
-        const payload = new FormData(arviointiForm);
-
-        const response = await fetch(arviointiForm.action, {
-          method: "POST",
-          body: payload,
-          headers: {
-            "Accept": "application/json"
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error("Lomakkeen lähetys epäonnistui");
-        }
-
-        arviointiForm.reset();
-        cloudinaryUrlsInput.value = "";
-        uploadedFilesBox.innerHTML = "";
-        uploadStatus.textContent = "Kiitos! Pyyntö lähetettiin onnistuneesti.";
-        arviointiSubmitBtn.textContent = originalButtonText;
-        arviointiSubmitBtn.disabled = false;
-      } catch (err) {
-        console.error(err);
-        uploadStatus.textContent = "Lähetys epäonnistui. Tarkista asetukset ja yritä uudelleen.";
-        arviointiSubmitBtn.disabled = false;
-        arviointiSubmitBtn.textContent = originalButtonText;
-      }
+    selectedFiles.forEach((file, index) => {
+      const item = document.createElement("div");
+      item.className = "uploaded-file";
+      item.innerHTML = `
+        Valittu: ${file.name}
+        <button type="button" data-remove-index="${index}" style="margin-left:10px;">Poista</button>
+      `;
+      uploadedFilesBox.appendChild(item);
     });
-  </script>
+
+    uploadedFilesBox.querySelectorAll("button[data-remove-index]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const index = Number(btn.dataset.removeIndex);
+        selectedFiles.splice(index, 1);
+        renderSelectedFiles();
+      });
+    });
+  }
+
+  liiteInput.addEventListener("change", () => {
+    const newFiles = Array.from(liiteInput.files || []);
+    selectedFiles = [...selectedFiles, ...newFiles];
+    renderSelectedFiles();
+    liiteInput.value = "";
+  });
+
+  async function uploadFileToCloudinary(file){
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", UPLOAD_PRESET);
+
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`, {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.secure_url) {
+      throw new Error(data?.error?.message || "Upload epäonnistui");
+    }
+
+    return data;
+  }
+
+  arviointiForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const originalButtonText = "Lähetä arviointipyyntö";
+
+    arviointiSubmitBtn.disabled = true;
+    arviointiSubmitBtn.textContent = "Lähetetään...";
+    uploadStatus.textContent = "";
+
+    try {
+      const uploadedUrls = [];
+
+      if (selectedFiles.length > 0) {
+        uploadStatus.textContent = "Ladataan tiedostoja...";
+
+        for (const file of selectedFiles) {
+          const uploaded = await uploadFileToCloudinary(file);
+          uploadedUrls.push(uploaded.secure_url);
+        }
+      }
+
+      cloudinaryUrlsInput.value = uploadedUrls.join("\n");
+
+      const payload = new FormData(arviointiForm);
+
+      const response = await fetch(arviointiForm.action, {
+        method: "POST",
+        body: payload,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("Lomakkeen lähetys epäonnistui");
+      }
+
+      arviointiForm.reset();
+      selectedFiles = [];
+      cloudinaryUrlsInput.value = "";
+      uploadedFilesBox.innerHTML = "";
+      uploadStatus.textContent = "Kiitos! Pyyntö lähetettiin onnistuneesti.";
+      arviointiSubmitBtn.textContent = originalButtonText;
+      arviointiSubmitBtn.disabled = false;
+    } catch (err) {
+      console.error(err);
+      uploadStatus.textContent = "Lähetys epäonnistui. Tarkista asetukset ja yritä uudelleen.";
+      arviointiSubmitBtn.disabled = false;
+      arviointiSubmitBtn.textContent = originalButtonText;
+    }
+  });
+</script>
+  
 </body>
 </html>
