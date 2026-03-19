@@ -27,6 +27,9 @@
   <meta name="twitter:image" content="https://pintapojat.fi/red-after.jpg" />
 
   <link rel="preload" as="image" href="red-after.jpg" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
   {
@@ -156,7 +159,7 @@
         "name": "Voiko maalaus nostaa talon arvoa?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Siisti julkisivu parantaa rakennuksen yleisilmettä ja lisää kiinnostusta myyntitilanteessa. Lisäksi hyvä maalipinta tarkoittaa, että ostajan ei tarvitse heti tehdä huoltotöitä, mikä voi vaikuttaa positiivisesti talon hintaan."
+          "text": "Siisti julkisivu parantaa rakennuksen yleisilmettä ja voi lisätä kiinnostusta myyntitilanteessa."
         }
       }
     ]
@@ -176,6 +179,7 @@
       --max:1160px;
       --wide:1600px;
       --section-space:56px;
+      --text-font:'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     *{ box-sizing:border-box; }
@@ -191,8 +195,8 @@
       margin:0;
       background:var(--bg);
       color:var(--black);
-      font-family:Arial, Helvetica, sans-serif;
-      line-height:1.6;
+      font-family:var(--text-font);
+      line-height:1.65;
       overflow-x:hidden;
       width:100%;
       max-width:100%;
@@ -304,6 +308,7 @@
       line-height:1;
       transition:0.2s ease;
       white-space:nowrap;
+      font-family:var(--text-font);
     }
 
     .menu a:hover,
@@ -387,6 +392,7 @@
       text-align:center;
       font-size:15px;
       line-height:1.2;
+      font-family:var(--text-font);
     }
 
     .btn:hover,
@@ -430,6 +436,7 @@
       max-width:900px;
       color:#222;
       margin-bottom:22px;
+      font-family:var(--text-font);
     }
 
     .box{
@@ -440,29 +447,12 @@
       min-width:0;
     }
 
-    .image-box{
-      overflow:hidden;
-      padding:0;
-      width:100%;
-      max-width:100%;
-      margin:22px 0 0;
-      border-radius:24px;
-      box-shadow:var(--shadow);
-    }
-
-    .image-box img{
-      width:100%;
-      height:clamp(280px, 40vw, 540px);
-      object-fit:cover;
-      object-position:center center;
-    }
-
     .people-grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(340px, 380px));
       justify-content:center;
       gap:22px;
-      margin-top:22px;
+      margin:18px 0 24px;
     }
 
     .person-card{
@@ -512,6 +502,7 @@
       font-size:15px;
       line-height:1.48;
       word-break:break-word;
+      font-family:var(--text-font);
     }
 
     .person-info a:hover{
@@ -539,11 +530,16 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      transition:transform 0.35s ease;
+      transition:transform 0.35s ease, filter 0.35s ease;
     }
 
     .service-card:hover img{
       transform:scale(1.05);
+    }
+
+    .service-card.pintaremontit-card:hover img{
+      transform:scale(1.08);
+      filter:blur(3px) brightness(0.85);
     }
 
     .service-overlay{
@@ -569,6 +565,7 @@
       font-size:15px;
       line-height:1.45;
       max-width:26ch;
+      font-family:var(--text-font);
     }
 
     .tag{
@@ -586,6 +583,7 @@
       border:none;
       font-size:14px;
       line-height:1.1;
+      font-family:var(--text-font);
     }
 
     .tag:focus-visible{
@@ -610,6 +608,10 @@
     .service-info-box h3{
       font-size:28px;
       margin-bottom:8px;
+    }
+
+    .service-info-box p{
+      font-family:var(--text-font);
     }
 
     .compare-card{
@@ -702,7 +704,7 @@
     }
 
     .process-step h3{
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:var(--text-font);
       text-transform:none;
       letter-spacing:0;
       font-size:20px;
@@ -716,6 +718,7 @@
       font-size:15px;
       color:#555;
       max-width:58ch;
+      font-family:var(--text-font);
     }
 
     .process-images{
@@ -729,6 +732,7 @@
       background:var(--white);
       box-shadow:var(--shadow);
       overflow:hidden;
+      border-radius:24px;
     }
 
     .process-photo img{
@@ -767,6 +771,7 @@
       display:none;
       font-size:15px;
       color:#242424;
+      font-family:var(--text-font);
     }
 
     .faq-item.open .faq-answer{
@@ -783,6 +788,7 @@
       margin-bottom:4px;
       display:block;
       font-size:15px;
+      font-family:var(--text-font);
     }
 
     input, textarea{
@@ -792,6 +798,7 @@
       border:2px solid #ddd;
       font-size:16px;
       background:#fff;
+      font-family:var(--text-font);
     }
 
     input:focus,
@@ -824,6 +831,7 @@
       font-size:14px;
       color:#333;
       margin-top:4px;
+      font-family:var(--text-font);
     }
 
     #uploadedFiles{
@@ -838,6 +846,7 @@
       border-radius:12px;
       font-size:14px;
       word-break:break-word;
+      font-family:var(--text-font);
     }
 
     .uploaded-file button{
@@ -895,6 +904,7 @@
       line-height:1.45;
       word-break:break-word;
       color:#f0f0f0;
+      font-family:var(--text-font);
     }
 
     .footer a{
@@ -927,6 +937,7 @@
       border-radius:999px;
       line-height:1.1;
       box-shadow:var(--shadow-soft);
+      font-family:var(--text-font);
     }
 
     @media (max-width: 1180px){
@@ -1047,25 +1058,10 @@
         margin-bottom:16px;
       }
 
-      .image-box{
-        overflow:hidden;
-        padding:0;
-        width:100vw;
-        max-width:100vw;
-        margin-left:calc(50% - 50vw);
-        margin-right:calc(50% - 50vw);
-        border-radius:0;
-        box-shadow:none;
-      }
-
-      .image-box img{
-        height:250px;
-      }
-
       .people-grid{
         grid-template-columns:1fr;
         gap:12px;
-        margin-top:14px;
+        margin:14px 0 18px;
       }
 
       .person-card{
@@ -1184,6 +1180,7 @@
       }
 
       .process-photo{
+        border-radius:0;
         box-shadow:none;
       }
 
@@ -1264,10 +1261,6 @@
         padding:0 14px 24px;
       }
 
-      .image-box img{
-        height:220px;
-      }
-
       .service-card{
         height:228px;
         min-height:228px;
@@ -1324,9 +1317,6 @@
 
     <section class="section" id="keita-olemme">
       <h2 class="section-title">Keitä olemme</h2>
-      <p class="section-lead">
-        PintaPojat on kahdesta joensuulaisesta yrittäjästä, Vilho Räisäsestä ja Ilmari Sippolasta, koostuva yritys. Toteutamme julkisivu- ja huoltomaalauksia sekä pieniä pintaremontteja Joensuun seudulla ja lähialueilla. Keskitymme siistiin, kestävään ja hyvännäköiseen lopputulokseen. Talo ei saa maalauksesta vain uutta ilmettä, vaan myös paremman suojan säätä, kosteutta ja kulumista vastaan.
-      </p>
 
       <div class="people-grid">
         <div class="person-card">
@@ -1354,8 +1344,17 @@
         </div>
       </div>
 
-      <div class="box image-box">
-        <img src="cream-house.jpg" alt="Vaalea omakotitalo julkisivumaalauksen jälkeen Joensuussa" loading="lazy" decoding="async" />
+      <p class="section-lead">
+        PintaPojat on kahdesta joensuulaisesta yrittäjästä, Vilho Räisäsestä ja Ilmari Sippolasta, koostuva yritys. Toteutamme julkisivu- ja huoltomaalauksia sekä pieniä pintaremontteja Joensuun seudulla ja lähialueilla. Keskitymme siistiin, kestävään ja hyvännäköiseen lopputulokseen. Talo ei saa maalauksesta vain uutta ilmettä, vaan myös paremman suojan säätä, kosteutta ja kulumista vastaan.
+      </p>
+
+      <div class="compare-card" style="margin-top:20px;">
+        <div class="compare" data-start="50" aria-label="Vertailukuva ennen ja jälkeen ulkopinnan käsittelyn">
+          <img class="compare-before" src="red-before.jpg" alt="Talo ennen käsittelyä" loading="lazy" decoding="async" />
+          <img class="compare-after" src="red-after.jpg" alt="Talo käsittelyn jälkeen" loading="lazy" decoding="async" />
+          <div class="compare-line"></div>
+          <div class="compare-handle"></div>
+        </div>
       </div>
     </section>
 
@@ -1384,7 +1383,7 @@
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card pintaremontit-card">
           <img src="red-after.jpg" alt="Talon ulkopinnan pieni pintaremontti valmiina" loading="lazy" decoding="async" />
           <div class="service-overlay">
             <h3>Pintaremontit</h3>
@@ -1412,80 +1411,71 @@
     <section class="section" id="urakka">
       <h2 class="section-title">Kuinka urakka toteutuu</h2>
       <p class="section-lead">
-        Selkeä eteneminen tekee projektista sujuvan sekä meille että asiakkaalle. Käymme työn vaiheet läpi etukäteen, sovimme käytännön asiat selvästi ja etenemme huolellisesti alusta loppuun.
+        Kun työ etenee suunnitelmallisesti, koko urakka pysyy asiakkaalle selkeänä. Käymme vaiheet läpi etukäteen, sovimme käytännön asiat rauhassa ja etenemme järjestelmällisesti alusta loppuun.
       </p>
-
-      <div class="compare-card" style="margin-top:20px;">
-        <div class="compare" data-start="50" aria-label="Vertailukuva ennen ja jälkeen käsittelyn">
-          <img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Hirsimökki ennen käsittelyä" loading="lazy" decoding="async" />
-          <img class="compare-after" src="tervapetsi.jälkeen.2025.jpeg" alt="Hirsimökki käsittelyn jälkeen" loading="lazy" decoding="async" />
-          <div class="compare-line"></div>
-          <div class="compare-handle"></div>
-        </div>
-      </div>
 
       <div class="process-layout">
         <div class="process-steps">
           <div class="process-step">
             <h3>1. Arviointikäynti</h3>
-            <p>Käymme kohteessa paikan päällä arvioimassa työn laajuuden, pinnat, mahdolliset korjaustarpeet ja sopivat toteutustavat. Samalla saat realistisen kuvan siitä, mitä työ käytännössä sisältää.</p>
+            <p>Käymme katsomassa kohteen paikan päällä, jotta näemme pintojen nykykunnon, työn laajuuden ja mahdolliset korjaustarpeet. Näin voimme ehdottaa juuri kohteeseen sopivaa toteutusta.</p>
           </div>
 
           <div class="process-step">
             <h3>2. Tarjous</h3>
-            <p>Arvioinnin jälkeen annamme selkeän tarjouksen, jossa työn sisältö, laajuus ja kokonaisuus ovat helposti ymmärrettävissä. Näin tiedät tarkasti, mitä olet tilaamassa.</p>
+            <p>Arvioinnin pohjalta laadimme tarjouksen, jossa työn sisältö on selkeästi kuvattu. Tavoite on, että asiakas tietää tarkasti mitä tehdään ja mistä kokonaisuus muodostuu.</p>
           </div>
 
           <div class="process-step">
             <h3>3. Aikataulusta ja yksityiskohdista sopiminen</h3>
-            <p>Kun tarjous hyväksytään, sovimme työn ajankohdan, käytännön järjestelyt, mahdolliset materiaalivalinnat sekä muut yksityiskohdat. Näin urakka pääsee alkamaan ilman epäselvyyksiä.</p>
+            <p>Kun työ päätetään toteuttaa, sovimme ajankohdan ja käymme läpi käytännön asiat, kuten valmistelut, kulkureitit, materiaalit ja muut työn kannalta tärkeät yksityiskohdat.</p>
           </div>
 
           <div class="process-step">
             <h3>4. Valmistelut</h3>
-            <p>Ennen maalaustyön aloittamista asennamme työmaa-aikaiset telineet sekä teemme tarvittavat suojaukset, kuten terassin suojaukset, pihakiveyksen suojaukset sekä muun ympäristön suojaamisen.</p>
+            <p>Ennen varsinaista työn aloitusta suojaamme ympäristön huolellisesti ja järjestämme työskentelyn turvalliseksi. Näin piha, terassit ja muut pinnat pysyvät suojattuina työn aikana.</p>
           </div>
 
           <div class="process-step">
-            <h3>5. Pohjatyöt maalaukseen huolellisesti</h3>
-            <p>Teemme pohjatyöt huolellisesti. Puhdistamme pinnat, pesemme homeen ja lian pois ja korjaamme ennalta sovitut lahovauriot jos niitä on. Poistamme hilseilevän maalin ja pohjamaalaamme kaikki paljaat puuosat.</p>
+            <h3>5. Pohjatyöt tehdään huolella</h3>
+            <p>Kestävä lopputulos syntyy hyvistä pohjatöistä. Puhdistamme pinnat, poistamme irtoavan maalin, käsittelemme tarvittavat kohdat ja varmistamme, että pinta on valmis uutta maalia varten.</p>
           </div>
 
           <div class="process-step">
-            <h3>6. Maalarit aloittavat maalauksen</h3>
-            <p>Maalarit voivat aloittaa varsinaisen maalaustyön. Teemme pintamaalauksen kohteesta riippuen yhteen tai kahteen kertaan. Maalaustyön teemme aina käsin pensselillä. Maalaustyössä maalarimme käyttää apuna maalia telalla tai maaliruiskua kohteen sen mahdollistaessa.</p>
+            <h3>6. Varsinainen maalaus alkaa</h3>
+            <p>Kun pohjat ovat kunnossa, siirrymme pintakäsittelyyn. Työ tehdään kohteen mukaan sopivalla tavalla, jotta lopputulos on siisti, tasainen ja aikaa kestävä.</p>
           </div>
 
           <div class="process-step">
-            <h3>7. Tarkistamme kanssasi maalauksen laadun</h3>
-            <p>Kun maalaus on tehty, tarkistamme yhdessä kanssasi maalauksen laadun. Kierrämme ja katsomme, että työn jälki on moitteetonta. Kannustamme asiakkaita huomauttamaan mahdollisista puutteista. Mikäli puutteita löytyy, reippaat maalarimme paikkaa maalaavat heti kyseiset kohdat.</p>
+            <h3>7. Lopputulos käydään yhdessä läpi</h3>
+            <p>Valmiin työn jälkeen tarkistamme lopputuloksen asiakkaan kanssa. Jos esiin tulee huomioita, ne hoidetaan kuntoon, jotta lopullinen työnjälki vastaa odotuksia.</p>
           </div>
 
           <div class="process-step">
-            <h3>8. Maalaustyömaa siistiksi</h3>
-            <p>Kun saamme sovitun maalausurakan täysin valmiiksi, siivoamme työmaan huolellisesti sekä viemme jätteet kierrätykseen.</p>
+            <h3>8. Työmaa siistitään</h3>
+            <p>Kun urakka on valmis, siivoamme jäljet huolellisesti. Keräämme materiaalit pois, huolehdimme ympäristön siisteydestä ja viemme jätteet asianmukaisesti pois.</p>
           </div>
 
           <div class="process-step">
-            <h3>9. Valmis!</h3>
-            <p>Tarkistamme vielä kertaalleen, että työn jälki on moitteetonta. Teemme lopputarkastuksen, josta sinulle jää lopputarkastuspöytäkirja talon huoltohistoriaan. Asiakas hyväksyy kohteen jolloin voimme laskuttaa sopimuksen mukaan.</p>
+            <h3>9. Kohde on valmis</h3>
+            <p>Lopuksi kohde luovutetaan asiakkaalle valmiina. Tavoitteena on, että lopputulos näyttää hyvältä heti ja kestää käyttöä sekä säätä pitkälle eteenpäin.</p>
           </div>
         </div>
 
         <div class="process-images">
           <div class="process-photo">
-            <img src="red-house.jpg" alt="Maalari työskentelemässä ulkoverhouksen parissa" loading="lazy" decoding="async" />
+            <img src="cream-house.jpg" alt="Vaalea talo valmiina maalauksen jälkeen" loading="lazy" decoding="async" />
           </div>
           <div class="process-photo">
-            <img src="red-after.jpg" alt="Maalari viimeistelemässä ulkopintaa" loading="lazy" decoding="async" />
+            <img src="red-house.jpg" alt="Maalattu talon julkisivu" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
 
       <div class="compare-card" style="margin-top:24px;">
-        <div class="compare" data-start="50" aria-label="Vertailukuva pintaremontista ennen ja jälkeen">
-          <img class="compare-before" src="red-before.jpg" alt="Punainen talo ennen pintaremonttia" loading="lazy" decoding="async" />
-          <img class="compare-after" src="red-after.jpg" alt="Punainen talo pintaremontin jälkeen" loading="lazy" decoding="async" />
+        <div class="compare" data-start="50" aria-label="Vertailukuva ennen ja jälkeen pintaremontin">
+          <img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Pinta ennen käsittelyä" loading="lazy" decoding="async" />
+          <img class="compare-after" src="tervapetsi.jälkeen.2025.jpeg" alt="Pinta käsittelyn jälkeen" loading="lazy" decoding="async" />
           <div class="compare-line"></div>
           <div class="compare-handle"></div>
         </div>
@@ -1737,7 +1727,7 @@
       },
       huoltomaalaus: {
         title: "Huoltomaalaus",
-        text: "Huoltomaalaus tehdään silloin, kun maalipinta on alkanut kulua, mutta ei vielä vaadi laajempaa kunnostusta. Sen tarkoituksena on suojata pintaa ja hidastaa kulumisen etenemistä."
+        text: "Huoltomaalaus tehdään silloin, kun maalipinta on alkanut kulua, mutta ei vielä vaadi laajempaa kunnostusta. Sen tarkoituksena on pidentää pinnan käyttöikää ja pitää rakennuksen ilme siistinä."
       },
       pintaremontit: {
         title: "Pienet pintaremontit",
