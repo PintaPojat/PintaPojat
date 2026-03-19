@@ -348,6 +348,9 @@
       max-width:760px;
       display:grid;
       gap:14px;
+      margin:0 auto;
+      align-items:center;
+      text-align:center;
     }
 
     .eyebrow{
@@ -363,6 +366,7 @@
       font-size:16px;
       box-shadow:var(--shadow-soft);
       font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      margin:0 auto;
     }
 
     .hero-copy h1{
@@ -375,6 +379,7 @@
       flex-wrap:wrap;
       gap:12px;
       padding-top:2px;
+      justify-content:center;
     }
 
     .btn{
@@ -425,18 +430,28 @@
       scroll-margin-top:94px;
     }
 
+    #keita-olemme{
+      margin-top:40px;
+    }
+
     .section-title{
       font-size:clamp(32px, 4.5vw, 58px);
       margin-bottom:8px;
       line-height:0.98;
+      text-align:center;
     }
 
     .section-lead{
       font-size:17px;
-      max-width:900px;
+      max-width:760px;
       color:#222;
-      margin-bottom:22px;
+      margin:0 auto 22px;
       font-family:var(--text-font);
+      text-align:center;
+    }
+
+    #urakka .section-lead{
+      color:#000;
     }
 
     .box{
@@ -685,12 +700,25 @@
       color:var(--black);
     }
 
-    .process-layout{
+    .process-split{
       display:grid;
-      grid-template-columns:1.05fr 0.95fr;
-      gap:26px;
-      align-items:start;
+      gap:40px;
       margin-top:24px;
+    }
+
+    .process-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .process-row.reverse{
+      direction:rtl;
+    }
+
+    .process-row.reverse > *{
+      direction:ltr;
     }
 
     .process-steps{
@@ -719,13 +747,6 @@
       color:#555;
       max-width:58ch;
       font-family:var(--text-font);
-    }
-
-    .process-images{
-      display:grid;
-      gap:22px;
-      position:sticky;
-      top:100px;
     }
 
     .process-photo{
@@ -889,6 +910,7 @@
       font-size:30px;
       line-height:1;
       margin-bottom:6px;
+      text-align:left;
     }
 
     .footer-card h3{
@@ -905,6 +927,7 @@
       word-break:break-word;
       color:#f0f0f0;
       font-family:var(--text-font);
+      text-align:left;
     }
 
     .footer a{
@@ -949,12 +972,12 @@
     @media (max-width: 980px){
       .faq-grid,
       .footer-inner,
-      .process-layout{
+      .process-row{
         grid-template-columns:1fr;
       }
 
-      .process-images{
-        position:static;
+      .process-row.reverse{
+        direction:ltr;
       }
     }
 
@@ -1056,6 +1079,7 @@
       .section-lead{
         font-size:16px;
         margin-bottom:16px;
+        max-width:100%;
       }
 
       .people-grid{
@@ -1158,9 +1182,13 @@
         font-size:18px;
       }
 
-      .process-layout{
-        gap:18px;
+      .process-split{
+        gap:24px;
         margin-top:18px;
+      }
+
+      .process-row{
+        gap:18px;
       }
 
       .process-steps{
@@ -1173,10 +1201,6 @@
 
       .process-step p{
         font-size:14px;
-      }
-
-      .process-images{
-        gap:14px;
       }
 
       .process-photo{
@@ -1414,70 +1438,66 @@
         Kun työ etenee suunnitelmallisesti, koko urakka pysyy asiakkaalle selkeänä. Käymme vaiheet läpi etukäteen, sovimme käytännön asiat rauhassa ja etenemme järjestelmällisesti alusta loppuun.
       </p>
 
-      <div class="process-layout">
-        <div class="process-steps">
-          <div class="process-step">
-            <h3>1. Arviointikäynti</h3>
-            <p>Käymme katsomassa kohteen paikan päällä, jotta näemme pintojen nykykunnon, työn laajuuden ja mahdolliset korjaustarpeet. Näin voimme ehdottaa juuri kohteeseen sopivaa toteutusta.</p>
+      <div class="process-split">
+        <div class="process-row">
+          <div class="process-steps">
+            <div class="process-step">
+              <h3>1. Arviointikäynti</h3>
+              <p>Käymme katsomassa kohteen paikan päällä, jotta näemme pintojen nykykunnon, työn laajuuden ja mahdolliset korjaustarpeet. Näin voimme ehdottaa juuri kohteeseen sopivaa toteutusta.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>2. Tarjous</h3>
+              <p>Arvioinnin pohjalta laadimme tarjouksen, jossa työn sisältö on selkeästi kuvattu. Tavoite on, että asiakas tietää tarkasti mitä tehdään ja mistä kokonaisuus muodostuu.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>3. Aikataulusta ja yksityiskohdista sopiminen</h3>
+              <p>Kun työ päätetään toteuttaa, sovimme ajankohdan ja käymme läpi käytännön asiat, kuten valmistelut, kulkureitit, materiaalit ja muut työn kannalta tärkeät yksityiskohdat.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>4. Valmistelut</h3>
+              <p>Ennen varsinaista työn aloitusta suojaamme ympäristön huolellisesti ja järjestämme työskentelyn turvalliseksi. Näin piha, terassit ja muut pinnat pysyvät suojattuina työn aikana.</p>
+            </div>
           </div>
 
-          <div class="process-step">
-            <h3>2. Tarjous</h3>
-            <p>Arvioinnin pohjalta laadimme tarjouksen, jossa työn sisältö on selkeästi kuvattu. Tavoite on, että asiakas tietää tarkasti mitä tehdään ja mistä kokonaisuus muodostuu.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>3. Aikataulusta ja yksityiskohdista sopiminen</h3>
-            <p>Kun työ päätetään toteuttaa, sovimme ajankohdan ja käymme läpi käytännön asiat, kuten valmistelut, kulkureitit, materiaalit ja muut työn kannalta tärkeät yksityiskohdat.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>4. Valmistelut</h3>
-            <p>Ennen varsinaista työn aloitusta suojaamme ympäristön huolellisesti ja järjestämme työskentelyn turvalliseksi. Näin piha, terassit ja muut pinnat pysyvät suojattuina työn aikana.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>5. Pohjatyöt tehdään huolella</h3>
-            <p>Kestävä lopputulos syntyy hyvistä pohjatöistä. Puhdistamme pinnat, poistamme irtoavan maalin, käsittelemme tarvittavat kohdat ja varmistamme, että pinta on valmis uutta maalia varten.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>6. Varsinainen maalaus alkaa</h3>
-            <p>Kun pohjat ovat kunnossa, siirrymme pintakäsittelyyn. Työ tehdään kohteen mukaan sopivalla tavalla, jotta lopputulos on siisti, tasainen ja aikaa kestävä.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>7. Lopputulos käydään yhdessä läpi</h3>
-            <p>Valmiin työn jälkeen tarkistamme lopputuloksen asiakkaan kanssa. Jos esiin tulee huomioita, ne hoidetaan kuntoon, jotta lopullinen työnjälki vastaa odotuksia.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>8. Työmaa siistitään</h3>
-            <p>Kun urakka on valmis, siivoamme jäljet huolellisesti. Keräämme materiaalit pois, huolehdimme ympäristön siisteydestä ja viemme jätteet asianmukaisesti pois.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>9. Kohde on valmis</h3>
-            <p>Lopuksi kohde luovutetaan asiakkaalle valmiina. Tavoitteena on, että lopputulos näyttää hyvältä heti ja kestää käyttöä sekä säätä pitkälle eteenpäin.</p>
-          </div>
-        </div>
-
-        <div class="process-images">
           <div class="process-photo">
             <img src="cream-house.jpg" alt="Vaalea talo valmiina maalauksen jälkeen" loading="lazy" decoding="async" />
           </div>
+        </div>
+
+        <div class="process-row reverse">
           <div class="process-photo">
             <img src="red-house.jpg" alt="Maalattu talon julkisivu" loading="lazy" decoding="async" />
           </div>
-        </div>
-      </div>
 
-      <div class="compare-card" style="margin-top:24px;">
-        <div class="compare" data-start="50" aria-label="Vertailukuva ennen ja jälkeen pintaremontin">
-          <img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Pinta ennen käsittelyä" loading="lazy" decoding="async" />
-          <img class="compare-after" src="tervapetsi.jälkeen.2025.jpeg" alt="Pinta käsittelyn jälkeen" loading="lazy" decoding="async" />
-          <div class="compare-line"></div>
-          <div class="compare-handle"></div>
+          <div class="process-steps">
+            <div class="process-step">
+              <h3>5. Pohjatyöt tehdään huolella</h3>
+              <p>Kestävä lopputulos syntyy hyvistä pohjatöistä. Puhdistamme pinnat, poistamme irtoavan maalin, käsittelemme tarvittavat kohdat ja varmistamme, että pinta on valmis uutta maalia varten.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>6. Varsinainen maalaus alkaa</h3>
+              <p>Kun pohjat ovat kunnossa, siirrymme pintakäsittelyyn. Työ tehdään kohteen mukaan sopivalla tavalla, jotta lopputulos on siisti, tasainen ja aikaa kestävä.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>7. Lopputulos käydään yhdessä läpi</h3>
+              <p>Valmiin työn jälkeen tarkistamme lopputuloksen asiakkaan kanssa. Jos esiin tulee huomioita, ne hoidetaan kuntoon, jotta lopullinen työnjälki vastaa odotuksia.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>8. Työmaa siistitään</h3>
+              <p>Kun urakka on valmis, siivoamme jäljet huolellisesti. Keräämme materiaalit pois, huolehdimme ympäristön siisteydestä ja viemme jätteet asianmukaisesti pois.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>9. Kohde on valmis</h3>
+              <p>Lopuksi kohde luovutetaan asiakkaalle valmiina. Tavoitteena on, että lopputulos näyttää hyvältä heti ja kestää käyttöä sekä säätä pitkälle eteenpäin.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1532,6 +1552,15 @@
           <div class="faq-answer">
             <p>Siisti julkisivu parantaa rakennuksen yleisilmettä ja voi lisätä kiinnostusta myyntitilanteessa.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="compare-card" style="margin-top:24px;">
+        <div class="compare" data-start="50" aria-label="Vertailukuva ennen ja jälkeen pintakäsittelyn">
+          <img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Pinta ennen käsittelyä" loading="lazy" decoding="async" />
+          <img class="compare-after" src="tervapetsi.jälkeen.2025.jpeg" alt="Pinta käsittelyn jälkeen" loading="lazy" decoding="async" />
+          <div class="compare-line"></div>
+          <div class="compare-handle"></div>
         </div>
       </div>
     </section>
