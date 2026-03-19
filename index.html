@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#101010" />
 
   <title>Nopea & siisti talon maalaus Joensuussa | PintaPojat</title>
-  <meta name="description" content="PintaPojat tekee julkisivumaalauksia, talomaalauksia, huoltomaalauksia, hirsipintojen käsittelyä, sokkelimaalauksia ja pieniä pintaremontteja Joensuussa ja Joensuun seudulla. Pyydä ilmainen arviointikäynti." />
+  <meta name="description" content="PintaPojat tekee julkisivumaalauksia, huoltomaalauksia, sokkelimaalauksia ja pieniä pintaremontteja Joensuussa ja Joensuun seudulla. Pyydä ilmainen arviointikäynti." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://pintapojat.fi/" />
   <link rel="icon" type="image/png" href="favicon.32.2.2.png" />
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fi_FI" />
   <meta property="og:title" content="Nopea & siisti talomaalaus Joensuussa | PintaPojat" />
-  <meta property="og:description" content="PintaPojat tekee julkisivumaalauksia, huoltomaalauksia, hirsipintojen käsittelyä, sokkelimaalauksia ja pieniä pintaremontteja Joensuun seudulla." />
+  <meta property="og:description" content="PintaPojat tekee julkisivumaalauksia, huoltomaalauksia, sokkelimaalauksia ja pieniä pintaremontteja Joensuun seudulla." />
   <meta property="og:url" content="https://pintapojat.fi/" />
   <meta property="og:site_name" content="PintaPojat" />
   <meta property="og:image" content="https://pintapojat.fi/red-after.jpg" />
@@ -23,7 +23,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Nopea & siisti talomaalaus Joensuussa | PintaPojat" />
-  <meta name="twitter:description" content="Julkisivumaalaus, huoltomaalaus, hirsipintojen käsittely ja sokkelimaalaus Joensuun seudulla." />
+  <meta name="twitter:description" content="Julkisivumaalaus, huoltomaalaus, sokkelimaalaus ja pienet pintaremontit Joensuun seudulla." />
   <meta name="twitter:image" content="https://pintapojat.fi/red-after.jpg" />
 
   <link rel="preload" as="image" href="red-after.jpg" fetchpriority="high" />
@@ -45,7 +45,7 @@
     "email": "pintapojat@gmail.com",
     "telephone": "+358449805844",
     "priceRange": "€€",
-    "description": "PintaPojat tekee julkisivumaalauksia, talomaalauksia, huoltomaalauksia, hirsipintojen käsittelyä, sokkelimaalauksia ja pieniä pintaremontteja Joensuussa ja Joensuun seudulla.",
+    "description": "PintaPojat tekee julkisivumaalauksia, huoltomaalauksia, sokkelimaalauksia ja pieniä pintaremontteja Joensuussa ja Joensuun seudulla.",
     "areaServed": [
       { "@type": "City", "name": "Joensuu" },
       { "@type": "AdministrativeArea", "name": "Pohjois-Karjala" }
@@ -81,8 +81,8 @@
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Hirsipintojen käsittely",
-          "serviceType": "Hirsipintojen käsittely"
+          "name": "Pienet pintaremontit",
+          "serviceType": "Pienet pintaremontit"
         }
       },
       {
@@ -91,14 +91,6 @@
           "@type": "Service",
           "name": "Sokkelimaalaus",
           "serviceType": "Sokkelimaalaus"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Pienet pintaremontit",
-          "serviceType": "Pienet pintaremontit"
         }
       }
     ]
@@ -174,27 +166,19 @@
   <style>
     :root{
       --yellow:#f0b400;
-      --yellow-light:#ffd64a;
-      --red:#c62828;
+      --red:#ff3b10;
       --black:#101010;
       --white:#ffffff;
       --bg:#ececec;
       --card:#f8f8f8;
-      --muted:#666;
-      --line:#e2e2e2;
       --shadow:0 12px 30px rgba(0,0,0,0.12);
       --shadow-soft:0 8px 20px rgba(0,0,0,0.08);
-      --radius:24px;
-      --radius-sm:18px;
       --max:1160px;
       --wide:1600px;
       --section-space:56px;
-      --section-space-mobile:34px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{ box-sizing:border-box; }
 
     html{
       scroll-behavior:smooth;
@@ -224,9 +208,7 @@
       margin:0;
     }
 
-    p{
-      margin:0;
-    }
+    p{ margin:0; }
 
     a{
       text-decoration:none;
@@ -239,9 +221,7 @@
       height:auto;
     }
 
-    button,
-    input,
-    textarea{
+    button,input,textarea{
       font:inherit;
     }
 
@@ -385,12 +365,6 @@
       line-height:0.96;
     }
 
-    .hero-copy p{
-      font-size:clamp(18px, 2vw, 23px);
-      max-width:650px;
-      color:#1f1f1f;
-    }
-
     .hero-buttons{
       display:flex;
       flex-wrap:wrap;
@@ -453,14 +427,14 @@
 
     .section-lead{
       font-size:17px;
-      max-width:880px;
+      max-width:900px;
       color:#222;
       margin-bottom:22px;
     }
 
     .box{
       background:var(--white);
-      border-radius:var(--radius);
+      border-radius:24px;
       box-shadow:var(--shadow);
       padding:24px;
       min-width:0;
@@ -471,8 +445,7 @@
       padding:0;
       width:100%;
       max-width:100%;
-      margin-left:0;
-      margin-right:0;
+      margin:22px 0 0;
       border-radius:24px;
       box-shadow:var(--shadow);
     }
@@ -539,11 +512,6 @@
       font-size:15px;
       line-height:1.48;
       word-break:break-word;
-    }
-
-    .person-info a{
-      color:inherit;
-      text-decoration:none;
     }
 
     .person-info a:hover{
@@ -651,8 +619,6 @@
       box-shadow:var(--shadow);
       width:100%;
       max-width:100%;
-      margin-left:0;
-      margin-right:0;
       overflow:hidden;
     }
 
@@ -676,9 +642,7 @@
       pointer-events:none;
     }
 
-    .compare-before{
-      z-index:1;
-    }
+    .compare-before{ z-index:1; }
 
     .compare-after{
       z-index:2;
@@ -717,6 +681,60 @@
       font-size:21px;
       font-weight:900;
       color:var(--black);
+    }
+
+    .process-layout{
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:26px;
+      align-items:start;
+      margin-top:24px;
+    }
+
+    .process-steps{
+      display:grid;
+      gap:24px;
+    }
+
+    .process-step{
+      background:transparent;
+      padding:0;
+    }
+
+    .process-step h3{
+      font-family:Arial, Helvetica, sans-serif;
+      text-transform:none;
+      letter-spacing:0;
+      font-size:20px;
+      line-height:1.3;
+      margin-bottom:8px;
+      color:var(--red);
+      font-weight:800;
+    }
+
+    .process-step p{
+      font-size:15px;
+      color:#555;
+      max-width:58ch;
+    }
+
+    .process-images{
+      display:grid;
+      gap:22px;
+      position:sticky;
+      top:100px;
+    }
+
+    .process-photo{
+      background:var(--white);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .process-photo img{
+      width:100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
     }
 
     .faq-grid{
@@ -919,8 +937,13 @@
 
     @media (max-width: 980px){
       .faq-grid,
-      .footer-inner{
+      .footer-inner,
+      .process-layout{
         grid-template-columns:1fr;
+      }
+
+      .process-images{
+        position:static;
       }
     }
 
@@ -964,10 +987,6 @@
     }
 
     @media (max-width: 780px){
-      :root{
-        --section-space-mobile:30px;
-      }
-
       body{
         padding-bottom:70px;
       }
@@ -1001,12 +1020,6 @@
         text-wrap:balance;
       }
 
-      .hero-copy p{
-        font-size:16px;
-        line-height:1.45;
-        max-width:34ch;
-      }
-
       .hero-buttons{
         flex-direction:column;
         align-items:stretch;
@@ -1022,7 +1035,7 @@
       }
 
       .section{
-        padding:0 16px var(--section-space-mobile);
+        padding:0 16px 30px;
       }
 
       .section-title{
@@ -1149,6 +1162,31 @@
         font-size:18px;
       }
 
+      .process-layout{
+        gap:18px;
+        margin-top:18px;
+      }
+
+      .process-steps{
+        gap:16px;
+      }
+
+      .process-step h3{
+        font-size:18px;
+      }
+
+      .process-step p{
+        font-size:14px;
+      }
+
+      .process-images{
+        gap:14px;
+      }
+
+      .process-photo{
+        box-shadow:none;
+      }
+
       .faq-item{
         padding:16px;
       }
@@ -1222,11 +1260,6 @@
         font-size:clamp(28px, 9vw, 34px);
       }
 
-      .hero-copy p{
-        font-size:15px;
-        max-width:30ch;
-      }
-
       .section{
         padding:0 14px 24px;
       }
@@ -1265,11 +1298,9 @@
       <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menu">Valikko</button>
 
       <nav class="menu" id="menu">
-        <a href="#yleista">Yleistä</a>
-        <a href="#me">Me</a>
-        <a href="#maalaus">Maalaus</a>
-        <a href="#pohjatyot">Pohjatyöt</a>
-        <a href="#huoltotyot">Pintaremontit</a>
+        <a href="#keita-olemme">Keitä olemme</a>
+        <a href="#palvelumme">Palvelumme</a>
+        <a href="#urakka">Kuinka urakka toteutuu</a>
         <a href="#faq">Usein kysyttyä</a>
         <a href="#arviointi">Arviointikäynti</a>
         <a href="#palaute">Palaute</a>
@@ -1291,20 +1322,10 @@
       </div>
     </section>
 
-    <section class="section" id="yleista">
-      <h2 class="section-title">Yleistä</h2>
+    <section class="section" id="keita-olemme">
+      <h2 class="section-title">Keitä olemme</h2>
       <p class="section-lead">
-        Kahdesta toiminimestä koostuva PintaPojat tarjoaa julkisivu- ja huoltomaalauksia sekä pieniä pintaremontteja Joensuun seudulla ja lähialueilla. Keskitymme siistiin, kestävään ja hyvännäköiseen lopputulokseen. Talo ei saa maalauksesta vain uutta ilmettä, vaan myös paremman suojan säätä, kosteutta ja kulumista vastaan. Oikeat pohjatyöt ja huolellinen toteutus näkyvät lopputuloksessa ja sen kestävyydessä.
-      </p>
-      <div class="box image-box">
-        <img src="cream-house.jpg" alt="Vaalea omakotitalo julkisivumaalauksen jälkeen Joensuussa" loading="lazy" decoding="async" />
-      </div>
-    </section>
-
-    <section class="section" id="me">
-      <h2 class="section-title">Me</h2>
-      <p class="section-lead">
-        PintaPojat on kahdesta joensuulaisesta nuoresta, Vilho Räisäsestä ja Ilmari Sippolasta, koostuva yritys.
+        PintaPojat on kahdesta joensuulaisesta yrittäjästä, Vilho Räisäsestä ja Ilmari Sippolasta, koostuva yritys. Toteutamme julkisivu- ja huoltomaalauksia sekä pieniä pintaremontteja Joensuun seudulla ja lähialueilla. Keskitymme siistiin, kestävään ja hyvännäköiseen lopputulokseen. Talo ei saa maalauksesta vain uutta ilmettä, vaan myös paremman suojan säätä, kosteutta ja kulumista vastaan.
       </p>
 
       <div class="people-grid">
@@ -1332,12 +1353,16 @@
           </div>
         </div>
       </div>
+
+      <div class="box image-box">
+        <img src="cream-house.jpg" alt="Vaalea omakotitalo julkisivumaalauksen jälkeen Joensuussa" loading="lazy" decoding="async" />
+      </div>
     </section>
 
-    <section class="section" id="maalaus">
-      <h2 class="section-title">Maalaus</h2>
+    <section class="section" id="palvelumme">
+      <h2 class="section-title">Palvelumme</h2>
       <p class="section-lead">
-        Teemme julkisivumaalauksia omakotitaloihin, mökkeihin ja muihin rakennuksiin Joensuussa ja lähialueilla. Työ voi sisältää pesun, vanhan maalipinnan puhdistuksen, tarvittavat pohjatyöt ja pintamaalauksen.
+        Teemme julkisivumaalauksia omakotitaloihin, mökkeihin ja muihin rakennuksiin Joensuussa ja lähialueilla. Työ voi sisältää pesun, vanhan maalipinnan puhdistuksen, tarvittavat pohjatyöt, pintamaalauksen sekä pienet ulkopintojen korjaukset.
       </p>
 
       <div class="services-grid">
@@ -1360,11 +1385,11 @@
         </div>
 
         <div class="service-card">
-          <img src="tervapetsi.jälkeen.2025.jpeg" alt="Hirsitalo käsittelyn jälkeen" loading="lazy" decoding="async" />
+          <img src="red-after.jpg" alt="Talon ulkopinnan pieni pintaremontti valmiina" loading="lazy" decoding="async" />
           <div class="service-overlay">
-            <h3>Hirsipinnat</h3>
-            <p>Käsittelyratkaisut, joissa hirsiseinän ilme pääsee oikeuksiinsa.</p>
-            <button class="tag" type="button" data-service="hirsipinnat">Hirsipinnat</button>
+            <h3>Pintaremontit</h3>
+            <p>Pienet ulkopintojen korjaukset, vaihdot ja siistimiset maalaustyön yhteydessä.</p>
+            <button class="tag" type="button" data-service="pintaremontit">Pienet pintaremontit</button>
           </div>
         </div>
 
@@ -1384,11 +1409,12 @@
       </div>
     </section>
 
-    <section class="section" id="pohjatyot">
-      <h2 class="section-title">Pohjatyöt</h2>
+    <section class="section" id="urakka">
+      <h2 class="section-title">Kuinka urakka toteutuu</h2>
       <p class="section-lead">
-        Hyvä lopputulos alkaa pohjatöistä. Pesut, kaavinnat, suojaukset ja muut valmistelut vaikuttavat suoraan siihen, miltä maalaus näyttää ja kuinka kauan se kestää. Urakka alkaa usein homepesulla, jossa talo pestään läpikotaisin homepesuaineella ja harjoilla. Näin mustat homepilkut, pöly ja muu lika saadaan poistettua. Pohjatöihin kuuluu myös hilseilevän maalin poisto, puupinnalla olevien kohtien pohjamaalaus ja ympäristön suojaaminen maaliroiskeilta.
+        Selkeä eteneminen tekee projektista sujuvan sekä meille että asiakkaalle. Käymme työn vaiheet läpi etukäteen, sovimme käytännön asiat selvästi ja etenemme huolellisesti alusta loppuun.
       </p>
+
       <div class="compare-card" style="margin-top:20px;">
         <div class="compare" data-start="50" aria-label="Vertailukuva ennen ja jälkeen käsittelyn">
           <img class="compare-before" src="tervapetsi.ennen.2025.jpeg" alt="Hirsimökki ennen käsittelyä" loading="lazy" decoding="async" />
@@ -1397,14 +1423,66 @@
           <div class="compare-handle"></div>
         </div>
       </div>
-    </section>
 
-    <section class="section" id="huoltotyot">
-      <h2 class="section-title">Pienet pintaremontit</h2>
-      <p class="section-lead">
-        Kaikki kohteet eivät tarvitse vain maalia. Joskus tarvitaan myös yleistä siistimistä, pientä kunnostusta ja rakennuksen ylläpitoon liittyviä töitä. Esimerkiksi talon otsalaudat ja ikkunoiden vuorilaudat pääsevät monesti ränsistymään ja tarvitsevat vaihtoa. Pienet huoltotyöt oikeaan aikaan auttavat pitämään koko rakennuksen ilmeen parempana ja ehkäisevät suurempia korjauskustannuksia tulevaisuudessa.
-      </p>
-      <div class="compare-card" style="margin-top:20px;">
+      <div class="process-layout">
+        <div class="process-steps">
+          <div class="process-step">
+            <h3>1. Arviointikäynti</h3>
+            <p>Käymme kohteessa paikan päällä arvioimassa työn laajuuden, pinnat, mahdolliset korjaustarpeet ja sopivat toteutustavat. Samalla saat realistisen kuvan siitä, mitä työ käytännössä sisältää.</p>
+          </div>
+
+          <div class="process-step">
+            <h3>2. Tarjous</h3>
+            <p>Arvioinnin jälkeen annamme selkeän tarjouksen, jossa työn sisältö, laajuus ja kokonaisuus ovat helposti ymmärrettävissä. Näin tiedät tarkasti, mitä olet tilaamassa.</p>
+          </div>
+
+          <div class="process-step">
+            <h3>3. Aikataulusta ja yksityiskohdista sopiminen</h3>
+            <p>Kun tarjous hyväksytään, sovimme työn ajankohdan, käytännön järjestelyt, mahdolliset materiaalivalinnat sekä muut yksityiskohdat. Näin urakka pääsee alkamaan ilman epäselvyyksiä.</p>
+          </div>
+
+          <div class="process-step">
+            <h3>4. Valmistelut</h3>
+            <p>Ennen maalaustyön aloittamista asennamme työmaa-aikaiset telineet sekä teemme tarvittavat suojaukset, kuten terassin suojaukset, pihakiveyksen suojaukset sekä muun ympäristön suojaamisen.</p>
+          </div>
+
+          <div class="process-step">
+            <h3>5. Pohjatyöt maalaukseen huolellisesti</h3>
+            <p>Teemme pohjatyöt huolellisesti. Puhdistamme pinnat, pesemme homeen ja lian pois ja korjaamme ennalta sovitut lahovauriot jos niitä on. Poistamme hilseilevän maalin ja pohjamaalaamme kaikki paljaat puuosat.</p>
+          </div>
+
+          <div class="process-step">
+            <h3>6. Maalarit aloittavat maalauksen</h3>
+            <p>Maalarit voivat aloittaa varsinaisen maalaustyön. Teemme pintamaalauksen kohteesta riippuen yhteen tai kahteen kertaan. Maalaustyön teemme aina käsin pensselillä. Maalaustyössä maalarimme käyttää apuna maalia telalla tai maaliruiskua kohteen sen mahdollistaessa.</p>
+          </div>
+
+          <div class="process-step">
+            <h3>7. Tarkistamme kanssasi maalauksen laadun</h3>
+            <p>Kun maalaus on tehty, tarkistamme yhdessä kanssasi maalauksen laadun. Kierrämme ja katsomme, että työn jälki on moitteetonta. Kannustamme asiakkaita huomauttamaan mahdollisista puutteista. Mikäli puutteita löytyy, reippaat maalarimme paikkaa maalaavat heti kyseiset kohdat.</p>
+          </div>
+
+          <div class="process-step">
+            <h3>8. Maalaustyömaa siistiksi</h3>
+            <p>Kun saamme sovitun maalausurakan täysin valmiiksi, siivoamme työmaan huolellisesti sekä viemme jätteet kierrätykseen.</p>
+          </div>
+
+          <div class="process-step">
+            <h3>9. Valmis!</h3>
+            <p>Tarkistamme vielä kertaalleen, että työn jälki on moitteetonta. Teemme lopputarkastuksen, josta sinulle jää lopputarkastuspöytäkirja talon huoltohistoriaan. Asiakas hyväksyy kohteen jolloin voimme laskuttaa sopimuksen mukaan.</p>
+          </div>
+        </div>
+
+        <div class="process-images">
+          <div class="process-photo">
+            <img src="red-house.jpg" alt="Maalari työskentelemässä ulkoverhouksen parissa" loading="lazy" decoding="async" />
+          </div>
+          <div class="process-photo">
+            <img src="red-after.jpg" alt="Maalari viimeistelemässä ulkopintaa" loading="lazy" decoding="async" />
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-card" style="margin-top:24px;">
         <div class="compare" data-start="50" aria-label="Vertailukuva pintaremontista ennen ja jälkeen">
           <img class="compare-before" src="red-before.jpg" alt="Punainen talo ennen pintaremonttia" loading="lazy" decoding="async" />
           <img class="compare-after" src="red-after.jpg" alt="Punainen talo pintaremontin jälkeen" loading="lazy" decoding="async" />
@@ -1655,19 +1733,19 @@
     const serviceTexts = {
       Julkisivumaalaus: {
         title: "Julkisivumaalaus",
-        text: "Julkisivumaalaus suojaa rakennuksen ulkopintoja säältä, kosteudelta ja kulumiselta sekä pitää talon ilmeen siistinä. Ennen maalausta pinnat pestään ja irtoava maali poistetaan, jotta uusi maali tarttuu kunnolla ja kestää mahdollisimman pitkään. Huolellisesti tehty julkisivumaalaus parantaa rakennuksen ulkonäköä ja auttaa pitämään pinnat sekä rakenteet hyvässä kunnossa pitkään."
+        text: "Julkisivumaalaus suojaa rakennuksen ulkopintoja säältä, kosteudelta ja kulumiselta sekä pitää talon ilmeen siistinä. Ennen maalausta pinnat pestään ja irtoava maali poistetaan, jotta uusi maali tarttuu kunnolla ja kestää mahdollisimman pitkään."
       },
       huoltomaalaus: {
         title: "Huoltomaalaus",
-        text: "Huoltomaalaus tehdään silloin, kun maalipinta on alkanut kulua, mutta ei vielä vaadi laajempaa kunnostusta. Sen tarkoituksena on suojata pintaa ja hidastaa kulumisen etenemistä. Huoltomaalaus voi sisältää esimerkiksi pesun, kevyitä pohjatöitä ja uuden maalikerroksen lisäämisen. Oikeaan aikaan tehtynä se auttaa pidentämään maalipinnan käyttöikää ja säilyttämään rakennuksen siistin ulkonäön."
+        text: "Huoltomaalaus tehdään silloin, kun maalipinta on alkanut kulua, mutta ei vielä vaadi laajempaa kunnostusta. Sen tarkoituksena on suojata pintaa ja hidastaa kulumisen etenemistä."
       },
-      hirsipinnat: {
-        title: "Hirsipinnat",
-        text: "Hirsipintojen käsittelyssä käytetään yleensä kuullotetta tai muuta puunsuojaa, joka suojaa puuta säältä, kosteudelta ja auringon vaikutuksilta mutta jättää puun luonnollisen rakenteen näkyviin. Ennen käsittelyä pinnat puhdistetaan ja tarvittaessa huolletaan, jotta aine imeytyy kunnolla puuhun. Oikein tehty käsittely auttaa pitämään hirsipinnat hyvässä kunnossa ja pidentää niiden käyttöikää."
+      pintaremontit: {
+        title: "Pienet pintaremontit",
+        text: "Pienet pintaremontit voivat sisältää esimerkiksi otsalautojen, vuorilautojen tai muiden ulkopintojen kunnostusta ja vaihtoa. Näillä töillä rakennuksen ilme pysyy siistinä ja suurempia vaurioita voidaan ehkäistä ajoissa."
       },
       sokkelimaalaus: {
         title: "Sokkelimaalaus",
-        text: "Sokkelin maalaus suojaa rakennuksen perustusta kosteudelta, lialta ja kulumiselta sekä viimeistelee talon ulkonäön. Ennen maalausta sokkelin pinta puhdistetaan huolellisesti ja irtoava maali tai lika poistetaan, jotta uusi maali tarttuu kunnolla. Tarvittaessa sokkelia voidaan myös korjata ennen maalausta, jos siinä on esimerkiksi halkeamia, lohkeamia tai muita vaurioita. Oikein tehty sokkelin maalaus auttaa pitämään sokkelin siistinä ja suojaa pintaa säävaihteluilta."
+        text: "Sokkelin maalaus suojaa rakennuksen perustusta kosteudelta, lialta ja kulumiselta sekä viimeistelee talon ulkonäön. Tarvittaessa sokkelia voidaan myös korjata ennen maalausta."
       }
     };
 
