@@ -166,7 +166,6 @@
   }
   </script>
 
-
   <style>
     :root{
       --yellow:#f0b400;
@@ -181,6 +180,8 @@
       --wide:1600px;
       --section-space:56px;
       --text-font:'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --content-narrow:760px;
+      --content-form:860px;
     }
 
     *{ box-sizing:border-box; }
@@ -346,9 +347,11 @@
     }
 
     .hero-copy{
-      max-width:760px;
+      width:100%;
+      max-width:var(--content-narrow);
       display:grid;
       gap:14px;
+      margin:0 auto;
     }
 
     .eyebrow{
@@ -369,6 +372,7 @@
     .hero-copy h1{
       font-size:clamp(40px, 6.7vw, 84px);
       line-height:0.96;
+      max-width:12ch;
     }
 
     .hero-buttons{
@@ -430,13 +434,18 @@
       font-size:clamp(32px, 4.5vw, 58px);
       margin-bottom:8px;
       line-height:0.98;
+      width:100%;
+      max-width:var(--content-narrow);
+      margin-left:auto;
+      margin-right:auto;
     }
 
     .section-lead{
       font-size:17px;
-      max-width:900px;
+      width:100%;
+      max-width:var(--content-narrow);
       color:#222;
-      margin-bottom:22px;
+      margin:0 auto 22px;
       font-family:var(--text-font);
       text-align:justify;
       text-justify:inter-word;
@@ -498,8 +507,7 @@
       line-height:1.48;
       word-break:break-word;
       font-family:var(--text-font);
-      text-align:justify;
-      text-justify:inter-word;
+      text-align:left;
     }
 
     .person-info a:hover{
@@ -563,8 +571,7 @@
       line-height:1.45;
       max-width:26ch;
       font-family:var(--text-font);
-      text-align:justify;
-      text-justify:inter-word;
+      text-align:left;
     }
 
     .tag{
@@ -592,7 +599,9 @@
 
     .service-info-box{
       display:none;
-      margin-top:18px;
+      margin:18px auto 0;
+      width:100%;
+      max-width:var(--content-narrow);
       background:var(--white);
       border-radius:20px;
       padding:20px;
@@ -612,7 +621,6 @@
     .service-info-box p{
       font-family:var(--text-font);
       text-align:justify;
-      text-justify:inter-word;
     }
 
     .compare-card{
@@ -688,20 +696,22 @@
 
     .process-row{
       display:grid;
-      grid-template-columns:1.05fr 0.95fr;
-      gap:26px;
-      align-items:start;
-      margin-top:24px;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:stretch;
+      margin:24px auto 0;
+      width:100%;
+      max-width:var(--content-narrow);
     }
 
     .process-row.reverse{
-      grid-template-columns:0.95fr 1.05fr;
-      margin-top:30px;
+      margin-top:24px;
     }
 
     .process-steps{
       display:grid;
-      gap:24px;
+      gap:18px;
+      min-width:0;
     }
 
     .process-step{
@@ -723,16 +733,15 @@
     .process-step p{
       font-size:15px;
       color:var(--black);
-      max-width:58ch;
+      max-width:none;
       font-family:var(--text-font);
       text-align:justify;
-      text-justify:inter-word;
     }
 
     .process-images{
       display:grid;
       gap:22px;
-      align-content:start;
+      min-width:0;
     }
 
     .process-photo{
@@ -740,18 +749,24 @@
       box-shadow:var(--shadow);
       overflow:hidden;
       border-radius:24px;
+      min-height:320px;
+      height:100%;
     }
 
     .process-photo img{
       width:100%;
-      aspect-ratio:4/3;
+      height:100%;
       object-fit:cover;
+      aspect-ratio:auto;
     }
 
     .faq-grid{
       display:grid;
       grid-template-columns:repeat(2, 1fr);
       gap:16px;
+      width:100%;
+      max-width:var(--content-narrow);
+      margin:0 auto;
     }
 
     .faq-item{
@@ -780,7 +795,6 @@
       color:#242424;
       font-family:var(--text-font);
       text-align:justify;
-      text-justify:inter-word;
     }
 
     .faq-item.open .faq-answer{
@@ -832,7 +846,7 @@
       border-radius:22px;
       padding:20px;
       box-shadow:var(--shadow);
-      max-width:860px;
+      max-width:var(--content-form);
       margin:0 auto;
     }
 
@@ -841,8 +855,7 @@
       color:#333;
       margin-top:4px;
       font-family:var(--text-font);
-      text-align:justify;
-      text-justify:inter-word;
+      text-align:left;
     }
 
     #uploadedFiles{
@@ -858,8 +871,7 @@
       font-size:14px;
       word-break:break-word;
       font-family:var(--text-font);
-      text-align:justify;
-      text-justify:inter-word;
+      text-align:left;
     }
 
     .uploaded-file button{
@@ -918,8 +930,7 @@
       word-break:break-word;
       color:#f0f0f0;
       font-family:var(--text-font);
-      text-align:justify;
-      text-justify:inter-word;
+      text-align:left;
     }
 
     .footer a{
@@ -969,8 +980,8 @@
         grid-template-columns:1fr;
       }
 
-      .process-images{
-        position:static;
+      .process-photo{
+        min-height:260px;
       }
     }
 
@@ -1130,6 +1141,7 @@
         min-height:auto;
         max-width:none;
         font-size:14px;
+        margin-bottom:12px;
       }
 
       .tag{
@@ -1198,6 +1210,7 @@
       .process-photo{
         border-radius:0;
         box-shadow:none;
+        min-height:240px;
       }
 
       .faq-item{
