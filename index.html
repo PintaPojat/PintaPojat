@@ -447,8 +447,7 @@
       color:#222;
       margin:0 auto 22px;
       font-family:var(--text-font);
-      text-align:justify;
-      text-justify:inter-word;
+      text-align:left;
     }
 
     .people-grid{
@@ -620,7 +619,7 @@
 
     .service-info-box p{
       font-family:var(--text-font);
-      text-align:justify;
+      text-align:left;
     }
 
     .compare-card{
@@ -629,7 +628,8 @@
       padding:0;
       box-shadow:var(--shadow);
       width:100%;
-      max-width:100%;
+      max-width:var(--content-narrow);
+      margin:0 auto;
       overflow:hidden;
     }
 
@@ -735,7 +735,7 @@
       color:var(--black);
       max-width:none;
       font-family:var(--text-font);
-      text-align:justify;
+      text-align:left;
     }
 
     .process-images{
@@ -794,7 +794,7 @@
       font-size:15px;
       color:#242424;
       font-family:var(--text-font);
-      text-align:justify;
+      text-align:left;
     }
 
     .faq-item.open .faq-answer{
@@ -1160,20 +1160,19 @@
       }
 
       .compare-card{
-        background:transparent;
-        border-radius:0;
+        background:var(--white);
+        border-radius:18px;
         padding:0;
-        box-shadow:none;
-        width:100vw;
-        max-width:100vw;
-        margin-left:calc(50% - 50vw);
-        margin-right:calc(50% - 50vw);
-        overflow:visible;
+        box-shadow:var(--shadow);
+        width:100%;
+        max-width:var(--content-narrow);
+        margin:0 auto;
+        overflow:hidden;
       }
 
       .compare{
         aspect-ratio:4/3;
-        border-radius:0;
+        border-radius:18px;
       }
 
       .compare-handle{
@@ -1208,8 +1207,8 @@
       }
 
       .process-photo{
-        border-radius:0;
-        box-shadow:none;
+        border-radius:18px;
+        box-shadow:var(--shadow);
         min-height:240px;
       }
 
@@ -1674,7 +1673,7 @@
         <p><strong>Sähköposti:</strong> <a href="mailto:pintapojat@gmail.com">pintapojat@gmail.com</a></p>
         <p><strong>Nimet:</strong> Vilho Räisänen, Ilmari Sippola</p>
         <p><strong>Puhelimet:</strong> Vilho <a href="tel:+358449805844">044 980 5844</a> / Ilmari <a href="tel:+3584578325502">045 7832 5502</a></p>
-        <p><strong>Y-tunnukset:</strong> 3586169-5 ja 3453360-6</p>
+        <p><strong>Y-tunnukset:</strong> 3453360-6 ja 3586169-5</p>
       </div>
     </div>
   </footer>
