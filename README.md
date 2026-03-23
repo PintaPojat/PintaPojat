@@ -3,7 +3,7 @@
 PintaPojat tekee julkisivumaalauksia, huoltomaalauksia ja pieniä pintaremontteja Joensuussa sekä Joensuun seudulla.
 
 Sivusto:  
-https://pintapojat.fi
+https://www.pintapojat.fi
 
 ## Palvelut
 - Maalaus
@@ -24,7 +24,7 @@ https://pintapojat.fi
 
 Voit pyytää ilmaisen arviointikäynnin sivun lomakkeella:
 
-https://pintapojat.fi/#arviointi
+https://www.pintapojat.fi/#arviointi
 
 ## Yhteystiedot
 
