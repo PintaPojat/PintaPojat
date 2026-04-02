@@ -473,20 +473,23 @@
     }
 
     .person-image{
-      width:122px;
-      height:122px;
+      width:140px;
+      height:140px;
       margin:0 auto 14px;
       border-radius:50%;
       overflow:hidden;
       border:4px solid var(--yellow);
       background:#e9e9e9;
       box-shadow:0 8px 18px rgba(0,0,0,0.1);
+      flex-shrink:0;
     }
 
     .person-image img{
       width:100%;
       height:100%;
+      display:block;
       object-fit:cover;
+      object-position:center top;
     }
 
     .person-info{
@@ -738,7 +741,7 @@
       text-align:left;
     }
 
-    .process-kuva s{
+    .process-images{
       display:grid;
       gap:22px;
       min-width:0;
@@ -1099,9 +1102,9 @@
         border-radius:18px;
       }
 
-      .person-kuva {
-        width:96px;
-        height:96px;
+      .person-image{
+        width:110px;
+        height:110px;
         margin-bottom:10px;
       }
 
@@ -1202,7 +1205,7 @@
         font-size:14px;
       }
 
-      .process-kuva s{
+      .process-images{
         gap:14px;
       }
 
@@ -1349,7 +1352,7 @@
       <div class="people-grid">
         <div class="person-card">
           <div class="person-image">
-            <img src="kuvavilhosta.jpg" alt="Vilho Räisänen" loading="lazy" decoding="async" />
+            <img src="kuvavilhosta.jpg" alt="Vilho Räisänen" loading="lazy" decoding="async" width="600" height="600" />
           </div>
           <div class="person-info">
             <h3>Vilho Räisänen</h3>
@@ -1361,7 +1364,7 @@
 
         <div class="person-card">
           <div class="person-image">
-            <img src="kuvailmarista.jpg" alt="Ilmari Sippola" loading="lazy" decoding="async" />
+            <img src="kuvailmarista.jpg" alt="Ilmari Sippola" loading="lazy" decoding="async" width="600" height="600" />
           </div>
           <div class="person-info">
             <h3>Ilmari Sippola</h3>
