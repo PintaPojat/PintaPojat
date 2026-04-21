@@ -48,7 +48,7 @@
     "email": "pintapojat@gmail.com",
     "telephone": "+358449805844",
     "priceRange": "€€",
-    "description": "PintaPojat tekee julkisivumaalauksia, huoltomaalauksia, sokkelimaalauksia ja pieniä pintaremontteja Joensuussa ja Joensuun seudulla.",
+    "description": "PintaPojat tekee julkisivumaalauksia, huoltomaalauksia, sokkelimaalauksia ja pieniä pintoremontteja Joensuussa ja Joensuun seudulla.",
     "areaServed": [
       { "@type": "City", "name": "Joensuu" },
       { "@type": "AdministrativeArea", "name": "Pohjois-Karjala" }
@@ -127,7 +127,7 @@
         "name": "Voiko vanhan pinnan maalata suoraan?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Joskus voi, mutta usein täytyy tehdä pohjatöitä."
+          "text": "Joskus voi, mutta usein täytyy tehdä huolelliset pohjatyöt."
         }
       },
       {
@@ -135,7 +135,7 @@
         "name": "Kuinka kauan maalaus yleensä kestää?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Kesto riippuu kohteen koosta, säästä ja pohjatöiden määrästä, mutta tavallinen omakotitalo valmistuu meillä noin 3–5 päivässä."
+          "text": "Kesto riippuu kohteen koosta, säästä ja pohjatöiden määrästä, mutta tavallinen omakotitalo valmistuu meillä usein noin 3–5 päivässä."
         }
       },
       {
@@ -225,6 +225,7 @@
       display:block;
       max-width:100%;
       height:auto;
+      image-rendering:auto;
     }
 
     button,input,textarea{
@@ -452,16 +453,16 @@
 
     .people-grid{
       display:grid;
-      grid-template-columns:repeat(2, minmax(340px, 400px));
+      grid-template-columns:repeat(2, minmax(360px, 440px));
       justify-content:center;
-      gap:22px;
+      gap:24px;
       margin:18px 0 24px;
     }
 
     .person-card{
       background:var(--white);
-      border-radius:22px;
-      padding:20px;
+      border-radius:24px;
+      padding:24px;
       box-shadow:var(--shadow);
       text-align:center;
       transition:transform 0.24s ease, box-shadow 0.24s ease;
@@ -473,14 +474,14 @@
     }
 
     .person-image{
-      width:240px;
-      height:240px;
-      margin:0 auto 16px;
+      width:300px;
+      height:300px;
+      margin:0 auto 18px;
       border-radius:50%;
       overflow:hidden;
       border:4px solid var(--yellow);
       background:#e9e9e9;
-      box-shadow:0 8px 18px rgba(0,0,0,0.1);
+      box-shadow:0 10px 22px rgba(0,0,0,0.12);
       flex-shrink:0;
     }
 
@@ -495,12 +496,12 @@
     .person-info{
       background:var(--card);
       border-radius:18px;
-      padding:15px 14px;
+      padding:16px 15px;
     }
 
     .person-info h3{
-      font-size:22px;
-      margin-bottom:9px;
+      font-size:24px;
+      margin-bottom:10px;
     }
 
     .person-info p{
@@ -537,16 +538,11 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      transition:transform 0.35s ease, filter 0.35s ease;
+      transition:transform 0.35s ease;
     }
 
     .service-card:hover img{
       transform:scale(1.05);
-    }
-
-    .service-card.pintaremontit-card:hover img{
-      transform:scale(1.08);
-      filter:blur(3px) brightness(0.85);
     }
 
     .service-overlay{
@@ -705,23 +701,48 @@
       line-height:1.08;
     }
 
-    .process-row{
+    .process-section .section-lead{
+      font-family:var(--text-font);
+    }
+
+    .process-flow{
+      width:100%;
+      max-width:var(--content-narrow);
+      margin:24px auto 0;
+      display:grid;
+      gap:22px;
+    }
+
+    .process-block{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:18px;
       align-items:stretch;
-      margin:24px auto 0;
-      width:100%;
-      max-width:var(--content-narrow);
     }
 
-    .process-row.reverse{
-      margin-top:24px;
+    .process-block.text-left .process-copy{
+      order:1;
     }
 
-    .process-steps{
+    .process-block.text-left .process-photo-card{
+      order:2;
+    }
+
+    .process-block.text-right .process-photo-card{
+      order:1;
+    }
+
+    .process-block.text-right .process-copy{
+      order:2;
+    }
+
+    .process-copy{
+      background:var(--white);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:22px;
       display:grid;
-      gap:18px;
+      gap:16px;
       min-width:0;
     }
 
@@ -749,13 +770,7 @@
       text-align:left;
     }
 
-    .process-images{
-      display:grid;
-      gap:22px;
-      min-width:0;
-    }
-
-    .process-photo{
+    .process-photo-card{
       background:var(--white);
       box-shadow:var(--shadow);
       overflow:hidden;
@@ -764,7 +779,7 @@
       height:100%;
     }
 
-    .process-photo img{
+    .process-photo-card img{
       width:100%;
       height:100%;
       object-fit:cover;
@@ -986,23 +1001,12 @@
     @media (max-width: 980px){
       .faq-grid,
       .footer-inner,
-      .process-row,
-      .process-row.reverse{
+      .process-block{
         grid-template-columns:1fr;
       }
 
-      .process-photo{
+      .process-photo-card{
         min-height:260px;
-      }
-
-      .process-row .process-steps,
-      .process-row.reverse .process-steps{
-        order:1;
-      }
-
-      .process-row .process-images,
-      .process-row.reverse .process-images{
-        order:2;
       }
     }
 
@@ -1108,34 +1112,34 @@
 
       .people-grid{
         grid-template-columns:1fr;
-        gap:12px;
+        gap:14px;
         margin:14px 0 18px;
       }
 
       .person-card{
-        max-width:340px;
+        max-width:390px;
         width:100%;
         margin:0 auto;
-        padding:13px;
-        border-radius:18px;
+        padding:16px;
+        border-radius:20px;
       }
 
       .person-image{
-        width:160px;
-        height:160px;
-        margin-bottom:12px;
+        width:220px;
+        height:220px;
+        margin-bottom:14px;
       }
 
       .person-info{
-        padding:10px 11px;
+        padding:12px 12px;
       }
 
       .person-info h3{
-        font-size:18px;
+        font-size:20px;
       }
 
       .person-info p{
-        font-size:13px;
+        font-size:13.5px;
       }
 
       .services-grid,
@@ -1205,14 +1209,28 @@
         font-size:18px;
       }
 
-      .process-row,
-      .process-row.reverse{
+      .process-flow{
         gap:18px;
         margin-top:18px;
       }
 
-      .process-steps{
-        gap:16px;
+      .process-block{
+        gap:14px;
+      }
+
+      /* mobiilissa aina teksti -> kuva -> teksti -> kuva */
+      .process-block .process-copy{
+        order:1 !important;
+      }
+
+      .process-block .process-photo-card{
+        order:2 !important;
+      }
+
+      .process-copy{
+        padding:18px;
+        border-radius:18px;
+        gap:14px;
       }
 
       .process-step h3{
@@ -1223,11 +1241,7 @@
         font-size:14px;
       }
 
-      .process-images{
-        gap:14px;
-      }
-
-      .process-photo{
+      .process-photo-card{
         border-radius:18px;
         box-shadow:var(--shadow);
         min-height:240px;
@@ -1310,6 +1324,11 @@
         padding:0 14px 24px;
       }
 
+      .person-image{
+        width:200px;
+        height:200px;
+      }
+
       .service-card{
         height:228px;
         min-height:228px;
@@ -1370,7 +1389,15 @@
       <div class="people-grid">
         <div class="person-card">
           <div class="person-image">
-            <img src="kuvavilhosta.jpg" alt="Vilho Räisänen" loading="lazy" decoding="async" width="600" height="600" />
+            <img
+              src="kuvavilhosta.jpg"
+              alt="Vilho Räisänen"
+              loading="lazy"
+              decoding="async"
+              width="900"
+              height="900"
+              sizes="(max-width: 780px) 220px, 300px"
+            />
           </div>
           <div class="person-info">
             <h3>Vilho Räisänen</h3>
@@ -1382,7 +1409,15 @@
 
         <div class="person-card">
           <div class="person-image">
-            <img src="kuvailmarista.jpg" alt="Ilmari Sippola" loading="lazy" decoding="async" width="600" height="600" />
+            <img
+              src="kuvailmarista.jpg"
+              alt="Ilmari Sippola"
+              loading="lazy"
+              decoding="async"
+              width="900"
+              height="900"
+              sizes="(max-width: 780px) 220px, 300px"
+            />
           </div>
           <div class="person-info">
             <h3>Ilmari Sippola</h3>
@@ -1394,13 +1429,13 @@
       </div>
 
       <p class="section-lead">
-        PintaPojat on kahdesta joensuulaisesta yrittäjästä, Vilho Räisäsestä ja Ilmari Sippolasta, koostuva yritys. Toteutamme julkisivu- ja huoltomaalauksia sekä pieniä pintaremontteja Joensuun seudulla ja lähialueilla. Keskitymme siistiin, kestävään ja hyvännäköiseen lopputulokseen. Talo ei saa maalauksesta vain uutta ilmettä, vaan myös paremman suojan säätä, kosteutta ja kulumista vastaan.
+        PintaPojat on kahden joensuulaisen yrittäjän, Vilho Räisäsen ja Ilmari Sippolan, yritys. Toteutamme julkisivu- ja huoltomaalauksia sekä pieniä pintaremontteja Joensuun seudulla ja lähialueilla. Keskitymme siistiin, kestävään ja hyvännäköiseen lopputulokseen. Talo ei saa maalauksesta vain uutta ilmettä, vaan myös paremman suojan säätä, kosteutta ja kulumista vastaan.
       </p>
 
       <div class="compare-card" style="margin-top:20px;">
         <div class="compare" data-start="50" aria-label="Vertailukuva ennen ja jälkeen ulkopinnan käsittelyn">
           <img class="compare-before" src="red-before.jpg" alt="Talo ennen käsittelyä" loading="lazy" decoding="async" />
-          <img class="compare-after" src="red-after.jpg" alt="Talo käsittelyn jälkeen" loading="lazy" decoding="async" />
+          <img class="compare-after" src="red-after.jpg" alt="Talo käsittelyn jälkeen" loading="eager" fetchpriority="high" decoding="async" />
           <div class="compare-line"></div>
           <div class="compare-handle"></div>
         </div>
@@ -1415,7 +1450,7 @@
 
       <div class="services-grid">
         <div class="service-card">
-          <img src="red-house.jpg" alt="Punainen omakotitalo julkisivumaalauksen jälkeen" loading="lazy" decoding="async" />
+          <img src="red-house.jpg" alt="Punainen omakotitalo julkisivumaalauksen jälkeen" loading="lazy" decoding="async" width="1200" height="900" sizes="(max-width: 780px) 100vw, 25vw" />
           <div class="service-overlay">
             <h3>Julkisivut</h3>
             <p>Maalaukset omakotitaloihin, mökkeihin ja muihin rakennuksiin.</p>
@@ -1424,7 +1459,7 @@
         </div>
 
         <div class="service-card">
-          <img src="cream-house.jpg" alt="Vaalea talo huoltomaalauksen jälkeen" loading="lazy" decoding="async" />
+          <img src="cream-house.jpg" alt="Vaalea talo huoltomaalauksen jälkeen" loading="lazy" decoding="async" width="1200" height="900" sizes="(max-width: 780px) 100vw, 25vw" />
           <div class="service-overlay">
             <h3>Huoltomaalaus</h3>
             <p>Pintojen ehostus ja suojaus ennen kuin kuluminen etenee liian pitkälle.</p>
@@ -1433,7 +1468,7 @@
         </div>
 
         <div class="service-card pintaremontit-card">
-          <img src="red-after.jpg" alt="Talon ulkopinnan pieni pintaremontti valmiina" loading="lazy" decoding="async" />
+          <img src="red-after.jpg" alt="Talon ulkopinnan pieni pintaremontti valmiina" loading="lazy" decoding="async" width="1200" height="900" sizes="(max-width: 780px) 100vw, 25vw" />
           <div class="service-overlay">
             <h3>Pintaremontit</h3>
             <p>Pienet ulkopintojen korjaukset, vaihdot ja siistimiset maalaustyön yhteydessä.</p>
@@ -1442,7 +1477,7 @@
         </div>
 
         <div class="service-card">
-          <img src="sokkeli.jpg" alt="Sokkeli maalattuna ja viimeisteltynä" loading="lazy" decoding="async" />
+          <img src="sokkeli.jpg" alt="Sokkeli maalattuna ja viimeisteltynä" loading="lazy" decoding="async" width="1200" height="900" sizes="(max-width: 780px) 100vw, 25vw" />
           <div class="service-overlay">
             <h3>Sokkelit</h3>
             <p>Sokkelin maalaus ja kunnostus rakennuksen ilmeen viimeistelyyn.</p>
@@ -1463,67 +1498,73 @@
         Kun työ etenee suunnitelmallisesti, koko urakka pysyy asiakkaalle selkeänä. Käymme vaiheet läpi etukäteen, sovimme käytännön asiat rauhassa ja etenemme järjestelmällisesti alusta loppuun.
       </p>
 
-      <div class="process-row">
-        <div class="process-steps">
-          <div class="process-step">
-            <h3>1. Arviointikäynti</h3>
-            <p>Käymme katsomassa kohteen paikan päällä, jotta näemme pintojen nykykunnon, työn laajuuden ja mahdolliset korjaustarpeet. Näin voimme ehdottaa juuri kohteeseen sopivaa toteutusta.</p>
+      <div class="process-flow">
+        <div class="process-block text-left">
+          <div class="process-copy">
+            <div class="process-step">
+              <h3>1. Arviointikäynti</h3>
+              <p>Käymme katsomassa kohteen paikan päällä, jotta näemme pintojen nykykunnon, työn laajuuden ja mahdolliset korjaustarpeet. Näin voimme ehdottaa juuri kohteeseen sopivaa toteutusta.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>2. Tarjous</h3>
+              <p>Arvioinnin pohjalta laadimme tarjouksen, jossa työn sisältö on kuvattu selkeästi. Tavoitteena on, että asiakas tietää tarkasti, mitä tehdään ja mistä kokonaisuus muodostuu.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>3. Aikataulusta ja yksityiskohdista sopiminen</h3>
+              <p>Kun työ päätetään toteuttaa, sovimme ajankohdan ja käymme läpi käytännön asiat, kuten valmistelut, kulkureitit, materiaalit ja muut työn kannalta tärkeät yksityiskohdat.</p>
+            </div>
           </div>
 
-          <div class="process-step">
-            <h3>2. Tarjous</h3>
-            <p>Arvioinnin pohjalta laadimme tarjouksen, jossa työn sisältö on selkeästi kuvattu. Tavoite on, että asiakas tietää tarkasti, mitä tehdään ja mistä kokonaisuus muodostuu.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>3. Aikataulusta ja yksityiskohdista sopiminen</h3>
-            <p>Kun työ päätetään toteuttaa, sovimme ajankohdan ja käymme läpi käytännön asiat, kuten valmistelut, kulkureitit, materiaalit ja muut työn kannalta tärkeät yksityiskohdat.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>4. Valmistelut</h3>
-            <p>Ennen varsinaista työn aloitusta suojaamme ympäristön huolellisesti ja järjestämme työskentelyn turvalliseksi. Näin piha, terassit ja muut pinnat pysyvät suojattuina työn aikana.</p>
-          </div>
-        </div>
-
-        <div class="process-images">
-          <div class="process-photo">
-            <img src="cream-house.jpg" alt="Vaalea talo valmiina maalauksen jälkeen" loading="lazy" decoding="async" />
-          </div>
-        </div>
-      </div>
-
-      <div class="process-row reverse">
-        <div class="process-images">
-          <div class="process-photo">
-            <img src="red-house.jpg" alt="Maalattu talon julkisivu" loading="lazy" decoding="async" />
+          <div class="process-photo-card">
+            <img src="cream-house.jpg" alt="Vaalea talo valmiina maalauksen jälkeen" loading="lazy" decoding="async" width="1400" height="1200" sizes="(max-width: 980px) 100vw, 50vw" />
           </div>
         </div>
 
-        <div class="process-steps">
-          <div class="process-step">
-            <h3>5. Pohjatyöt tehdään huolella</h3>
-            <p>Kestävä lopputulos syntyy hyvistä pohjatöistä. Puhdistamme pinnat, poistamme irtoavan maalin, käsittelemme tarvittavat kohdat ja varmistamme, että pinta on valmis uutta maalia varten.</p>
+        <div class="process-block text-right">
+          <div class="process-photo-card">
+            <img src="red-house.jpg" alt="Maalattu talon julkisivu" loading="lazy" decoding="async" width="1400" height="1200" sizes="(max-width: 980px) 100vw, 50vw" />
           </div>
 
-          <div class="process-step">
-            <h3>6. Varsinainen maalaus alkaa</h3>
-            <p>Kun pohjat ovat kunnossa, siirrymme pintakäsittelyyn. Työ tehdään kohteen mukaan sopivalla tavalla, jotta lopputulos on siisti, tasainen ja aikaa kestävä.</p>
+          <div class="process-copy">
+            <div class="process-step">
+              <h3>4. Valmistelut</h3>
+              <p>Ennen varsinaista työn aloitusta suojaamme ympäristön huolellisesti ja järjestämme työskentelyn turvalliseksi. Näin piha, terassit ja muut pinnat pysyvät suojattuina työn aikana.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>5. Pohjatyöt tehdään huolella</h3>
+              <p>Kestävä lopputulos syntyy hyvistä pohjatöistä. Puhdistamme pinnat, poistamme irtoavan maalin, käsittelemme tarvittavat kohdat ja varmistamme, että pinta on valmis uutta maalia varten.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>6. Varsinainen maalaus alkaa</h3>
+              <p>Kun pohjat ovat kunnossa, siirrymme pintakäsittelyyn. Työ tehdään kohteen mukaan sopivalla tavalla, jotta lopputulos on siisti, tasainen ja aikaa kestävä.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-block text-left">
+          <div class="process-copy">
+            <div class="process-step">
+              <h3>7. Lopputulos käydään yhdessä läpi</h3>
+              <p>Valmiin työn jälkeen tarkistamme lopputuloksen asiakkaan kanssa. Jos esiin tulee huomioita, ne hoidetaan kuntoon, jotta työnjälki vastaa odotuksia.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>8. Työmaa siistitään</h3>
+              <p>Kun urakka on valmis, siivoamme jäljet huolellisesti. Keräämme materiaalit pois, huolehdimme ympäristön siisteydestä ja viemme jätteet asianmukaisesti pois.</p>
+            </div>
+
+            <div class="process-step">
+              <h3>9. Kohde on valmis</h3>
+              <p>Lopuksi kohde luovutetaan asiakkaalle valmiina. Tavoitteena on, että lopputulos näyttää hyvältä heti ja kestää käyttöä sekä säätä pitkälle eteenpäin.</p>
+            </div>
           </div>
 
-          <div class="process-step">
-            <h3>7. Lopputulos käydään yhdessä läpi</h3>
-            <p>Valmiin työn jälkeen tarkistamme lopputuloksen asiakkaan kanssa. Jos esiin tulee huomioita, ne hoidetaan kuntoon, jotta lopullinen työnjälki vastaa odotuksia.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>8. Työmaa siistitään</h3>
-            <p>Kun urakka on valmis, siivoamme jäljet huolellisesti. Keräämme materiaalit pois, huolehdimme ympäristön siisteydestä ja viemme jätteet asianmukaisesti pois.</p>
-          </div>
-
-          <div class="process-step">
-            <h3>9. Kohde on valmis</h3>
-            <p>Lopuksi kohde luovutetaan asiakkaalle valmiina. Tavoitteena on, että lopputulos näyttää hyvältä heti ja kestää käyttöä sekä säätä pitkälle eteenpäin.</p>
+          <div class="process-photo-card">
+            <img src="tervapetsi.jälkeen.2025.jpeg" alt="Pinta käsittelyn jälkeen" loading="lazy" decoding="async" width="1400" height="1200" sizes="(max-width: 980px) 100vw, 50vw" />
           </div>
         </div>
       </div>
@@ -1565,7 +1606,7 @@
         <div class="faq-item" tabindex="0" role="button" aria-expanded="false">
           <h3>Kuinka kauan maalaus yleensä kestää?</h3>
           <div class="faq-answer">
-            <p>Kesto riippuu kohteen koosta, säästä ja pohjatöiden määrästä, mutta tavallinen omakotitalo valmistuu meillä noin 3–5 päivässä.</p>
+            <p>Kesto riippuu kohteen koosta, säästä ja pohjatöiden määrästä, mutta tavallinen omakotitalo valmistuu meillä usein noin 3–5 päivässä.</p>
           </div>
         </div>
 
@@ -1692,7 +1733,7 @@
       <div class="footer-card">
         <h3>Yhteystiedot</h3>
         <p><strong>Sähköposti:</strong> <a href="mailto:pintapojat@gmail.com">pintapojat@gmail.com</a></p>
-        <p><strong>Nimet:</strong> Vilho Räisänen, Ilmari Sippola</p>
+        <p><strong>Nimet:</strong> Vilho Räisänen ja Ilmari Sippola</p>
         <p><strong>Puhelimet:</strong> Vilho <a href="tel:+358449805844">044 980 5844</a> / Ilmari <a href="tel:+3584578325502">045 7832 5502</a></p>
         <p><strong>Y-tunnukset:</strong> 3453360-6 ja 3586169-5</p>
       </div>
@@ -1893,7 +1934,7 @@
       const data = await response.json();
 
       if (!response.ok || !data.secure_url) {
-        throw new Error(data?.error?.message || "Upload epäonnistui");
+        throw new Error(data?.error?.message || "Tiedoston lataus epäonnistui");
       }
 
       return data;
