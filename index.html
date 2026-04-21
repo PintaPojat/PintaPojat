@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#101010" />
 
-  <title>Nopea & siisti talon maalaus Joensuussa | PintaPojat</title>
+  <title>Nopea & siisti talomaalaus Joensuussa | PintaPojat</title>
   <meta name="description" content="PintaPojat tekee julkisivumaalauksia, huoltomaalauksia, sokkelimaalauksia ja pieniä pintaremontteja Joensuussa ja Joensuun seudulla. Pyydä ilmainen arviointikäynti." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://www.pintapojat.fi/" />
@@ -29,7 +29,7 @@
   <link rel="preload" as="image" href="red-after.jpg" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
   {
@@ -452,7 +452,7 @@
 
     .people-grid{
       display:grid;
-      grid-template-columns:repeat(2, minmax(340px, 380px));
+      grid-template-columns:repeat(2, minmax(340px, 400px));
       justify-content:center;
       gap:22px;
       margin:18px 0 24px;
@@ -473,8 +473,8 @@
     }
 
     .person-image{
-      width:180px;
-      height:180px;
+      width:210px;
+      height:210px;
       margin:0 auto 14px;
       border-radius:50%;
       overflow:hidden;
@@ -695,6 +695,14 @@
       font-size:21px;
       font-weight:900;
       color:var(--black);
+    }
+
+    .process-section .section-title{
+      font-family:var(--text-font);
+      text-transform:none;
+      letter-spacing:0;
+      font-weight:800;
+      line-height:1.08;
     }
 
     .process-row{
@@ -986,6 +994,14 @@
       .process-photo{
         min-height:260px;
       }
+
+      .process-row.reverse .process-steps{
+        order:1;
+      }
+
+      .process-row.reverse .process-images{
+        order:2;
+      }
     }
 
     @media (max-width: 860px){
@@ -1095,7 +1111,7 @@
       }
 
       .person-card{
-        max-width:300px;
+        max-width:320px;
         width:100%;
         margin:0 auto;
         padding:13px;
@@ -1103,8 +1119,8 @@
       }
 
       .person-image{
-        width:110px;
-        height:110px;
+        width:135px;
+        height:135px;
         margin-bottom:10px;
       }
 
@@ -1319,12 +1335,12 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="logo impact" href="/" aria-label="PintaPojat etusivu">PintaPojat</a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menu">Valikko</button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menu">Valikko</button>
 
-      <nav class="menu" id="menu">
+      <nav class="menu" id="menu" aria-label="Päävalikko">
         <a href="#keita-olemme">Keitä olemme</a>
         <a href="#palvelumme">Palvelumme</a>
-        <a href="#urakka">Kuinka urakka toteutuu</a>
+        <a href="#urakka">Miten työ etenee</a>
         <a href="#faq">Usein kysyttyä</a>
         <a href="#arviointi">Arviointikäynti</a>
         <a href="#palaute">Palaute</a>
@@ -1401,7 +1417,7 @@
           <div class="service-overlay">
             <h3>Julkisivut</h3>
             <p>Maalaukset omakotitaloihin, mökkeihin ja muihin rakennuksiin.</p>
-            <button class="tag" type="button" data-service="Julkisivumaalaus">Julkisivumaalaus</button>
+            <button class="tag" type="button" data-service="julkisivumaalaus">Julkisivumaalaus</button>
           </div>
         </div>
 
@@ -1439,8 +1455,8 @@
       </div>
     </section>
 
-    <section class="section" id="urakka">
-      <h2 class="section-title">Kuinka urakka toteutuu</h2>
+    <section class="section process-section" id="urakka">
+      <h2 class="section-title">Miten työ etenee</h2>
       <p class="section-lead">
         Kun työ etenee suunnitelmallisesti, koko urakka pysyy asiakkaalle selkeänä. Käymme vaiheet läpi etukäteen, sovimme käytännön asiat rauhassa ja etenemme järjestelmällisesti alusta loppuun.
       </p>
@@ -1454,7 +1470,7 @@
 
           <div class="process-step">
             <h3>2. Tarjous</h3>
-            <p>Arvioinnin pohjalta laadimme tarjouksen, jossa työn sisältö on selkeästi kuvattu. Tavoite on, että asiakas tietää tarkasti mitä tehdään ja mistä kokonaisuus muodostuu.</p>
+            <p>Arvioinnin pohjalta laadimme tarjouksen, jossa työn sisältö on selkeästi kuvattu. Tavoite on, että asiakas tietää tarkasti, mitä tehdään ja mistä kokonaisuus muodostuu.</p>
           </div>
 
           <div class="process-step">
@@ -1561,7 +1577,7 @@
         <div class="faq-item" tabindex="0" role="button" aria-expanded="false">
           <h3>Paljonko maalaus maksaa?</h3>
           <div class="faq-answer">
-            <p>Hinta riippuu kohteen koosta, kunnosta ja pohjatöiden määrästä. Tavallisen omakotitalon maalauksen hintalappu on yleensä 3000 €–5000 € väliltä.</p>
+            <p>Hinta riippuu kohteen koosta, kunnosta ja pohjatöiden määrästä. Tavallisen omakotitalon maalauksen hintalappu on yleensä 3000–5000 €.</p>
           </div>
         </div>
 
@@ -1759,7 +1775,7 @@
     const serviceInfoText = document.getElementById("serviceInfoText");
 
     const serviceTexts = {
-      Julkisivumaalaus: {
+      julkisivumaalaus: {
         title: "Julkisivumaalaus",
         text: "Julkisivumaalaus suojaa rakennuksen ulkopintoja säältä, kosteudelta ja kulumiselta sekä pitää talon ilmeen siistinä. Ennen maalausta pinnat pestään ja irtoava maali poistetaan, jotta uusi maali tarttuu kunnolla ja kestää mahdollisimman pitkään."
       },
